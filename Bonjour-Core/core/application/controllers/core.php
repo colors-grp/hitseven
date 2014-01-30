@@ -6,7 +6,7 @@ class Core extends CI_Controller {
 	function getSiteUrl($sitecode)
 	{
 		if($sitecode == '1')
-			return 'http://colors-grp.com/amr';
+			return 'http://gloryette.co/heba';
 	}
 	
 	// Core is called via : http://www.colors-studios.com/core"
