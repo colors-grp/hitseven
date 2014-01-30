@@ -15,13 +15,13 @@ class Platform extends CI_Controller {
 
 		// Get the base Platform URL, encrypt it and send it as a parameter to Core ..
 		//$platform_url = $this->platform_fbutils->encryptIt(base_url());
-		
+
 		// We should get this from a configuration value ...
 		$platform_url = '1';
 		//$site_url = $this->platform_fbutils->decryptIt($platform_url);
-		
+
 		//return $platform_url;
-		
+
 		// invoke Core loginurl method ... In h7fb.php loginurl_get ...
 		return $this->rest->get('loginurl', array('platform_url' => $platform_url), 'json');
 	}
@@ -39,7 +39,7 @@ class Platform extends CI_Controller {
 		// check if it was set correctly ...
 		if ($result['is_true']) {
 
-			// set fb data in the session ... 
+			// set fb data in the session ...
 			// This is imp, because all FB graph API calls will use this ...
 			$this->session->set_userdata(array('access_token' => $token));
 			$this->session->set_userdata(array('facebook_uid' => $fbuid));
@@ -52,10 +52,10 @@ class Platform extends CI_Controller {
 			// Set the cookie ...
 			// Prepare all data to be stored in cookie ...
 			$user_data_array = $this->session->all_userdata();
-			// overwrite facebook uid value with its' encrtypted string ... 
+			// overwrite facebook uid value with its' encrtypted string ...
 			$user_data_array['facebook_uid'] = $this->platform_fbutils->encryptIt($fbuid);
-			
-			// encode the array as JSON string ... 
+				
+			// encode the array as JSON string ...
 			$user_data = json_encode($user_data_array);
 
 			$some_cookie_array = array(
@@ -64,7 +64,7 @@ class Platform extends CI_Controller {
 					'expire' => 86500 // initial duration in a web sample, we need to revisit ...
 			);
 
-			// write cookie 
+			// write cookie
 			$this->input->set_cookie($some_cookie_array);
 
 		} else {
@@ -72,18 +72,18 @@ class Platform extends CI_Controller {
 			$this->session->set_userdata(array('access_token' => FALSE));
 
 		}
-		
-		// redirect user to the secure controller ... 
+
+		// redirect user to the secure controller ...
 		redirect('secure', 'refresh');
 	}
 
 	// Platform Entry point ...
 	function index() {
-		
+
 		// Load the Platform Facebook Connectivity utilties library ...
 		$this->load->model('platform_fbutils');
 
-		// Load the cookie from user ... 
+		// Load the cookie from user ...
 		$cookie = $this->input->cookie('H7Cookie');
 
 
@@ -107,23 +107,24 @@ class Platform extends CI_Controller {
 		}
 
 		if($core)
-		{ 
+		{
 			// This is a Redirect from Core ...
-			// get token and fbuid from url parameters ... 
+			// get token and fbuid from url parameters ...
 			$token = $this->input->get('token');
 			$fbuid = $this->input->get('fbuid');
-			
-			// handle core call ... 
+				
+			// handle core call ...
 			$this->handle_core_call($token, $fbuid);
 		}
 		else
-		{ 
+		{
 			// We get here only if NO cookie (user not logged in before AND this is not an internal call from Core)
 			// Set the view ...
 			$data['page'] = 'home_view';
-			
+			$data['ok'] = 0;
+				
 			// Put the loginurl in the data array so it can go to the view ...
-			$data['loginurl'] = $this->getLoginUrl();
+			$data['home_view']['loginurl'] = $this->getLoginUrl();
 			$this->load->view('template', $data);
 		}
 	}
@@ -132,13 +133,13 @@ class Platform extends CI_Controller {
 
 		// load the cookie helper ...
 		$this->load->helper('cookie');
-		
+
 		// delete the cookie ...
 		delete_cookie('H7Cookie');
 		// destroy the session ...
 		$this->session->sess_destroy();
 		session_destroy();
-		
+
 		// redirect to platform ...
 		redirect(base_url());
 	}

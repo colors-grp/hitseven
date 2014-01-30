@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>jQuery Powered Mine Sweeper</title>
+	<style type="text/css">
+ 
+		body.caution {
+			cursor: help ;
+			}
+ 
+		table.mine-sweeper {}
+ 
+		table.mine-sweeper td {
+			background-color: #F0F0F0 ;
+			border: 1px solid #333333 ;
+			cursor: pointer ;
+			height: 25px ;
+			line-height: 25px ;
+			overflow: hidden ;
+			text-align: center ;
+			width: 25px ;
+			}
+ 
+		table.mine-sweeper td.active {
+			background-color: #D8D8D8 ;
+			}
+ 
+		table.mine-sweeper td.bomb {
+			font-weight: bold ;
+			}
+ 
+		table.mine-sweeper td.bombed {
+			background-color: #FFD0D0 ;
+			color: #CC0000 ;
+			font-weight: bold ;
+			}
+ 
+		table.mine-sweeper td.caution {
+			background-color: #FFD0D0 ;
+			color: #CC0000 ;
+			font-weight: bold ;
+			}
+ 
+	</style>
+	<script type="text/javascript" src="http://www.bennadel.com/resources/demo/mine_sweeper/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="jquery.randrange.js"></script>
+	<script type="text/javascript" src="jquery.repeatstring.js"></script>
+	<script type="text/javascript" src="jquery.randomfilter.js"></script>
+	<script type="text/javascript" src="jquery.near.js"></script>
+	<script type="text/javascript" src="jquery.minesweeper.js"></script>
+	<script type="text/javascript">
+ 
+		// When the DOM is ready, build the mine sweeper game.
+		jQuery(function( $ ){
+ 
+			var mineSweerper = new MineSweeper(
+				$( "table.mine-sweeper" ),
+				17,
+				12,
+				"99%"
+			);
+ 
+		});
+ 
+	</script>
+</head>
+<body>
+ 
+	<h1>
+		jQuery Powered Mine Sweeper
+	</h1>
+ 
+	<table cellspacing="2" class="mine-sweeper">
+		<!--- Will be populated dynamically. --->
+	</table>
+ 
+</body>
+</html>

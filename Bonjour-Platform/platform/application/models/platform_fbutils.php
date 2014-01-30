@@ -159,5 +159,29 @@ class platform_fbutils extends CI_Model {	// To encrypt a value using the Conf
 	
 		}
 	
+	}	
+	//function is formatted for the following
+	//https://graph.facebook.com/ID/CONNECTION_TYPE?access_token=123456
+	// http://graph.facebook.com/AmrHussein.Official?fields=cover
+	// Use this method to get data from Facebook ...
+	function get_facebook_field($object, $facebook_uid, $access_token) {
+		$fb_connect = curl_init();
+		curl_setopt($fb_connect, CURLOPT_URL, 'https://graph.facebook.com/'.$facebook_uid.'?fields='.$object.'&access_token='.$access_token);
+		curl_setopt($fb_connect, CURLOPT_RETURNTRANSFER, 1);
+		$output = curl_exec($fb_connect);
+		curl_close($fb_connect);
+		$result = json_decode($output);
+		if (isset($result->error)) {
+			$data['is_true'] = FALSE;
+			$data['message'] = $result->error->message;
+			$data['type'] = $result->error->type;
+			$data['code'] = $result->error->code;
+			return $data;
+		} else {
+			$data['is_true'] = TRUE;
+			$data['data'] = $result;
+			return $data;
+		}
+	
 	}
 }

@@ -1,7 +1,9 @@
-<?php $this->load->view('includes/header_view'); ?>
+<?php
+if($ok == 1) 
+$this->load->view('includes/header' , $header);
+?>
 
-
-		<div id=content>
+<div id=content>
 	
 			<?php 
 				echo validation_errors('<div class=error_message>', '</div>');
@@ -15,11 +17,11 @@
 	
 	<?php 
 	if($page == 'home_view')
-		$this->load->view('pages/'.$page, $loginurl);
+		$this->load->view('pages/'.$page, $home_view);
 	else
 		$this->load->view('pages/'.$page)
 	 ?>
 
-		</div>
+</div>
 
-<?php $this->load->view('includes/footer_view'); ?>
+<?php $this->load->view('includes/footer'); ?>
