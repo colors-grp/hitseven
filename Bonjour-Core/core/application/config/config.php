@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://colors-studios.com/amr';
+$config['base_url']	= 'http://colors-studios.com/heba';
 
 /*
 |--------------------------------------------------------------------------
