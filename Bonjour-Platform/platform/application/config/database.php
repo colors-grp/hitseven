@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'hit7.db.8604250.hostedresource.com';
-$db['default']['username'] = 'hit7';
+$db['default']['hostname'] = 'h7platform.db.8604250.hostedresource.com';
+$db['default']['username'] = 'h7platform';
 $db['default']['password'] = 'TGfr4%6yh';
-$db['default']['database'] = 'hit7';
+$db['default']['database'] = 'h7platform';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
