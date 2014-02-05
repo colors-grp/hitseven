@@ -1,6 +1,5 @@
 <?php
-if($ok == 1) 
-$this->load->view('includes/header' , $header);
+$this->load->view('includes/header' , $header_view);
 ?>
 
 <div id=content>

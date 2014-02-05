@@ -140,7 +140,8 @@
                     <li>
                         <div class="profile-pic-border">
                             <a href="#">
-                                <img src="https://graph.facebook.com/<?=$fb_id?>/picture?type=large" alt="Profile Picture" style="width:140px; height:140px;">
+<!--                                <img src="https://graph.facebook.com/<?=$fb_id?>/picture?type=large" alt="Profile Picture" style="width:140px; height:140px;">-->
+                            	<img src = "<?= base_url()?>webassets/moi.jpg" alt="Profile Picture" style="width:140px; height:140px;">
                             </a>
                         </div>
                     </li>

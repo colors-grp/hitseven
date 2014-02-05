@@ -54,7 +54,7 @@ class Platform extends CI_Controller {
 			$user_data_array = $this->session->all_userdata();
 			// overwrite facebook uid value with its' encrtypted string ...
 			$user_data_array['facebook_uid'] = $this->platform_fbutils->encryptIt($fbuid);
-				
+
 			// encode the array as JSON string ...
 			$user_data = json_encode($user_data_array);
 
@@ -86,6 +86,7 @@ class Platform extends CI_Controller {
 		// Load the cookie from user ...
 		$cookie = $this->input->cookie('H7Cookie');
 
+		$cookie = NULL;
 
 		if ($cookie) {
 			$user_data = json_decode($cookie, true);
@@ -105,14 +106,15 @@ class Platform extends CI_Controller {
 			// we pass this parameter to test the Rest controllers
 			$core = $this->input->get('core');
 		}
-
+		$core = NULL;
+		
 		if($core)
 		{
 			// This is a Redirect from Core ...
 			// get token and fbuid from url parameters ...
 			$token = $this->input->get('token');
 			$fbuid = $this->input->get('fbuid');
-				
+
 			// handle core call ...
 			$this->handle_core_call($token, $fbuid);
 		}
@@ -120,17 +122,17 @@ class Platform extends CI_Controller {
 		{
 			// We get here only if NO cookie (user not logged in before AND this is not an internal call from Core)
 			// Set the view ...
-			$data['page'] = 'home_view';
-			$data['ok'] = 0;
-				
-			// Put the loginurl in the data array so it can go to the view ...
-			$data['home_view']['loginurl'] = $this->getLoginUrl();
+			//			$data['home_view']['loginurl'] = $this->getLoginUrl();
+			
+			$data['page'] = 'loggedin_view';
+			$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
+			$data['header_view']['cover_id'] = '748325228515155';
+//			$data['header_view']['fb_id'] = '100000130552768';
 			$this->load->view('template', $data);
 		}
 	}
 
 	function logout() {
-
 		// load the cookie helper ...
 		$this->load->helper('cookie');
 
