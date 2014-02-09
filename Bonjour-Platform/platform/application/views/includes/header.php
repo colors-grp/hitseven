@@ -43,7 +43,7 @@
 <div class="container">
         
         
-        <div class="header navbar navbar-static-top">
+        <div class="header navbar navbar-static-top" style="position: fixed; top: 0;">
             
             <ul class="nav nav-pills navbar-right nav_top">
                 <li>

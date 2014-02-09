@@ -1,55 +1,65 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Core extends CI_Controller {
-
+	
 	// This method should get the code from platform, and evaluate it to a URL from the HitSeven Database ...
 	function getSiteUrl($sitecode)
 	{
 		if($sitecode == '1')
-			return 'http://gloryette.co/heba';
+			return 'http://gloryette.org/amr';
 	}
-
-	function get_login_url() {
+	
+	// Call facebook to get the login URL and pass it back to the platform ...
+	function getLoginUrl()
+	{
+		// Load core_fbutils ...
+		$this->load->model('core_fbutils');
+			
 		// Set the redirect URL which facebook will return to after logging in ...
 		// base_url (is the URL of the CORE -> send you to Core.php.index())
+		// Add Sitecode parameter to send the platform URL to Core
+		// ex: "http://www.colors-studios.com/core" . '?' . "&sitecode=" . encrypted ("http://www.colors-grp.com/test1") ...
+		// 		$redirect_uri = base_url() . '?'. '&sitecode=' . $this->get('platform_url');
 		$redirect_uri = base_url();
+	
+		// 		$redirect_uri = base_url();
+	
 		// get the login url from facebook with the configured return uri
-		return $loginurl = $this->facebook->getLoginUrl(array('redirect_uri' => "$redirect_uri", 'scope' => 'email,read_friendlists'));
-	}
-
-	function set_competitions_array($sites , $user_competitions) {
-		//given all the competitions and competitions a certain user is enrolled in
-		//it returns an array with competitions the user is enrolled in set to true
-		//all other competitions are set to false
-		foreach ($sites->result() as $site) {
-			$tmp[$site->id] = false;
+		$loginurl = $this->facebook->getLoginUrl(array('redirect_uri' => "$redirect_uri", 'scope' => 'email,read_friendlists')); // , 'sitecode' => $this->get('platform_url')
+	
+		
+		if($loginurl)
+		{
+			return $loginurl;
 		}
-		if($user_competitions!= FALSE) {
-			foreach ($user_competitions as $comp) {
-				//set the competitions the user is registered in to true,others are false
-				$tmp[$comp->competition_id] = true;
-			}
+	
+		else
+		{
+			return 'Couldn\'t find any users!';
 		}
-		return $tmp;
 	}
-
-	function set_data_array($tmp , $user_name , $sites) {
-		//prepares data array to be sent to view
-		$data['check'] = $tmp;
-		$data['username'] = $user_name;
-		$data['site_info'] = $sites;
-		return $data;
+	
+	function addCookie($cookie_name, $sitecode)
+	{
+	
+		$some_cookie_array = array(
+				'name'   => $cookie_name,
+				'value'  => $sitecode,
+				'expire' => 86500 // initial duration in a web sample, we need to revisit ...
+		);
+	
+		// write cookie
+		$this->input->set_cookie($some_cookie_array);
 	}
-
-
+	
 	// Core is called via : http://www.colors-studios.com/core"
 	function index() {
-
-		// Load fb utils ...
-
+		
+		// Load fb utils ... 
+		
 		// we pass this parameter to test the Rest controllers
 		$rest = $this->input->get('rest');
-
+		
 		// Sidecode is a numerical value that represent the site primary ID in Database
 		// Replacing encryption of the HTTP URL with a numerical value to avoid creating invalid characters in URL ...
 		$sitecode = $this->input->get('sitecode');
@@ -57,95 +67,109 @@ class Core extends CI_Controller {
 		// if site code exists, means that the caller is Facebook ...
 		if($sitecode) // This means it is a self-redirect that was configured in h7fb ...
 		{
-			// get user from facebook..
+			
+			$loginurl = $this->getLoginUrl();
+			
+			// Add sitecode value to session variables ..
+			$this->session->set_userdata('sitecode', $sitecode);
+			
+			// get session data ...
+			$data = $this->session->all_userdata();
+			
+			$user_session = json_encode($data);
+			
+			$message = 'Before Facebook = ' . $data['ip_address'];
+			$message = 'Before Facebook = ' . $data['session_id'];
+			
+			$this->addCookie('h7'.$data['ip_address'], $sitecode);
+			
+			log_message('error', $message);
+			//log_message('error', $user_session);
+			
+			redirect($loginurl);
+/*			
+			// get user from facebook.. 
 			$this->load->model('core_fbutils');
-
+		
 			$user_data = $this->core_fbutils->get_user();
-
+			
 			$platform_url = $this->getSiteUrl($sitecode);
-
+			
 			if ($user_data['is_true']) {
-
+				
 				// Set the session variables with Facebook information ...
-				$this->session->set_userdata(array('facebook_uid' => $user_data['facebook_uid'], 'is_logged_in' => TRUE));
-					
-				// Get facebook access token
-				$access_token = $this->core_fbutils->get_access_token();
-
-				$fb_uid = $user_data['facebook_uid'];
-
-				// Set the Platform URL again to redirect to Platform ...
-				// "http://www.colors-grp.com/test1/?token= access_token . &fbuid= .$fbuid . "&core=1 ...
-				$site_url = $platform_url . "?token=" .$access_token['access_token'] . "&fbuid=" .$fb_uid . "&core=" ."1";
-
-				// redirect back to platform with configured parameters ...
-				redirect($site_url);
+ 				$this->session->set_userdata(array('facebook_uid' => $user_data['facebook_uid'], 'is_logged_in' => TRUE));
+ 				
+ 				// Get facebook access token 
+  				$access_token = $this->core_fbutils->get_access_token();
+  				
+  				$fb_uid = $user_data['facebook_uid'];
+  				
+  				// Set the Platform URL again to redirect to Platform ...
+  				// "http://www.colors-grp.com/test1/?token= access_token . &fbuid= .$fbuid . "&core=1 ...
+  				$site_url = $platform_url . "?token=" .$access_token['access_token'] . "&fbuid=" .$fb_uid . "&core=" ."1";
+  				
+  				// redirect back to platform with configured parameters ...
+  				redirect($site_url);
 			}
 			else
 			{
 				$site_url = $platform_url . "?token=" .$access_token['access_token'] . "&fbuid=" .$fb_uid . "&core=" ."1";
-
+				
 				echo 'The URL is INVALID, Please check: ' . $site_url;
-			}
+			}*/
 		}
-		else {
-
-			$result = $this->core_fbutils->get_user();
-			//user is logged in facebook
-			if ($result['is_true']) {
-				$this->session->set_userdata(array('facebook_uid' => $result['facebook_uid'], 'is_logged_in' => TRUE));
-				//load user and competition model to deal with their database tables
-				$this->load->model('user_model');
-				$this->load->model('competition_model');
-
-				//get user data using his facbook id
-				$users_data = $this->user_model->get_user_by_fbid($result['facebook_uid']);
-
-				//user is in database and logged on facebook
-				if($users_data!= FALSE) {
-					// set user's info for use in the view
-					$user_id = $users_data->id;
-					$user_name = $users_data->name;
-				}else { //user is not in the database, but logged on facebook
-					//get user information from facebook
-					$me = $this->facebook->api('/me');
-					$user_info['name'] = $me['name'];
-					$user_info['fb_id']=  $me['id'];
-
-					//add user to the data base
-					$this->user_model->set_user($user_info);
-					// set user's info for use in the view
-					$user_id =$user_info['fb_id'];
-					$user_name = $user_info['name'];
-				}
-
-				//get the competitions the user is enrolled in
-				$user_competitions = $this->competition_model->get_competition_by_user_id($user_id);
-
-				//get all competitions in hit7
-				$sites = $this->competition_model->get_all_competition();
-
-				//get array with user competitions set to true , others are set to false ... to be used in the view ...
-				$tmp = $this->set_competitions_array($sites ,$user_competitions);
-
-				//prepare info to be sent to the view
-				$data = $this->set_data_array($tmp , $user_name , $sites);
-
-				//load hitseven home view
-				$this->load->view('pages/hit7home_view' , $data);
-			} else { //user is not logged in facebook
-				$this->load->model('competition_model');
-				//get all competitions in hit7
-				$data['site_info'] = $this->competition_model->get_all_competition();
-
-				//get login url from facebook
-				$data['login_url'] = $this->get_login_url();
-
-				//load login view
-				$this->load->view('pages/login_view' , $data);
+		else {  
+			
+			$code = $this->input->get('code');
+			
+			$data = $this->session->all_userdata();
+			
+			$user_session = json_encode($data);
+			
+			$message = 'After Facebook = ' . $data['ip_address'];
+			$message = 'After Facebook = ' . $data['session_id'];
+			
+			// Load the cookie from user ...
+			$cookie = $this->input->cookie('h7'.$data['ip_address']);
+			
+			
+			if ($cookie) {
+				$user_data = json_decode($cookie, true);
+				log_message('error', 'AFter FB sitecode === '. $user_data['sitecode']);
 			}
+			else {
+				echo 'cannot find cookie  :  ' .'h7'.$data['ip_address']; 
+			}
+			
+			log_message('error', $message);
+			
+			//log_message('error', $user_session);
+			
+// 				$data = $this->session->all_userdata();
+// 				print_r($data);
+// 				echo '--------------';
+// 				echo $data['session_id'];
+				echo $code;
+		
+			/*
+			/// lao wa7ed da7'al 3ala el core mn bet-hom ...
+			
+				/// This loads the home page of HitSeven Core ...
+				// current code is a working core sample of logging to facebook
+				// to be changed to have the hitseven home website ...
+				$this->load->model('core_fbutils');
+				$result = $this->core_fbutils->get_user();
 
-		}
+				if ($result['is_true']) {
+					//			echo "user is logged in ... ";
+					$this->session->set_userdata(array('facebook_uid' => $result['facebook_uid'], 'is_logged_in' => TRUE));
+					redirect('secure', 'refresh');
+				} else {
+					$data['page'] = 'home_view';
+					$this->load->view('template', $data);
+				}*/
+			}
 	}
 
 	function logout() {
