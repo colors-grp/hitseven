@@ -16,19 +16,7 @@
 </div>
 </div>
 
-<script src="http://code.jquery.com/jquery.js"></script>
-<script src="<?= base_url() ?>webassets/js/bootstrap.js"></script>
-<script type="text/javascript" src="<?= base_url() ?>webassets/js/jquery.custom-scrollbar.js"></script>
 <script>
-    $(window).load(function() {
-        $(".fav-container").customScrollbar({
-            hScroll: false
-        }); 
-    });
-
-    $(window).load(function() {
-        $(".card-container").customScrollbar();
-    });
     function get_cards(cat_id,cat_name){
         $('#card-ajax').html('Please Wait ...');
         $('#card-sta-hide').hide();

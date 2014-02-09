@@ -167,6 +167,35 @@ if ( ! function_exists('anchor'))
 	}
 }
 
+if ( ! function_exists('anchor_url_only'))
+{
+	function anchor_url_only($uri = '', $title = '', $attributes = '')
+	{
+		$title = (string) $title;
+
+		if ( ! is_array($uri))
+		{
+			$site_url = ( ! preg_match('!^\w+://! i', $uri)) ? site_url($uri) : $uri;
+		}
+		else
+		{
+			$site_url = site_url($uri);
+		}
+
+		if ($title == '')
+		{
+			$title = $site_url;
+		}
+
+		if ($attributes != '')
+		{
+			$attributes = _parse_attributes($attributes);
+		}
+		$ret = $site_url;
+		return $ret;
+	}
+}
+
 // ------------------------------------------------------------------------
 
 /**
