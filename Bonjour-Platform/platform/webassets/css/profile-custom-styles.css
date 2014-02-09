@@ -573,8 +573,14 @@ margin-top: 1px;
 	margin: 3px 0 0 0;
 }
 
+/* l touch bta3y */
+/* .row .fav .sidebar li .categor-background {
+	position: absolute;
+} */
+
 .row .fav .sidebar li .categor-color {
-	background: url('../img/category_color_circle.png') no-repeat center top;
+	background-repeat:no-repeat;
+	background-position:center top;
 	background-position: 24px 7px;
 }
 
@@ -593,7 +599,9 @@ margin-top: 1px;
 }
 
 .row .categ .sidebar li a > img {
-	background: url('../img/select_category_color_circle.png') no-repeat center top;
+	background-repeat:no-repeat;
+	background-position:center top;
+	background-size: 88px 88px;
 	background-position: 5px 5px;
 	margin: 0;
 	padding: 0;
@@ -601,7 +609,6 @@ margin-top: 1px;
 }
 
 .row .categ .sidebar li a:hover > img {
-	
 	opacity: 1.0;
 }
 
