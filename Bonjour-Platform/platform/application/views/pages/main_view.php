@@ -45,7 +45,6 @@
                     </ul>
                 </li>
             </ul>
-		<button id = "mainButton" type = "submit"> Press </button>
 		<div id="buy_credit" style="display:none;">
 		
 			<h2>Choose the desired amount</h2>
