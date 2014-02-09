@@ -8,7 +8,14 @@
     <!--<![endif]-->
     <!-- the "no-js" class is for bootstrap modernizer. !-->
 
-    <head id="TheColorCompitition">
+    <head>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<!-- Simple Modal -->
+		<script type='text/javascript' src='http://gloryette.org/khairy/assets/js/simplemodal/js/jquery.simplemodal.js'></script>
+		<script type='text/javascript' src='http://gloryette.org/khairy/assets/js/simplemodal/js/basic.js'></script>
+		<link rel="stylesheet" href="http://gloryette.org/khairy/assets/js/simplemodal/css/basic.css">
+		<!-- End of Simple Modal -->
+		 
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta content="" name="author">
@@ -30,29 +37,9 @@
         <![endif]-->
 
 
-
-        <!-----------------------pop up----------------------------->
-
-        <!--script src="<?= base_url(); ?>webassets/js/jquery.lint.js" type="text/javascript" charset="utf-8"></script-->
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="<?= base_url(); ?>webassets/css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
-        <script src="<?= base_url(); ?>webassets/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
-
-        <style type="text/css" media="screen">
-
-            ul li { display: inline; } .wide { border-bottom: 1px #000 solid; width: 4000px; } .fleft { float: left; margin: 0 20px 0 0; } .cboth { clear: both; }
-            #main {
-                background: #fff;
-                margin: 0 auto;
-                padding: 30px;
-                width: 1000px;
-            }
-        </style> 
-
-        <!-----------------------pop up-----------------------------> 
-
     </head>
     <body>
+    
 <div class="container">
         
         
@@ -140,7 +127,7 @@
                     <li>
                         <div class="profile-pic-border">
                             <a href="#">
-<!--                                <img src="https://graph.facebook.com/<?=$fb_id?>/picture?type=large" alt="Profile Picture" style="width:140px; height:140px;">-->
+<!--                                <img src="https://graph.facebook.com/<?//=$fb_id?>/picture?type=large" alt="Profile Picture" style="width:140px; height:140px;">-->
                             	<img src = "<?= base_url()?>webassets/moi.jpg" alt="Profile Picture" style="width:140px; height:140px;">
                             </a>
                         </div>
@@ -149,3 +136,4 @@
                 </ul>
         
         </div>
+        <div style="clear: both"></div>

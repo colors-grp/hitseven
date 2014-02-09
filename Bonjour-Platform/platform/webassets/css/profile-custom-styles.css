@@ -60,7 +60,7 @@ h4 {
 	background: url('../img/header_bar.png') no-repeat center top;
 	max-height: 90px;
 	min-width: 960px;
-	 z-index: 99999999;
+	 z-index: 1000;
 }
 
 .header > ul > li > a:hover, .header > ul > li > a:focus, .header > ul > li > a:link, .header > ul > li > a:visited,

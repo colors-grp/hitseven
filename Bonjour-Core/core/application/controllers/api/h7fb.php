@@ -46,7 +46,29 @@ class H7FB extends REST_Controller
 			$this->response(array('error' => 'Couldn\'t find any users!'), 404);
 		}
 	}
-
+	function getcredit_get() {
+		// Get user facebook id
+		$fbid = $this->get('fb_id');
+		log_message('error', $fbid);
+		// Load the credit model and get user credit from database
+		$this->load->model('credit_model');
+		$credit = $this->credit_model->get_credit($fbid);
+		log_message('error', $credit);
+		// response acts as "return" for the function
+		$this->response($credit);
+	}
+	function buycredit_get() {
+		// Get parameters sent that are in json format
+		$jsn_params = $this->get('params');
+		// Decode parameters 
+		$params = json_decode($jsn_params);
+		$fbid = $params->fb_id;
+		$credit = $params->credit;
+		// Load the credit model and buy credit for user sending the facebook ID
+		// and desired credit to be bought
+		$this->load->model('credit_model');
+		$this->credit_model->buy_credit($fbid, $credit);
+	}
 	public function send_post()
 	{
 		var_dump($this->request->body);
@@ -57,4 +79,5 @@ class H7FB extends REST_Controller
 	{
 		var_dump($this->put('foo'));
 	}
+	
 }

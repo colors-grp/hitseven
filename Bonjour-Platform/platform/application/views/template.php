@@ -3,7 +3,6 @@ $this->load->view('includes/header' , $header_view);
 ?>
 
 <div id=content>
-	
 			<?php 
 				echo validation_errors('<div class=error_message>', '</div>');
 				
@@ -15,8 +14,8 @@ $this->load->view('includes/header' , $header_view);
 			?>
 	
 	<?php 
-	if($page == 'home_view')
-		$this->load->view('pages/'.$page, $home_view);
+	if($page == 'main_view')
+		$this->load->view('pages/'.$page, $main_view);
 	else
 		$this->load->view('pages/'.$page)
 	 ?>
