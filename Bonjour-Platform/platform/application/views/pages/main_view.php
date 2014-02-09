@@ -74,7 +74,7 @@
 					}});
 				});
 				$("#buy_credit_form").on('submit',function(){
-					$.post( "http://gloryette.org/khairy/index.php?/platform/buy_credit", $( "#buy_credit_form" ).serialize() ).done(function(data) {
+					$.post( "http://gloryette.org/core/index.php?/platform/buy_credit", $( "#buy_credit_form" ).serialize() ).done(function(data) {
 						$.modal.close();
 						$("h1.points").html(data);
 					});

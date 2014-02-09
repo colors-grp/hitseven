@@ -167,6 +167,44 @@ class Platform extends CI_Controller {
 		return $res;
 	}	
 	
+	function get_credit() {
+		// Get facebook user ID
+		$fbid = '100000147991301';
+		// Invoke the core to get user's credit from the database
+		$credit = $this->rest->get('getcredit', array('fb_id' => $fbid), 'json');
+		return $credit;
+	}
+	
+	function buy_credit() {
+		// Check whether the user chose a value from the radio button or not
+		$data['header_view']['name'] = 'Mohammed Khairy';
+		$data['header_view']['cover_id'] = '772975899384003';
+		log_message('error', 'henahowan');
+		if (isset($_POST['credit'])) {
+			// Get radio button value
+			$credit = $_POST['credit'];
+			// Get facebook user ID
+			// Set needed parameters values
+			$params['fb_id'] = '100000147991301';
+			$params['credit'] = $credit;
+			log_message('error', 'henahowan'.$credit);
+			// Encode the parameters
+			$jsn_params = json_encode($params);
+			// Invoke the core to buy new credit for the user
+			$this->rest->get('buycredit', array('params' => $jsn_params), 'json');
+			// Load the secure page again after updating the database
+			$data['page'] = 'main_view';
+		}
+		else {
+			$data['page'] = 'buy_credit_view';
+		}
+		$cr = $this->get_credit();
+		$data['main_view']['user_points'] = $cr;
+		echo $cr;
+		// 		$this->load->view('template', $data);
+	}
+	
+	
 	function index() {
 		$data['page'] = 'main_view';
 		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
