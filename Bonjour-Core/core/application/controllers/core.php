@@ -6,7 +6,9 @@ class Core extends CI_Controller {
 	function getSiteUrl($sitecode)
 	{
 		if($sitecode == '1')
-			return 'http://gloryette.org/amr';
+			// replaced explicit setting of Platform with config entry
+			return $this->config->item('platform_url');
+			//return 'http://gloryette.org/amr';
 	}
 	
 	// Call facebook to get the login URL and pass it back to the platform ...
