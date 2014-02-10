@@ -1,2 +1,1 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-// This is removed from here to be in config.php ... // $config['core_url'] = 'http://colors-studios.com/heba/index.php?/api/h7fb/';// Random sequence of characters to use as H7 encryption key ..$config['encryption_key'] = 'qJB0rGtIn5UB1xG03efyCp'; 
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');// Random sequence of characters to use as H7 encryption key ..$config['encryption_key'] = 'qJB0rGtIn5UB1xG03efyCp'; 
