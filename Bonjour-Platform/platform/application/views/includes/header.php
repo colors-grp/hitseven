@@ -11,9 +11,9 @@
     <head>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<!-- Simple Modal -->
-		<script type='text/javascript' src='http://gloryette.org/khairy/assets/js/simplemodal/js/jquery.simplemodal.js'></script>
-		<script type='text/javascript' src='http://gloryette.org/khairy/assets/js/simplemodal/js/basic.js'></script>
-		<link rel="stylesheet" href="http://gloryette.org/khairy/assets/js/simplemodal/css/basic.css">
+		<script type='text/javascript' src= "<?= $this->config->item('platform_url');?>assets/js/simplemodal/js/jquery.simplemodal.js"></script>
+		<script type='text/javascript' src= "<?= $this->config->item('platform_url');?>assets/js/simplemodal/js/basic.js"></script>
+		<link rel="stylesheet" href= "<?= $this->config->item('platform_url');?>assets/js/simplemodal/css/basic.css">
 		<!-- End of Simple Modal -->
 		 
         <meta charset="utf-8">
