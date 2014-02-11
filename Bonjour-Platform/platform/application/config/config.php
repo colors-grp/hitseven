@@ -14,9 +14,9 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://gloryette.org/platform/';
+$config['base_url']	= 'http://gloryette.org/heba/';
 $config['core_url']	= 'http://colors-studios.com/core/';
-$config['platform_url']	= 'http://gloryette.org/platform/';
+$config['platform_url']	= 'http://gloryette.org/heba/';
 
 /*
 |--------------------------------------------------------------------------
@@ -182,7 +182,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 2;
+$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------

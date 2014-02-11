@@ -17,18 +17,6 @@
 </div>
 
 <script>
-    function get_cards(cat_id,cat_name){
-        $('#card-ajax').html('Please Wait ...');
-        $('#card-sta-hide').hide();
-        $.post( "ajax/get_card_by_category/", { cat_id: cat_id})
-        .done(function( data ) {
-            if(data){
-                $('#card-ajax').html(data);
-                $('#cat_name').html(cat_name + ' / Card');
-            }
-        });
-    }
-		
 		
     function add_category(cat_id){
         //$('#cat_interest').html('Please Wait ...');

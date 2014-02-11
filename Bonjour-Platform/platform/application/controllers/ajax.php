@@ -9,7 +9,7 @@ class ajax extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->checksession();
+//         $this->checksession();
     }
 
     private function checksession() {
@@ -21,20 +21,20 @@ class ajax extends CI_Controller {
 
     function get_card_by_category() {
         $cat_id = $this->input->post('cat_id');
+        $cat_name = $this->input->post('cat_name');        
         $info['cat_id'] = $cat_id;
-        $this->load->model('cards');
-        $info['cards'] = $this->cards->get_cards_by_category_with_media($cat_id,$this->user_id);
+        $info['category_name'] = $cat_name;
+        $this->load->model('card_model');
+        $info['cards'] = $this->card_model->get_cards_by_id($cat_id);
         if ($info['cards']) {
-            $buy_cards = $this->cards->get_cards_user_by_category($this->user_id, $cat_id);
-            $info['buy_cards'] = array();
-            if (sizeof($buy_cards) > 0) {
-                foreach ($buy_cards as $buy_card) {
-                    array_push($info['buy_cards'], $buy_card->card_id);
-                }
-            }
-//            print_r($info['cards']);
-//            exit();
-            $this->load->view('ajax_cards', $info);
+//             $buy_cards = $this->cards->get_cards_user_by_category($this->user_id, $cat_id);
+//             $info['buy_cards'] = array();
+//             if (sizeof($buy_cards) > 0) {
+//                 foreach ($buy_cards as $buy_card) {
+//                     array_push($info['buy_cards'], $buy_card->card_id);
+//                 }
+//             }
+            $this->load->view('pages/ajax_cards', $info);
         } else {
             echo 'no Result';
         }
