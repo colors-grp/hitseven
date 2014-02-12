@@ -34,7 +34,7 @@ class ajax extends CI_Controller {
 //                     array_push($info['buy_cards'], $buy_card->card_id);
 //                 }
 //             }
-            $this->load->view('pages/ajax_cards', $info);
+            $this->load->view('ajax/cards', $info);
         } else {
             echo 'no Result';
         }

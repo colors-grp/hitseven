@@ -274,7 +274,7 @@
 	</div>
 <script>
 function get_cards(cat_id,cat_name){
-	ajaxpage = "http://gloryette.org/heba/index.php?/ajax/get_card_by_category";
+	ajaxpage = "<?= base_url()?>index.php?/ajax/get_card_by_category"  ;
 	<?php log_message('error', 'Get cards 1');?>            
 	$('#card-ajax').html('Please Wait ...' + cat_name);
 	$('#card-sta-hide').hide();
