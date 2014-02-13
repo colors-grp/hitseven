@@ -161,6 +161,18 @@ class Platform extends CI_Controller {
 // 		redirect(base_url());
 // 	}
 
+	function get_first_category_name($interest_categories) {
+		if($interest_categories != FALSE) {
+			return $interest_categories->row()->name;
+		}
+	}
+	
+	function get_first_category_id($interest_categories) {
+		if($interest_categories != FALSE) {
+			return $interest_categories->row()->id;
+		}
+	}
+	
 	function get_not_interst_categories($all_categories , $interest_categories) {
 		$res = array();
 		foreach ($all_categories->result() as $row) {
@@ -218,10 +230,15 @@ class Platform extends CI_Controller {
 		$data['main_view']['user_points'] = $credit;
 			
 		$this->load->model('category_model');
+		$this->load->model('card_model');
 		$data['main_view']['interest_cats'] = $this->category_model->get_category_interst_by_userID("1");
 		$all_categories = $this->category_model->get_all_category();
 		$interest_categories = $data['main_view']['interest_cats'];
 		$data['main_view']['not_interest_cats'] = $this->get_not_interst_categories($all_categories , $interest_categories);
+		$data['main_view']['first_cat_name'] = $this->get_first_category_name($interest_categories);
+		
+		$cat_id = $this->get_first_category_id($interest_categories);
+		$data['main_view']['cards'] = $this->card_model->get_cards_by_id($cat_id);
 		$this->load->view('template', $data);
 		
 	}
