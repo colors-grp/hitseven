@@ -1,6 +1,15 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Platform extends CI_Controller {
+	function __construct() {
+		parent::__construct();
+		$this->rest->initialize(array(
+				'server' => $this->config->item('core_url'),
+				'http_user' => '',
+				'http_pass' => '',
+				'http_auth' => 'basic' // or 'digest'
+		));
+	}
 
 // 	// Go and get the login URL from Core ...
 // 	function getLoginURL()
@@ -192,16 +201,10 @@ class Platform extends CI_Controller {
 			$jsn_params = json_encode($params);
 			// Invoke the core to buy new credit for the user
 			$this->rest->get('buycredit', array('params' => $jsn_params), 'json');
-			// Load the secure page again after updating the database
-			$data['page'] = 'main_view';
 		}
-		else {
-			$data['page'] = 'buy_credit_view';
-		}
+		$cr = 0;
 		$cr = $this->get_credit();
-		$data['main_view']['user_points'] = $cr;
 		echo $cr;
-		// 		$this->load->view('template', $data);
 	}
 	
 	
@@ -210,7 +213,9 @@ class Platform extends CI_Controller {
 		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
 		$data['header_view']['cover_id'] = '748325228515155';
 		//			$data['header_view']['fb_id'] = '100000130552768';
-		$data['main_view']['user_points'] = 1000;
+		$credit = $this->get_credit();
+		log_message('error', 'credit = '.$credit);
+		$data['main_view']['user_points'] = $credit;
 			
 		$this->load->model('category_model');
 		$data['main_view']['interest_cats'] = $this->category_model->get_category_interst_by_userID("1");

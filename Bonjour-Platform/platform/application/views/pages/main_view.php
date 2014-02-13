@@ -59,11 +59,27 @@
 				</form>
 			
 			</div>
+			<div id = "pic" style = "display:none;">
+				<img src="<?=base_url()?>webassets/vidz/1.mpg" alt="pics">
+			</div>
+			<div id = "vid" style = "display:none;">
+				<video width="420" height="315" controls>
+  					<source src="<?=base_url()?>webassets/vidz/1.mp4" type="video/mp4"></source>
+  				</video>
+			</div>
+			<div id = "sound" style = "display:none;">
+  				<embed height="100" width="300" src="<?=base_url()?>webassets/sound/1.mp3">
+			</div>
+			<div id = "stream" style = "display:none;">
+  					<object data="movie.mp4" width="320" height="240" type="application/x-shockwave-flash">
+    					<embed src="<?=base_url()?>webassets/vidz/1.mp4" width="320" height="240">
+  					</object> 
+			</div>
 			<script>
 				$("#getPointsButton").on('click',function(e){
 					e.preventDefault();
 					// Opening animations
-					$("#buy_credit").modal({onOpen: function (dialog) {
+					$("#sound").modal({onOpen: function (dialog) {
 						dialog.overlay.fadeIn('slow', function () {
 							dialog.data.hide();
 							dialog.container.fadeIn('slow', function () {
@@ -74,7 +90,7 @@
 					}});
 				});
 				$("#buy_credit_form").on('submit',function(){
-					$.post( "http://gloryette.org/core/index.php?/platform/buy_credit", $( "#buy_credit_form" ).serialize() ).done(function(data) {
+					$.post( "http://gloryette.org/khairy/index.php?/platform/buy_credit", $( "#buy_credit_form" ).serialize() ).done(function(data) {
 						$.modal.close();
 						$("h1.points").html(data);
 					});
