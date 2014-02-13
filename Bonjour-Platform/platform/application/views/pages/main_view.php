@@ -223,23 +223,24 @@
 				if($cards != ''){
 						foreach($cards->result() as $card){ ?>
 				<ul class="nav nav-pills card-holder first">
-					<li><a href="<?=base_url('card/view/'.$card->id);?>" class="card">
-							<img src="<?=base_url()?>webassets/img/cards.png" alt="Card" style="background-image:url(<?=base_url()?>h7-assets/images/categories/<?=$first_cat_name?>/cards/<?=$card->id?>/ui/list_view.png);">
-							<div class="card-info">
-								<h5>
-									<?=$card->name?>
-								</h5>
-								<p class="color">
-									Price
-									<?=$card->price?>
-									CC
-								</p>
-								<p class="color-points">
-									Score
-									<?=$card->score?>
-								</p>
-							</div>
-					</a>
+					<li>
+						<a href="<?=base_url('card/view/'.$card->id);?>" class="card">
+								<img src="<?=base_url()?>webassets/img/cards.png" alt="Card" style="background-image:url(<?=base_url()?>h7-assets/images/categories/<?=$first_cat_name?>/cards/<?=$card->id?>/ui/list_view.png);">
+								<div class="card-info">
+									<h5>
+										<?=$card->name?>
+									</h5>
+									<p class="color">
+										Price
+										<?=$card->price?>
+										CC
+									</p>
+									<p class="color-points">
+										Score
+										<?=$card->score?>
+									</p>
+								</div>
+						</a>
 					</li>
 					<li class="mg-container">
 						<div>
@@ -271,9 +272,10 @@
 							</ul>
 						</div>
 					</li>
-					<li class="card-status"><a href="#"> <img class="status"
-							src="<?=base_url()?>webassets/img/trade_button.png" alt="Trade">
-					</a>
+					<li class="card-status">
+					<a href="javascript:void(0)" onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>')">
+						<img class="status" src="<?=base_url()?>webassets/img/get_button.png" alt="Get">
+						</a>
 					</li>
 				</ul>
 
@@ -291,7 +293,6 @@
 <script>
 function get_cards(cat_id,cat_name){
 	ajaxpage = "<?= base_url()?>index.php?/ajax/get_card_by_category"  ;
-	<?php log_message('error', 'Get cards 1');?>            
 	$('#card-ajax').html('Please Wait ...' + cat_name);
 	$('#card-sta-hide').hide();
 	$.post(ajaxpage, { cat_id: cat_id , cat_name: cat_name})
@@ -302,4 +303,18 @@ function get_cards(cat_id,cat_name){
 		}	
 	});
 }
+
+function show_card_content(cat_id, card_id,card_name , card_price) {
+	ajaxpage = "<?=base_url() ?>index.php?/ajax/get_card_info_mycollection";
+	$('#card-ajax').html('Please Wait ...' + cat_id);
+	$('#card-sta-hide').hide();
+	$.post(ajaxpage, { cat_id: cat_id , card_id: card_id , card_name : card_name , card_price : card_price})
+	.done(function( data ) {
+		if(data){
+			$('#card-ajax').html(data);
+			$('#cat_name').html(cat_name + ' / Card');
+		}	
+	});
+}
+
 </script>

@@ -219,7 +219,6 @@ class Platform extends CI_Controller {
 		echo $cr;
 	}
 	
-	
 	function index() {
 		$data['page'] = 'main_view';
 		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
@@ -239,6 +238,7 @@ class Platform extends CI_Controller {
 		
 		$cat_id = $this->get_first_category_id($interest_categories);
 		$data['main_view']['cards'] = $this->card_model->get_cards_by_id($cat_id);
+		
 		$this->load->view('template', $data);
 		
 	}

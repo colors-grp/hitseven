@@ -43,7 +43,7 @@
 						</div>
 					</li>
 					<li class="card-status"><a href="#"> <img class="status"
-							src="<?=base_url()?>webassets/img/trade_button.png" alt="Trade">
+							src="<?=base_url()?>webassets/img/get_button.png" alt="Trade">
 					</a>
 					</li>
         </ul>

@@ -18,7 +18,7 @@ class ajax extends CI_Controller {
         }else
             $this->user_id = $this->session->userdata('hitseven_userid');
     }
-
+	//by heba & 5airy
     function get_card_by_category() {
         $cat_id = $this->input->post('cat_id');
         $cat_name = $this->input->post('cat_name');        
@@ -34,12 +34,33 @@ class ajax extends CI_Controller {
 //                     array_push($info['buy_cards'], $buy_card->card_id);
 //                 }
 //             }
-            $this->load->view('ajax/cards', $info);
+            $this->load->view('ajax/card_view_ajax', $info);
         } else {
             echo 'no Result';
         }
     }
 
+    //by heba & 5airy 2
+    function get_card_info_mycollection() {
+    	$card_id =$info['card_id'] = $this->input->post('card_id');
+    	$cat_id = $this->input->post('cat_id');
+    	$info['card_name'] = $this->input->post('card_name');
+    	$info['card_price'] = $this->input->post('card_price');
+    	//Get category name from database
+    	$this->load->model('category_model');
+    	$name = $info['cat_name'] = $this->category_model->get_category_name_by_id($cat_id);
+    	
+    	//Load Directory helper to traverse media in each media item
+    	$this->load->helper('directory');
+    	
+    	$info['images'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/image/');
+    	$info['audios'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/audio/');
+    	$info['videos'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/video/');
+    	
+    	$this->load->view('ajax/my_collection_view_ajax', $info);
+    }
+    
+    
     function add_category_to_user() {
         $cat_id = $this->input->post('cat_id');
         $user_id = $this->user_id;
@@ -185,17 +206,6 @@ class ajax extends CI_Controller {
         }
     }
 
-    function get_card_info_mycollection() {
-        $card_id = $this->input->post('card_id');
-        $info['page_type'] = ' ';
-        $this->load->model(array('category', 'users', 'messages', 'cards'));
-        // check this user for this cards
-        $this->cards->check_card($this->user_id, $card_id);
-        $info['cardinfo'] = $this->cards->get_card_with_media($card_id);
-        //print_r($info);
-
-        $this->load->view('ajax_mycollection_card_info', $info);
-    }
 
     function purchased() {
         $this->session->set_userdata('filter', 'purchased');

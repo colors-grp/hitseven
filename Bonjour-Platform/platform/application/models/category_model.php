@@ -23,4 +23,12 @@ class Category_model extends CI_Model{
 			return $query;
 		return FALSE;
 	}
+	
+	function get_category_name_by_id($cat_id) {
+		$this->db->where('id' , $cat_id);
+		$query = $this->db->get('category');
+		if($query -> num_rows() > 0)
+			return $query->row()->name;
+		return  FALSE;
+	}
 }
