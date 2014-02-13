@@ -14,9 +14,9 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://colors-studios.com/core/';
-$config['core_url']	= 'http://colors-studios.com/core/';
-$config['platform_url']	= 'http://gloryette.org/platform/';
+$config['base_url']	= 'http://colors-studios.com/khairy/';
+$config['core_url']	= 'http://colors-studios.com/khairy/';
+$config['platform_url']	= 'http://gloryette.org/khairy/';
 
 /*
 |--------------------------------------------------------------------------
@@ -250,7 +250,7 @@ $config['sess_cookie_name']		= 'session';
 $config['sess_expiration']		= 7200;
 $config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= TRUE;
-$config['sess_use_database']	= TRUE;
+$config['sess_use_database']	= FALSE;
 $config['sess_table_name']		= 'sessions';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
