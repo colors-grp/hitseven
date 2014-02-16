@@ -20,7 +20,7 @@
         <meta name="description" content="">
         <meta content="" name="author">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-        <title>The Color Compitition</title>
+        <title>The Color Concorrenza</title>
         <link rel="shortcut icon" href="#">
         <!-- Styles ==================================================================================================== -->
         <link rel="stylesheet" href="<?= base_url(); ?>webassets/css/bootstrap.css">
@@ -38,7 +38,7 @@
 
 
     </head>
-    <body>
+    <body onload="get_cards('<?=$first_cat_id?>','<?=$first_cat_name?>');">
     
 <div class="container">
         

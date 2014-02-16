@@ -42,9 +42,10 @@
 							</ul>
 						</div>
 					</li>
-					<li class="card-status"><a href="#"> <img class="status"
-							src="<?=base_url()?>webassets/img/get_button.png" alt="Trade">
-					</a>
+					<li class="card-status">
+					<a href="javascript:void(0)" onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>')">
+						<img class="status" src="<?=base_url()?>webassets/img/get_button.png" alt="Get">
+						</a>
 					</li>
         </ul>
         <div class="card-break" id="card-sta-hide">

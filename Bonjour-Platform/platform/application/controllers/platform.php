@@ -234,9 +234,10 @@ class Platform extends CI_Controller {
 		$all_categories = $this->category_model->get_all_category();
 		$interest_categories = $data['main_view']['interest_cats'];
 		$data['main_view']['not_interest_cats'] = $this->get_not_interst_categories($all_categories , $interest_categories);
-		$data['main_view']['first_cat_name'] = $this->get_first_category_name($interest_categories);
 		
-		$cat_id = $this->get_first_category_id($interest_categories);
+		$data['main_view']['first_cat_name'] = $data['header_view']['first_cat_name'] = $this->get_first_category_name($interest_categories);		
+		$cat_id = $data['main_view']['first_cat_id'] = $data['header_view']['first_cat_id'] = $this->get_first_category_id($interest_categories);
+		
 		$data['main_view']['cards'] = $this->card_model->get_cards_by_id($cat_id);
 		
 		$this->load->view('template', $data);
