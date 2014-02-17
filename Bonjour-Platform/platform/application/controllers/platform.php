@@ -208,7 +208,11 @@ class Platform extends CI_Controller {
 			log_message('error', 'el raseeed, el raseeed: '.$credit);
 			return $credit;
 		}
-
+		
+		function get_user_id() {
+			return 1;
+		}
+		
 		function buy_credit() {
 			// Check whether the user chose a value from the radio button or not
 			$data['header_view']['name'] = 'Mohammed Khairy';
@@ -246,8 +250,12 @@ class Platform extends CI_Controller {
 		function buy_card() {
 			$card_price = intval($this->input->post('card_price'));
 			$user_points = intval($this->input->post('user_points'));
+			$card_id = intval($this->input->post('card_id'));
+			$cat_id = intval($this->input->post('cat_id'));
 			if ($user_points >= $card_price) {
 				$this->take_credit($card_price * -1);
+				$this->load->model('card_model');
+				$this->card_model->insert_user_card($cat_id , $card_id , $this->get_user_id());
 				echo TRUE;
 			}
 			else
@@ -265,7 +273,7 @@ class Platform extends CI_Controller {
 
 			$this->load->model('category_model');
 			$this->load->model('card_model');
-			$data['main_view']['interest_cats'] = $this->category_model->get_category_interst_by_userID("1");
+			$data['main_view']['interest_cats'] = $this->category_model->get_category_interst_by_userID($this->get_user_id());
 			$all_categories = $this->category_model->get_all_category();
 			$interest_categories = $data['main_view']['interest_cats'];
 			$data['main_view']['not_interest_cats'] = $this->get_not_interst_categories($all_categories , $interest_categories);

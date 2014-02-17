@@ -43,7 +43,7 @@ class ajax extends CI_Controller {
     //by heba & 5airy 2
     function get_card_info_mycollection() {
     	$card_id =$info['card_id'] = $this->input->post('card_id');
-    	$cat_id = $this->input->post('cat_id');
+    	$cat_id = $info['cat_id'] = $this->input->post('cat_id');
     	$info['card_name'] = $this->input->post('card_name');
     	$info['card_price'] = $this->input->post('card_price');
     	$info['user_points'] = $this->input->post('user_points');

@@ -6,7 +6,7 @@ class Category_model extends CI_Model{
 	function get_category_interst_by_userID($user_id) {
 		$this->db->select('*');
 		$this->db->from('category');
-		$this->db->join('user_category' , 'user_category.category_id = category.id');
+		$this->db->join('user_category' ,'user_category.category_id = category.id');
 		$this->db->where('user_id' , $user_id);
 		$query = $this->db->get();
 		if($query->num_rows())

@@ -104,8 +104,6 @@
                         </div>
         <? }
     ?>
-
-
                 </div>
             </div>
         </div>
@@ -170,9 +168,10 @@ function buy_card(card_price, user_points) {
 	platform_page = "<?=base_url() ?>index.php?/platform/buy_card";
 	$('#card-ajax').html('Processing ...');
 	$('#card-sta-hide').hide();
-	$.post(platform_page, { card_price : card_price, user_points : user_points})
+	$.post(platform_page, { card_price : card_price, user_points : user_points , card_id : <?= $card_id?> , cat_id : <?= $cat_id?>})
 	.done(function( data ) {
 		if (data) {
+			
     		alert ("Succeeded");
     		$("h1.points").html(user_points - card_price);
 		}
