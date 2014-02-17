@@ -234,6 +234,7 @@ class REST
     	if ($format !== NULL)
 		{
 			$this->format($format);
+        log_message('error', 'if 1');
 		}
 
 		$this->http_header('Accept', $this->mime_type);
@@ -248,10 +249,12 @@ class REST
 		// contributed by: https://github.com/paulyasi
 		if ($this->ssl_verify_peer === FALSE)
 		{
+        log_message('error', 'if 2');
 			$this->_ci->curl->ssl(FALSE);
 		}
 		elseif ($this->ssl_verify_peer === TRUE)
 		{
+        log_message('error', 'if 3');
 			$this->ssl_cainfo = getcwd() . $this->ssl_cainfo;
 			$this->_ci->curl->ssl(TRUE, 2, $this->ssl_cainfo);
 		}
@@ -259,12 +262,14 @@ class REST
         // If authentication is enabled use it
         if ($this->http_auth != '' && $this->http_user != '')
         {
+        log_message('error', 'if 4');
         	$this->_ci->curl->http_login($this->http_user, $this->http_pass, $this->http_auth);
         }
 		
 		// If we have an API Key, then use it
 		if ($this->api_key != '')
 		{
+        log_message('error', 'if 5');
 			$this->_ci->curl->http_header($this->api_name, $this->api_key);
 		}
 
@@ -281,6 +286,9 @@ class REST
         // Execute and return the response from the REST server
         $response = $this->_ci->curl->execute();
 
+        log_message('error', '_call response = '.$response);
+        log_message('error', 'method = '.$method);
+        log_message('error', 'params = '.$params);
         // Format and return
         return $this->_format_response($response);
     }
@@ -447,6 +455,8 @@ class REST
 		{
 			return $this->{'_'.$this->auto_detect_formats[$returned_mime]}($response);
 		}
+		
+// 		log_message('error', 'response = '.$response);
 
 		return $response;
 	}

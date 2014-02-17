@@ -22,7 +22,7 @@
 		<li><a href="#"> <img class="point-bg"
 				src="<?=base_url()?>webassets/img/points_button.png" alt="Points">
 				<h1 class="points">
-					<?=$user_points; ?>
+					<?= $user_points ?>
 				</h1>
 		</a>
 		</li>
@@ -85,7 +85,7 @@
 				$("#getPointsButton").on('click',function(e){
 					e.preventDefault();
 					// Opening animations
-					$("#sound").modal({onOpen: function (dialog) {
+					$("#buy_credit").modal({onOpen: function (dialog) {
 						dialog.overlay.fadeIn('slow', function () {
 							dialog.data.hide();
 							dialog.container.fadeIn('slow', function () {
@@ -96,7 +96,7 @@
 					}});
 				});
 				$("#buy_credit_form").on('submit',function(){
-					$.post( "http://gloryette.org/khairy/index.php?/platform/buy_credit", $( "#buy_credit_form" ).serialize() ).done(function(data) {
+					$.post( "http://gloryette.org/heba/index.php?/platform/buy_credit", $( "#buy_credit_form" ).serialize() ).done(function(data) {
 						$.modal.close();
 						$("h1.points").html(data);
 					});
@@ -240,7 +240,7 @@ function show_card_content(cat_id, card_id,card_name , card_price) {
 	ajaxpage = "<?=base_url() ?>index.php?/ajax/get_card_info_mycollection";
 	$('#card-ajax').html('Please Wait ...' + cat_id);
 	$('#card-sta-hide').hide();
-	$.post(ajaxpage, { cat_id: cat_id , card_id: card_id , card_name : card_name , card_price : card_price})
+	$.post(ajaxpage, { cat_id: cat_id , card_id: card_id , card_name : card_name , card_price : card_price, user_points : <?= $user_points?>})
 	.done(function( data ) {
 		if(data){
 			$('#card-ajax').html(data);

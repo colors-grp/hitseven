@@ -47,8 +47,10 @@ class H7FB extends REST_Controller
 		}
 	}
 	function getcredit_get() {
+		log_message('error', 'bteeg fi get credit ?');
 		// Get user facebook id
 		$fbid = $this->get('fb_id');
+		log_message('error', 'fbid = '.$fbid);
 		// Load the credit model and get user credit from database
 		$this->load->model('credit_model');
 		$credit = $this->credit_model->get_credit($fbid);

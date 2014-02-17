@@ -46,6 +46,7 @@ class ajax extends CI_Controller {
     	$cat_id = $this->input->post('cat_id');
     	$info['card_name'] = $this->input->post('card_name');
     	$info['card_price'] = $this->input->post('card_price');
+    	$info['user_points'] = $this->input->post('user_points');
     	//Get category name from database
     	$this->load->model('category_model');
     	$name = $info['cat_name'] = $this->category_model->get_category_name_by_id($cat_id);
