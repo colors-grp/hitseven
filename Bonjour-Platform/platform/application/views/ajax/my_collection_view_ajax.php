@@ -1,12 +1,19 @@
 <div class="colle">
     <div class="all">
         <div class="card_name"> <?= $card_name ?> <span> <?= $card_price ?> CC </span></div>
+        <?php if($own_card == FALSE) {?>
         <div class="trade">
         	<a href = "javascript:void(0)" onclick = "buy_card('<?= $card_price ?>', '<?= $user_points?>')">
         	<img src="<?= base_url(); ?>webassets/img/done.png" width="43" height="42" border="0">
         	</a>
         	Buy
         </div>
+        <?php } else {?>
+        <div class="trade">
+        	<img src="<?= base_url(); ?>webassets/img/done.png" width="43" height="42" border="0">
+        	Done
+        </div>
+        <?php }?>
     </div>
     
 	<div id = "play_aud" style = "display:none;">
@@ -170,10 +177,9 @@ function buy_card(card_price, user_points) {
 	$('#card-sta-hide').hide();
 	$.post(platform_page, { card_price : card_price, user_points : user_points , card_id : <?= $card_id?> , cat_id : <?= $cat_id?>})
 	.done(function( data ) {
-		if (data) {
-			
-    		alert ("Succeeded");
-    		$("h1.points").html(user_points - card_price);
+		if (data > -1) {
+			alert ("succeeded");
+    		$("h1.points").html(data);
 		}
 		else
     		alert ("No Enough Points :(");

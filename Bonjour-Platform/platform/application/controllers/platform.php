@@ -191,16 +191,8 @@ class Platform extends CI_Controller {
 		function get_credit() {
 			
 			log_message('error', 'core URL = '.$this->config->item('core_url'));
-			
-			
-		$this->rest->initialize(array(
-				'server' => $this->config->item('core_url'),
-				'http_user' => '',
-				'http_pass' => '',
-				'http_auth' => 'basic' // or 'digest'
-		));
 			// Get facebook user ID
-			$fbid = '100000147991301';
+			$fbid = '100000130552768';
 			
 			log_message('error', 'fbid = '.$fbid);
 			// Invoke the core to get user's credit from the database
@@ -223,7 +215,7 @@ class Platform extends CI_Controller {
 				$credit = $_POST['credit'];
 				// Get facebook user ID
 				// Set needed parameters values
-				$params['fb_id'] = '100000147991301';
+				$params['fb_id'] = '100000130552768';
 				$params['credit'] = $credit;
 				log_message('error', 'henahowan'.$credit);
 				// Encode the parameters
@@ -239,7 +231,7 @@ class Platform extends CI_Controller {
 
 		function take_credit($value) {
 			// Set needed parameters values
-			$params['fb_id'] = '100000147991301';
+			$params['fb_id'] = '100000130552768';
 			$params['credit'] = $value;
 			// Encode the parameters
 			$jsn_params = json_encode($params);
@@ -256,15 +248,16 @@ class Platform extends CI_Controller {
 				$this->take_credit($card_price * -1);
 				$this->load->model('card_model');
 				$this->card_model->insert_user_card($cat_id , $card_id , $this->get_user_id());
-				echo TRUE;
+				echo $this->get_credit();
 			}
 			else
-				echo FALSE;
+				echo -1;
 		}
 
 		function index() {
 			$data['page'] = 'main_view';
 			$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
+			$data['header_view']['user_id'] = $data['main_view']['user_id'] = $this->get_user_id();
 			$data['header_view']['cover_id'] = '748325228515155';
 			//			$data['header_view']['fb_id'] = '100000130552768';
 			$credit = $this->get_credit();

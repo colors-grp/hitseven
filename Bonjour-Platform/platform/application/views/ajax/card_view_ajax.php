@@ -3,14 +3,14 @@
         ?>
         <ul class="nav nav-pills card-holder first">
             <li>
-                        <a href="javascript:;" class="card">
+            	<a href="javascript:;" class="card">
                         <img src="<?= base_url() ?>webassets/img/cards.png" style="background-image:url(<?=base_url()?>h7-assets/images/categories/<?=$category_name?>/cards/<?=$card->id?>/ui/list_view.png);" alt="Card" class="c-img">
                         <div class="card-info">
                             <h5><?= $card->name ?></h5>
 							<p class="color-points"><?= $card->price ?> Price</p>
                             <p class="color"><?= $card->score ?> Scores</p>
                         </div>
-                    	</a>
+            	</a>
             </li>
             <li class="mg-container">
 						<div>
@@ -43,9 +43,16 @@
 						</div>
 					</li>
 					<li class="card-status">
-					<a href="javascript:void(0)" onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>')">
-						<img class="status" src="<?=base_url()?>webassets/img/get_button.png" alt="Get">
-						</a>
+					<?php if (in_array($card->id, $user_cards) ) { ?>
+							<a href="javascript:void(0)" onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>')">
+								<img class="status" src="<?=base_url()?>webassets/img/done_button.png" alt="Get">
+							</a>
+						<?php } else { ?>
+							<a href="javascript:void(0)" onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>')">
+								<img class="status" src="<?=base_url()?>webassets/img/get_button.png" alt="Get">
+							</a>
+							
+						<?php }?>
 					</li>
         </ul>
         <div class="card-break" id="card-sta-hide">
