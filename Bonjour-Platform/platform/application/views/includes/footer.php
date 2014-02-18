@@ -15,52 +15,6 @@
 </div>
 </div>
 </div>
-
-<script>
-		
-    function add_category(cat_id){
-        //$('#cat_interest').html('Please Wait ...');
-        $.post( "ajax/add_category_to_user/", { cat_id: cat_id})
-        .done(function( data ) {
-            if(data){
-                $('#cat_interest').html(data);
-                $('#cat_'+cat_id).hide('slow');
-            }
-        });
-    }
-    
-     
-    $('#message').keydown(function(e) {
-        if (e.keyCode == 13) {
-            var reciver_id = $('#reciver_id').val();
-            var message = $('#message').val();
-            //$('#cat_interest').html('Please Wait ...');
-            $.post( "ajax/save_mesage/", { message_body: message , to : reciver_id })
-            .done(function( data ) {
-                if(data){
-                    if(data == 1){
-                        $('#message').val(null);
-                    }else{
-                        $('#remes').html('Wrong');
-                    }
-                }
-            });
-        }
-    });
-    
-    
-    
-    function get_function(fun_name){
-        $.post(fun_name)
-        .done(function( data ) {
-            if(data){
-                $('#admin').html(data);
-            }
-        });
-    
-    }
-    
-</script>
 </body>
 
 </html>

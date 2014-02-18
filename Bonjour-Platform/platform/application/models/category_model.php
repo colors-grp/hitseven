@@ -31,4 +31,12 @@ class Category_model extends CI_Model{
 			return $query->row()->name;
 		return  FALSE;
 	}
+	
+	function insert_user_category($cat_id , $user_id) {
+		$data = array(
+				'user_id' => $user_id ,
+				'category_id' => $cat_id
+		);
+		$this->db->insert('user_category', $data);
+	}
 }

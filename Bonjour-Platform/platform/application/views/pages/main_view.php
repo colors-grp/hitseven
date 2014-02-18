@@ -111,9 +111,10 @@
 </div>
 
 
-<div class="row marketing">
+<div
+	class="row marketing">
 	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-
+		<!-- LOAD FAVOURITE CATEGORIES-->
 		<div class="fav">
 			<div class="fav-categories-head">
 				<h1>My Favorite Categories</h1>
@@ -121,10 +122,10 @@
 					src="<?=base_url()?>webassets/img/my_fav_categories_background.png"
 					alt="My Favorite Categories">
 			</div>
-			<div id="cat_interest">
-			</div>
+			<div id="cat_interest"></div>
 		</div>
-
+		<!---------------------------------------------------------------------------------->
+		<!-- LOAD OTHER CATEGORIES-->
 		<div class="categ">
 			<div class="categories-head">
 				<h1>Categories</h1>
@@ -133,18 +134,17 @@
 					alt="Categories">
 			</div>
 
-			<div class="viewport" style="width: 364px;">
+			<div id="catss_not_interest" style="width: 364px;">
 				<ul class="nav fav-circles sidebar">
 					<li class="first-categ">
 						<ul class="nav nav-pills">
-
 							<? 
 							if(!$not_interest_cats){
 								echo 'No Category';
 							}else{
 							foreach($not_interest_cats as $not_int_cat){?>
 							<li id="cat_<?=$not_int_cat->id?>"><a href="javascript:void(0)"
-								onclick="add_category(<?=$not_int_cat->id?>)"> <img class="choose-category" src="<?=base_url()?>webassets/img/choose_category_icon.png" alt="choose_1" style="background-image:url(<?=base_url()?>h7-assets/images/categories/<?= $not_int_cat->name?>/main_icon.png);">
+								onclick="get_not_interest_category('<?=$not_int_cat->id?>','<?= $not_int_cat->name?>')"> <img class="choose-category" src="<?=base_url()?>webassets/img/choose_category_icon.png" alt="choose_1" style="background-image:url(<?=base_url()?>h7-assets/images/categories/<?= $not_int_cat->name?>/main_icon.png);">
 									<span><img
 										src="<?=base_url()?>webassets/img/category_plus_icon.png"
 										alt="Add Category"> </span>
@@ -153,8 +153,7 @@
 											<?=$not_int_cat->name;?>
 										</h4>
 									</div>
-							</a>
-							</li>
+							</a></li>
 							<? } 
 }?>
 						</ul>
@@ -163,8 +162,8 @@
 			</div>
 		</div>
 	</div>
-
-
+	<!---------------------------------------------------------------------------------->
+	<!-- LOAD SELECTED CATEGORY CARDS-->
 	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
 		<div class="Cards">
 			<div class="cards-head">
@@ -178,10 +177,12 @@
 			<div class="viewport" style="width: 576px;" id="card-ajax"></div>
 		</div>
 	</div>
-	<script>
+	<!---------------------------------------------------------------------------------->
+
+<script>
 function get_cards(cat_id,cat_name){
 	ajaxpage = "<?= base_url()?>index.php?/ajax/get_card_by_category"  ;
-	$('#card-ajax').html('Please Wait ...' + cat_name);
+	$('#card-ajax').html('Please Wait ...');
 	$('#card-sta-hide').hide();
 	$.post(ajaxpage, { cat_id: cat_id , cat_name: cat_name , user_id : <?= $user_id?>})
 	.done(function( data ) {
@@ -191,10 +192,22 @@ function get_cards(cat_id,cat_name){
 		}	
 	});
 	ajaxpage = "<?=base_url() ?>index.php?/ajax/category_highlight_ajax" ;
-	$.post(ajaxpage , {cat_id : cat_id , cat_name : cat_name})
+	$.post(ajaxpage , {cat_id : cat_id , cat_name : cat_name , user_id : <?= $user_id?>})
 	.done(function(data){
 		$("#cat_interest").html(data);
 	});
+}
+
+function get_not_interest_category(cat_id , cat_name){
+	ajaxpage = "<?=base_url() ?>index.php?/ajax/load_not_interest_category";
+	// $('#catss_not_interest').hide();
+	$.post(ajaxpage, {cat_id : cat_id , user_id : <?= $user_id?>})
+	.done(function( data ) {
+		if(data){
+			$('#catss_not_interest').html(data);
+		}	
+	});
+	get_cards(cat_id , cat_name);
 }
 
 function show_card_content(cat_id, card_id,card_name , card_price) {

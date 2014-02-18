@@ -181,9 +181,12 @@ function buy_card(card_price, user_points) {
 			alert ("succeeded");
     		$("h1.points").html(data);
 		}
-		else
+		else {
     		alert ("No Enough Points :(");
+		}
+		get_cards("<?=$cat_id ?>", "<?=$cat_name ?>");
 	});
 }
+
 
 </script>

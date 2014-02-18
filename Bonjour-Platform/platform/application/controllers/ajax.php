@@ -66,11 +66,45 @@ class ajax extends CI_Controller {
 	function category_highlight_ajax() {
 		$info['cat_id'] = $this->input->post('cat_id');
 		$info['cat_name'] = $this->input->post('cat_name');
+		$info['user_id'] = $this->input->post('user_id');
 		$this->load->model('category_model');
 		$info['interest_cats'] = $this->category_model->get_category_interst_by_userID(1);
-		$this->load->view('ajax/category_highlight_view_ajax' , $info);
+		$this->load->view('ajax/load_interest_category_view_ajax' , $info);
 	}
 
+	//by heba & 5airy 4
+	function load_not_interest_category() {
+		$cat_id = $this->input->post('cat_id');
+		$user_id = $this->input->post('user_id');
+		$this->load->model('category_model');
+		$this->category_model->insert_user_category($cat_id , $user_id);
+		//Get interest cats
+		$interest_cats = $this->category_model->get_category_interst_by_userID($user_id);
+		//Get All 
+		$all_cats = $this->category_model->get_all_category();
+		//Get NOT interested
+		$info['not_interest_cats'] = $this->get_not_interst_categories($all_cats, $interest_cats);
+		$this->load->view('ajax/load_not_interest_category_view_ajax',$info);
+	}
+	//BY HEBA
+	function get_not_interst_categories($all_categories , $interest_categories) {
+		$res = array();
+		log_message('error', 'Not Interest Cats');
+		foreach ($all_categories->result() as $row) {
+			$int = $interest_categories;
+			$to_add = 1;
+			foreach ($int->result() as $row2)
+				if($row->id == $row2->id)
+				$to_add = 0;
+			if($to_add == 1) {
+				log_message('error', $row -> name);
+				array_push($res , $row);
+			}
+		}
+		return $res;
+	}
+	
+	
 	function add_category_to_user() {
 		$cat_id = $this->input->post('cat_id');
 		$user_id = $this->user_id;
