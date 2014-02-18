@@ -1,46 +1,28 @@
-<a id="getPointsButton" class="getpoints" href="#">
-		<h3 class="getpointsbtn">Get More Points</h3> <img
-		class="get-points"
-		src="<?=base_url()?>webassets/img/get_more_points_button.png"
-		alt="Get More Points">
-</a>
-<div id = "pic" style = "display:none;">
-	<img src="<?=base_url()?>webassets/vidz/1.mpg" alt="pics">
-</div>
-<div id = "vid" style = "display:none;">
-	<video width="420" height="315" controls>
-		<source src="<?=base_url()?>webassets/vidz/1.mp4" type="video/mp4"></source>
-	</video>
-</div>
-<div id = "sound" style = "display:none;">
-	<embed height="100" width="300" src="<?=base_url()?>webassets/sound/1.mp3">
-</div>
-<div id = "stream" style = "display:none;">
-		<object data="movie.mp4" width="320" height="240" type="application/x-shockwave-flash">
-			<embed src="<?=base_url()?>webassets/vidz/1.mp4" width="320" height="240">
-		</object> 
-</div>
-<script>
-	$("#getPointsButton").on('click',function(e){
-		e.preventDefault();
-		// Opening animations
-		$("#sound").modal({onOpen: function (dialog) {
-			dialog.overlay.fadeIn('slow', function () {
-				dialog.data.hide();
-				dialog.container.fadeIn('slow', function () {
-					dialog.data.slideDown('slow');	 
-				});
-			});
-			
-		}});
-	});
-	$("#buy_credit_form").on('submit',function(){
-		$.post( "http://gloryette.org/khairy/index.php?/platform/buy_credit", $( "#buy_credit_form" ).serialize() ).done(function(data) {
-			$.modal.close();
-			$("h1.points").html(data);
-		});
-		return false;
-	});
-</script>
-</div>
-<?= base_url(); ?>/h7-assets/images/categories/<?=$cat_name?>/cards/<?= $card_id?>/video/<?= $video?>
+<li id="cat_<?=$cat_id?>">
+	<a href="javascript:void(0);"
+	onclick="get_cards('<?=$cat_id;?>','<?=$cat_name?>','<?=$cat_score?>','<?=$cat_rank?>',<?=FALSE ?>);">
+		<ul class="nav nav-pills">
+			<li><img src="<?=base_url()?>webassets/img/score.png" alt="Score">
+				<div class="score-num">
+					<h4>
+						<?=$cat_score?>
+					</h4>
+				</div>
+			</li>
+			<li class="fav-categor"><img class="categor-color" src="<?=base_url()?>webassets/img/category_color_circle_bck.png" alt="Category Color Circle" style="background-image:url(<?=base_url()?>h7-assets/images/categories/red/main_icon.png);">
+				<div class="name">
+					<h4>
+						<?=$cat_name?>
+					</h4>
+				</div>
+			</li>
+			<li><img src="<?=base_url()?>webassets/img/rank.png" alt="Rank">
+				<div class="rank">
+					<h4>
+						<?=$cat_rank?>
+					</h4>
+					<p class="st">st</p>
+				</div>
+			</li>
+		</ul> <img src="<?=base_url()?>webassets/img/category_selection_2.png">
+</a></li>

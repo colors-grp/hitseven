@@ -128,7 +128,7 @@
 							foreach($interest_cats->result() as $int_cat){ ?>
 								<li>
 									<a href="javascript:void(0);"
-										onclick="get_cards('<?=$int_cat->id;?>','<?=$int_cat->name?>');">
+										onclick="get_cards('<?=$int_cat->id;?>','<?=$int_cat->name?>','<?=$int_cat->total_score?>','<?=$int_cat->total_score?>',<?=TRUE ?>);">
 											<ul class="nav nav-pills">
 												<li><img src="<?=base_url()?>webassets/img/score.png"
 													alt="Score">
@@ -155,8 +155,6 @@
 													</div>
 												</li>
 											</ul> 
-											<img src="<?=base_url()?>webassets/img/category_selection_2.png"
-											class="category-selection-left">
 									</a>
 								</li>
 								<? } 
@@ -224,7 +222,7 @@
 		</div>
 	</div>
 <script>
-function get_cards(cat_id,cat_name){
+function get_cards(cat_id,cat_name,cat_score , cat_rank, enter){
 	ajaxpage = "<?= base_url()?>index.php?/ajax/get_card_by_category"  ;
 	$('#card-ajax').html('Please Wait ...' + cat_name);
 	$('#card-sta-hide').hide();
@@ -235,6 +233,16 @@ function get_cards(cat_id,cat_name){
 			$('#cat_name').html(cat_name + ' / Card');
 		}	
 	});
+	if(enter == true) {
+		toHide = "#cat_interest";
+		ajaxpage = "<?=base_url() ?>index.php?/ajax/category_highlight_ajax" ;
+		$.post(ajaxpage , {cat_id : cat_id , cat_name : cat_name , cat_score: cat_score , cat_rank : cat_rank})
+		.done(function(data){
+			//alert("7aga 7lwa");
+//			$(toHide).hide();
+			$(toHide).html(data);
+		});
+	}
 }
 
 function show_card_content(cat_id, card_id,card_name , card_price) {
@@ -251,3 +259,4 @@ function show_card_content(cat_id, card_id,card_name , card_price) {
 }
 
 </script>
+
