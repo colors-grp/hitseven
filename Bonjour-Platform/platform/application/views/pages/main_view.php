@@ -65,22 +65,27 @@
 		</form>
 
 	</div>
-			<div id = "pic" style = "display:none;">
-				<img src="<?=base_url()?>webassets/vidz/1.mpg" alt="pics">
-			</div>
-			<div id = "vid" style = "display:none;">
-				<video width="420" height="315" controls>
-  					<source src="<?=base_url()?>webassets/vidz/1.mp4" type="video/mp4"></source>
-  				</video>
-			</div>
-			<div id = "sound" style = "display:none;">
-  				<embed height="100" width="300" src="<?=base_url()?>webassets/sound/1.mp3">
-			</div>
-			<div id = "stream" style = "display:none;">
-  					<object data="movie.mp4" width="320" height="240" type="application/x-shockwave-flash">
-    					<embed src="<?=base_url()?>webassets/vidz/1.mp4" width="320" height="240">
-  					</object> 
-			</div>
+	<div id="pic" style="display: none;">
+		<img src="<?=base_url()?>webassets/vidz/1.mpg" alt="pics">
+	</div>
+	<div id="vid" style="display: none;">
+		<video width="420" height="315" controls>
+			<source src="<?=base_url()?>webassets/vidz/1.mp4" type="video/mp4"></source>
+		</video>
+	</div>
+	<div id="sound" style="display: none;">
+		<embed height="100" width="300"
+			src="<?=base_url()?>webassets/sound/1.mp3">
+	
+	</div>
+	<div id="stream" style="display: none;">
+		<object data="movie.mp4" width="320" height="240"
+			type="application/x-shockwave-flash">
+			<embed src="<?=base_url()?>webassets/vidz/1.mp4" width="320"
+				height="240">
+		
+		</object>
+	</div>
 	<script>
 				$("#getPointsButton").on('click',function(e){
 					e.preventDefault();
@@ -117,52 +122,6 @@
 					alt="My Favorite Categories">
 			</div>
 			<div id="cat_interest">
-				<div class="category-selection">
-					<div class="fav-container default-skin">
-						<div class="viewport" style="width: 382px;">
-							<ul class="nav fav-circles sidebar">
-								<? 
-								if($interest_cats == ''){
-								echo 'No Category';
-							}else{
-							foreach($interest_cats->result() as $int_cat){ ?>
-								<li>
-									<a href="javascript:void(0);"
-										onclick="get_cards('<?=$int_cat->id;?>','<?=$int_cat->name?>','<?=$int_cat->total_score?>','<?=$int_cat->total_score?>',<?=TRUE ?>);">
-											<ul class="nav nav-pills">
-												<li><img src="<?=base_url()?>webassets/img/score.png"
-													alt="Score">
-													<div class="score-num">
-														<h4>
-															<?=$int_cat->total_score?>
-														</h4>
-													</div>
-												</li>
-												<li class="fav-categor"><img class="categor-color" src="<?=base_url()?>webassets/img/category_color_circle_bck.png" alt="Category Color Circle" style="background-image:url(<?=base_url()?>h7-assets/images/categories/<?= $int_cat->name?>/main_icon.png);">
-													<div class="name">
-														<h4>
-															<?=$int_cat->name;?>
-														</h4>
-													</div>
-												</li>
-												<li><img src="<?=base_url()?>webassets/img/rank.png"
-													alt="Rank">
-													<div class="rank">
-														<h4>
-															<?=$int_cat->total_score?>
-														</h4>
-														<p class="st">st</p>
-													</div>
-												</li>
-											</ul> 
-									</a>
-								</li>
-								<? } 
-								}?>
-							</ul>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 
@@ -216,13 +175,11 @@
 				<img src="<?=base_url()?>webassets/img/cards_address_background.png"
 					alt="Cards">
 			</div>
-
-			<div class="viewport" style="width: 576px;" id="card-ajax">
-			</div>
+			<div class="viewport" style="width: 576px;" id="card-ajax"></div>
 		</div>
 	</div>
-<script>
-function get_cards(cat_id,cat_name,cat_score , cat_rank, enter){
+	<script>
+function get_cards(cat_id,cat_name){
 	ajaxpage = "<?= base_url()?>index.php?/ajax/get_card_by_category"  ;
 	$('#card-ajax').html('Please Wait ...' + cat_name);
 	$('#card-sta-hide').hide();
@@ -233,16 +190,11 @@ function get_cards(cat_id,cat_name,cat_score , cat_rank, enter){
 			$('#cat_name').html(cat_name + ' / Card');
 		}	
 	});
-	if(enter == true) {
-		toHide = "#cat_interest";
-		ajaxpage = "<?=base_url() ?>index.php?/ajax/category_highlight_ajax" ;
-		$.post(ajaxpage , {cat_id : cat_id , cat_name : cat_name , cat_score: cat_score , cat_rank : cat_rank})
-		.done(function(data){
-			//alert("7aga 7lwa");
-//			$(toHide).hide();
-			$(toHide).html(data);
-		});
-	}
+	ajaxpage = "<?=base_url() ?>index.php?/ajax/category_highlight_ajax" ;
+	$.post(ajaxpage , {cat_id : cat_id , cat_name : cat_name})
+	.done(function(data){
+		$("#cat_interest").html(data);
+	});
 }
 
 function show_card_content(cat_id, card_id,card_name , card_price) {
@@ -259,4 +211,3 @@ function show_card_content(cat_id, card_id,card_name , card_price) {
 }
 
 </script>
-

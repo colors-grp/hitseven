@@ -66,11 +66,8 @@ class ajax extends CI_Controller {
 	function category_highlight_ajax() {
 		$info['cat_id'] = $this->input->post('cat_id');
 		$info['cat_name'] = $this->input->post('cat_name');
-		$info['cat_score'] = $this->input->post('cat_score');
-		$info['cat_rank'] = $this->input->post('cat_rank');
 		$this->load->model('category_model');
 		$info['interest_cats'] = $this->category_model->get_category_interst_by_userID(1);
-		
 		$this->load->view('ajax/category_highlight_view_ajax' , $info);
 	}
 
