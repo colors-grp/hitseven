@@ -52,7 +52,7 @@ class core_call extends CI_Model
 			return $rValue->data;
 		} else {
 			log_message('error', 'Error calling H7 API, Method: '. $method . ', error message: ' . $rValue->error);
-			return $data;
+			return $rValue->error;
 	
 		}
 	}

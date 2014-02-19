@@ -14,9 +14,9 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://gloryette.org/heba/';
-$config['core_url']	= 'http://colors-studios.com/heba/';
-$config['platform_url']	= 'http://gloryette.org/heba/';
+$config['base_url']	= 'http://gloryette.org/17/';
+$config['core_url']	= 'http://colors-studios.com/17/index.php?/api/h7fb/';
+$config['platform_url']	= 'http://gloryette.org/17/';
 
 /*
 |--------------------------------------------------------------------------

@@ -196,7 +196,9 @@ class Platform extends CI_Controller {
 			
 			log_message('error', 'fbid = '.$fbid);
 			// Invoke the core to get user's credit from the database
-			$credit = $this->rest->get('getcredit', array('fb_id' => $fbid), 'json');
+// 			$credit = $this->rest->get('getcredit', array('fb_id' => $fbid), 'json');
+			$this->load->model('core_call');
+			$credit = $this->core_call->getUserCredit($fbid);
 			log_message('error', 'el raseeed, el raseeed: '.$credit);
 			return $credit;
 		}
