@@ -46,6 +46,7 @@ class H7FB extends REST_Controller
 			$this->response(array('error' => 'Couldn\'t find any users!'), 404);
 		}
 	}
+	
 	function getcredit_get() {
 		log_message('error', 'bteeg fi get credit ?');
 		// Get user facebook id
@@ -53,10 +54,23 @@ class H7FB extends REST_Controller
 		log_message('error', 'fbid = '.$fbid);
 		// Load the credit model and get user credit from database
 		$this->load->model('credit_model');
-		$credit = $this->credit_model->get_credit($fbid);
+		$rValue['data'] = $this->credit_model->get_credit($fbid);
+		//log_message('error', 'data ==== ' . $rValue['data']);
+		
+		if($rValue['data'])
+		{
+			$rValue['invoke'] = TRUE;
+		}
+		else
+		{
+			$rValue['invoke'] = FALSE;
+			$rValue['error'] = 'Unable to get User Credit';
+		}
+		
 		// response acts as "return" for the function
-		$this->response($credit);
+		$this->response($rValue);
 	}
+	
 	function buycredit_get() {
 		// Get parameters sent that are in json format
 		$jsn_params = $this->get('params');
