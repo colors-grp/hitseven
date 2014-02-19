@@ -38,7 +38,7 @@
 
 
     </head>
-    <body onload="get_cards('<?=$first_cat_id?>','<?=$first_cat_name?>');">
+    <body onload="onload_function('<?=$first_cat_id?>','<?=$first_cat_name?>','<?=true?>');">
     
 <div class="container">
         

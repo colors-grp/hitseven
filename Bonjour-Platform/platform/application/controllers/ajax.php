@@ -55,11 +55,11 @@ class ajax extends CI_Controller {
 		$name = $info['cat_name'] = $this->category_model->get_category_name_by_id($cat_id);
 		$info['own_card'] = $this->card_model->own_card($cat_id , $card_id ,$info['user_id'] );
 		//Load Directory helper to traverse media in each media item
-		$this->load->helper('directory'); 
+		$this->load->helper('directory');
 		$info['images'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/image/');
 		$info['audios'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/audio/');
 		$info['videos'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/video/');
-		 
+			
 		$this->load->view('ajax/my_collection_view_ajax', $info);
 	}
 	//by heba & 5airy 3
@@ -76,11 +76,14 @@ class ajax extends CI_Controller {
 	function load_not_interest_category() {
 		$cat_id = $this->input->post('cat_id');
 		$user_id = $this->input->post('user_id');
+		$to_load = $this->input->post('to_load');
 		$this->load->model('category_model');
-		$this->category_model->insert_user_category($cat_id , $user_id);
+		if($to_load == false) {
+			$this->category_model->insert_user_category($cat_id , $user_id);
+		}
 		//Get interest cats
 		$interest_cats = $this->category_model->get_category_interst_by_userID($user_id);
-		//Get All 
+		//Get All
 		$all_cats = $this->category_model->get_all_category();
 		//Get NOT interested
 		$info['not_interest_cats'] = $this->get_not_interst_categories($all_cats, $interest_cats);
@@ -103,8 +106,8 @@ class ajax extends CI_Controller {
 		}
 		return $res;
 	}
-	
-	
+
+
 	function add_category_to_user() {
 		$cat_id = $this->input->post('cat_id');
 		$user_id = $this->user_id;

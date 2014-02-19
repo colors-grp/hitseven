@@ -1,6 +1,8 @@
 
 <div class="header navbar navbar-static middle-nav">
 
+
+	<!-- 	View the list and grid small icons ... -->
 	<ul class="nav nav-pills navbar-right grid-nav">
 		<li><a href="#" class="active"> <span><img
 					src="<?=base_url()?>webassets/img/list_grid_view_selection.png"
@@ -52,67 +54,16 @@
 			</ul>
 		</li>
 	</ul>
-	<div id="buy_credit" style="display: none;">
 
-		<h2>Choose the desired amount</h2>
-		<form id="buy_credit_form" action="" method="post">
-			<input type="radio" name="credit" value="10" checked="checked">10<br>
-			<input type="radio" name="credit" value="20">20<br> <input
-				type="radio" name="credit" value="50">50<br> <input type="radio"
-				name="credit" value="100">100<br> <input type="radio" name="credit"
-				value="200">200<br> <input type="radio" name="credit" value="500">500<br>
-			<input type="submit" value="Submit" name="credit_submission">
-		</form>
-
-	</div>
-	<div id="pic" style="display: none;">
-		<img src="<?=base_url()?>webassets/vidz/1.mpg" alt="pics">
-	</div>
-	<div id="vid" style="display: none;">
-		<video width="420" height="315" controls>
-			<source src="<?=base_url()?>webassets/vidz/1.mp4" type="video/mp4"></source>
-		</video>
-	</div>
-	<div id="sound" style="display: none;">
-		<embed height="100" width="300"
-			src="<?=base_url()?>webassets/sound/1.mp3">
+	<!-- 	Load the Buy Credit Popup ... -->
+	<?php
+	$this->load->view('popups/buy_credit_popup');
+	?>
 	
-	</div>
-	<div id="stream" style="display: none;">
-		<object data="movie.mp4" width="320" height="240"
-			type="application/x-shockwave-flash">
-			<embed src="<?=base_url()?>webassets/vidz/1.mp4" width="320"
-				height="240">
-		
-		</object>
-	</div>
-	<script>
-				$("#getPointsButton").on('click',function(e){
-					e.preventDefault();
-					// Opening animations
-					$("#buy_credit").modal({onOpen: function (dialog) {
-						dialog.overlay.fadeIn('slow', function () {
-							dialog.data.hide();
-							dialog.container.fadeIn('slow', function () {
-								dialog.data.slideDown('slow');	 
-							});
-						});
-						
-					}});
-				});
-				$("#buy_credit_form").on('submit',function(){
-					$.post( "<?= base_url() ?>index.php?/platform/buy_credit", $( "#buy_credit_form" ).serialize() ).done(function(data) {
-						$.modal.close();
-						$("h1.points").html(data);
-					});
-					return false;
-				});
-	</script>
 </div>
 
 
-<div
-	class="row marketing">
+<div class="row marketing">
 	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 		<!-- LOAD FAVOURITE CATEGORIES-->
 		<div class="fav">
@@ -134,32 +85,7 @@
 					alt="Categories">
 			</div>
 
-			<div id="catss_not_interest" style="width: 364px;">
-				<ul class="nav fav-circles sidebar">
-					<li class="first-categ">
-						<ul class="nav nav-pills">
-							<? 
-							if(!$not_interest_cats){
-								echo 'No Category';
-							}else{
-							foreach($not_interest_cats as $not_int_cat){?>
-							<li id="cat_<?=$not_int_cat->id?>"><a href="javascript:void(0)"
-								onclick="get_not_interest_category('<?=$not_int_cat->id?>','<?= $not_int_cat->name?>')"> <img class="choose-category" src="<?=base_url()?>webassets/img/choose_category_icon.png" alt="choose_1" style="background-image:url(<?=base_url()?>h7-assets/images/categories/<?= $not_int_cat->name?>/main_icon.png);">
-									<span><img
-										src="<?=base_url()?>webassets/img/category_plus_icon.png"
-										alt="Add Category"> </span>
-									<div class="categ-name">
-										<h4>
-											<?=$not_int_cat->name;?>
-										</h4>
-									</div>
-							</a></li>
-							<? } 
-}?>
-						</ul>
-					</li>
-				</ul>
-			</div>
+			<div id="catss_not_interest" style="width: 364px;"></div>
 		</div>
 	</div>
 	<!---------------------------------------------------------------------------------->
@@ -198,10 +124,9 @@ function get_cards(cat_id,cat_name){
 	});
 }
 
-function get_not_interest_category(cat_id , cat_name){
+function get_not_interest_category(cat_id , cat_name ,  to_load){
 	ajaxpage = "<?=base_url() ?>index.php?/ajax/load_not_interest_category";
-	// $('#catss_not_interest').hide();
-	$.post(ajaxpage, {cat_id : cat_id , user_id : <?= $user_id?>})
+	$.post(ajaxpage, {cat_id : cat_id , user_id : <?= $user_id?> ,  to_load :  to_load  })
 	.done(function( data ) {
 		if(data){
 			$('#catss_not_interest').html(data);
@@ -221,6 +146,11 @@ function show_card_content(cat_id, card_id,card_name , card_price) {
 			$('#cat_name').html(cat_name + ' / Card');
 		}	
 	});
+}
+
+function onload_function(cat_id , cat_name, to_load) {
+	get_cards(cat_id,cat_name);
+	get_not_interest_category(cat_id , cat_name , to_load);
 }
 
 </script>
