@@ -56,6 +56,30 @@ class core_call extends CI_Model
 	
 		}
 	}
+	
+	// call ( <Method Name>, Parameter Array) ...
+	function buy_credit($params)
+	{
+		$method = 'buycredit';
+		$rValue = $this->callCore($method, array('params' => $params));
+	
+		// Validation for return values ...
+		// The API call will return an array with 2 parameters:
+		// invoke: a boolean that indicates correct processing at API side
+		// data: The returned value itself
+		// If invoke was false, a 3rd parameter is returned containing error message "named: error" ...
+	
+		// If the method was executed successfully ...
+		if($rValue->invoke) {
+			log_message('error', ' the data : ' . $rValue->data);
+			// return required data ...
+			return $rValue->data;
+		} else {
+			log_message('error', 'Error calling H7 API, Method: '. $method . ', error message: ' . $rValue->error);
+			return $rValue->error;
+	
+		}
+	}
 }
 
 /* End of file CoreCall.php */

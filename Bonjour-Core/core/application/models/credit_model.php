@@ -23,5 +23,6 @@ class credit_model extends CI_Model {
 		$query->credit = $credit;
 		$this->db->where('fb_id', $fbid);
 		$this->db->update('user', $query);
+		return ($this->db->affected_rows() > 0);
 	}
 }

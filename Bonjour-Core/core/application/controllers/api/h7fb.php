@@ -81,7 +81,20 @@ class H7FB extends REST_Controller
 		// Load the credit model and buy credit for user sending the facebook ID
 		// and desired credit to be bought
 		$this->load->model('credit_model');
-		$this->credit_model->buy_credit($fbid, $credit);
+		
+		if($this->credit_model->buy_credit($fbid, $credit))
+		{
+			$rValue['invoke'] = TRUE;
+			$rValue['data']	= TRUE;
+		}
+		else
+		{
+			$rValue['invoke'] = FALSE;
+			$rValue['error'] = 'Unable to Buy User Credit';
+		}
+		
+		// response acts as "return" for the function
+		$this->response($rValue);
 	}
 	public function send_post()
 	{
