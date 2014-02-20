@@ -3,3 +3,8 @@
 */logs/!index.html
 */cache/*
 */cache/!index.html
+.metadata/.lock
+.metadata/.log
+*.log
+*.db
+*.index
