@@ -1,3 +1,4 @@
+<!-- Card list view begin -->
 <div id="list_view" >
     <? foreach ($cards->result() as $card) {
         ?>

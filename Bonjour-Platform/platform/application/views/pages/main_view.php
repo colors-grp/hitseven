@@ -1,7 +1,6 @@
 
 <div class="header navbar navbar-static middle-nav">
 
-
 	<!-- 	View the list and grid small icons ... -->
 	<ul class="nav nav-pills navbar-right grid-nav">
 		<li><a href="#" class="active"> <span><img
@@ -19,7 +18,8 @@
 		</a>
 		</li>
 	</ul>
-
+	<!-- ------------------------------------------ -->
+	
 	<ul class="nav nav-pills points-nav">
 		<li><a href="#"> <img class="point-bg"
 				src="<?=base_url()?>webassets/img/points_button.png" alt="Points">
