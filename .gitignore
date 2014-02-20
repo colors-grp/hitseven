@@ -8,3 +8,8 @@
 *.log
 *.db
 *.index
+*.resources
+.metadata/.plugins/org.eclipse.dltk.core/externalLibsTimeStamps
+*.dat
+.metadata/.plugins/org.eclipse.dltk.core/customTimeStamps
+RemoteSystemsTempFiles/.project

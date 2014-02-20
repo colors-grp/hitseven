@@ -62,6 +62,10 @@ class Platform extends CI_Controller {
 	function get_user_id() {
 		return $this->config->item('test_facebook_id');
 	}
+	
+	function get_fb_id() {
+		return '100000147991301';
+	}
 
 	// Entry point for Platform ...
 	function index() {
@@ -90,6 +94,15 @@ class Platform extends CI_Controller {
 		// Set the currently selected Category ...
 		$data['main_view']['first_cat_name'] = $data['header_view']['first_cat_name'] = $this->get_first_category_name($interest_categories);
 		$cat_id = $data['main_view']['first_cat_id'] = $data['header_view']['first_cat_id'] = $this->get_first_category_id($interest_categories);
+		
+		//Set session data (current_category_id , current_category_name)
+		$session_array = array(
+				'current_category_id' => $data['main_view']['first_cat_id'],
+				'current_category_name' => $data['main_view']['first_cat_name'],
+				'user_id' => $this->get_user_id(),
+				'fb_id' => $this->get_fb_id()
+		);
+		$this->session->set_userdata($session_array);
 
 		$this->load->view('template', $data);
 
