@@ -19,7 +19,7 @@
 									alt="Score">
 									<div class="score-num">
 										<h4>
-											<?=$int_cat->total_score?>
+											<?=$int_cat->score?>
 										</h4>
 									</div></li>
 								<li class="fav-categor"><img class="categor-color" src="<?=base_url()?>webassets/img/category_color_circle_bck.png" alt="Category Color Circle" style="background-image:url(<?=base_url()?>h7-assets/images/categories/<?= $int_cat->name?>/main_icon.png);">

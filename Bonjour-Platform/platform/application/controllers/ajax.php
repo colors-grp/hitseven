@@ -49,6 +49,7 @@ class ajax extends CI_Controller {
 		$info['card_price'] = $this->input->post('card_price');
 		$info['user_points'] = $this->input->post('user_points');
 		$info['user_id'] = $this->input->post('user_id');
+		$info['card_score'] = $this->input->post('card_score');
 		//Get category name from database
 		$this->load->model('category_model');
 		$this->load->model('card_model');
@@ -96,9 +97,11 @@ class ajax extends CI_Controller {
 		foreach ($all_categories->result() as $row) {
 			$int = $interest_categories;
 			$to_add = 1;
-			foreach ($int->result() as $row2)
-				if($row->id == $row2->id)
-				$to_add = 0;
+			if($int != false) {
+				foreach ($int->result() as $row2)
+					if($row->id == $row2->id)
+					$to_add = 0;
+			}
 			if($to_add == 1) {
 				log_message('error', $row -> name);
 				array_push($res , $row);

@@ -3,7 +3,7 @@
         <div class="card_name"> <?= $card_name ?> <span> <?= $card_price ?> CC </span></div>
         <?php if($own_card == FALSE) {?>
         <div class="trade">
-        	<a href = "javascript:void(0)" onclick = "buy_card('<?= $card_price ?>', '<?= $user_points?>')">
+        	<a href = "javascript:void(0)" onclick = "buy_card('<?= $card_price ?>', '<?= $user_points?>' , '<?= $card_score?>')">
         	<img src="<?= base_url(); ?>webassets/img/done.png" width="43" height="42" border="0">
         	</a>
         	Buy
@@ -126,11 +126,11 @@
 
 <script>
 
-function buy_card(card_price, user_points) {
+function buy_card(card_price, user_points,card_score) {
 	platform_page = "<?=base_url() ?>index.php?/platform/buy_card";
 	$('#card-ajax').html('Processing ...'); //want to load card view after this ...
 	$('#card-sta-hide').hide();
-	$.post(platform_page, { card_price : card_price, user_points : user_points , card_id : <?= $card_id?> , cat_id : <?= $cat_id?>})
+	$.post(platform_page, { card_price : card_price, user_points : user_points , card_id : <?= $card_id?> , cat_id : <?= $cat_id?> , card_score : card_score})
 	.done(function( data ) {
 		if (data > -1) {
 			alert ("succeeded");

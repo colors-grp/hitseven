@@ -135,11 +135,11 @@ function get_not_interest_category(cat_id , cat_name ,  to_load){
 	get_cards(cat_id , cat_name);
 }
 
-function show_card_content(cat_id, card_id,card_name , card_price) {
+function show_card_content(cat_id, card_id,card_name , card_price,card_score) {
 	ajaxpage = "<?=base_url() ?>index.php?/ajax/get_card_info_mycollection";
 	$('#card-ajax').html('Please Wait ...' + cat_id);
 	$('#card-sta-hide').hide();
-	$.post(ajaxpage, { cat_id: cat_id , card_id: card_id , card_name : card_name , card_price : card_price, user_points : <?= $user_points?> , user_id : <?= $user_id?>})
+	$.post(ajaxpage, { cat_id: cat_id , card_id: card_id , card_name : card_name , card_price : card_price, user_points : <?= $user_points?> , user_id : <?= $user_id?> , card_score : card_score})
 	.done(function( data ) {
 		if(data){
 			$('#card-ajax').html(data);

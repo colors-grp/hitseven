@@ -1,14 +1,14 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Platform extends CI_Controller {
-	
+
 	protected $CI;
-	
+
 	function __construct() {
 		parent::__construct();
 
 		$this->CI =& get_instance();
-		
+
 		// Load models ...
 		$this->load->model('core_call');
 		$this->load->model('category_model');
@@ -33,10 +33,12 @@ class Platform extends CI_Controller {
 		foreach ($all_categories->result() as $row) {
 			$int = $interest_categories;
 			$to_add = 1;
-			foreach ($int->result() as $row2)
-				if($row->id == $row2->id)
-					$to_add = 0;
-				
+			if($int != false) {
+				foreach ($int->result() as $row2)
+					if($row->id == $row2->id)
+						$to_add = 0;
+			}
+
 			if($to_add == 1)
 				array_push($res , $row);
 		}
@@ -44,12 +46,12 @@ class Platform extends CI_Controller {
 	}
 
 	// A controller proxy to helper functions needed from JavaScript ...
-	
+
 	function buy_credit()
 	{
 		buy_credit();
 	}
-	
+
 	function buy_card()
 	{
 		$user_id = $this->get_user_id();
@@ -64,7 +66,7 @@ class Platform extends CI_Controller {
 	// Entry point for Platform ...
 	function index() {
 		$data['page'] = 'main_view';
-		
+
 		// temporary hard coded ...
 		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
 		$data['header_view']['user_id'] = $data['main_view']['user_id'] = $this->get_user_id();
@@ -80,11 +82,11 @@ class Platform extends CI_Controller {
 		$all_categories = $this->category_model->get_all_category();
 
 		$interest_categories = $data['main_view']['interest_cats'];
-		
+
 		// Calculate which categories are not in Favorite panel ...
 		$data['main_view']['not_interest_cats'] = $this->get_not_interst_categories($all_categories , $interest_categories);
 
-		
+
 		// Set the currently selected Category ...
 		$data['main_view']['first_cat_name'] = $data['header_view']['first_cat_name'] = $this->get_first_category_name($interest_categories);
 		$cat_id = $data['main_view']['first_cat_id'] = $data['header_view']['first_cat_id'] = $this->get_first_category_id($interest_categories);

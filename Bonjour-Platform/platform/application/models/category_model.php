@@ -23,7 +23,7 @@ class Category_model extends CI_Model{
 			return $query;
 		return FALSE;
 	}
-	
+
 	function get_category_name_by_id($cat_id) {
 		$this->db->where('id' , $cat_id);
 		$query = $this->db->get('category');
@@ -31,7 +31,7 @@ class Category_model extends CI_Model{
 			return $query->row()->name;
 		return  FALSE;
 	}
-	
+
 	function insert_user_category($cat_id , $user_id) {
 		$data = array(
 				'user_id' => $user_id ,
@@ -39,4 +39,19 @@ class Category_model extends CI_Model{
 		);
 		$this->db->insert('user_category', $data);
 	}
+
+	function update_user_score_category($cat_id , $user_id,$new_score) {
+		$this->db->select('score');
+		$this->db->where('category_id' , $cat_id);
+		$this->db->where('user_id' , $user_id);
+		$query = $this->db->get('user_category');
+		
+		$this->db->where('category_id' , $cat_id);
+		$this->db->where('user_id' , $user_id);
+		$new_score += $query->row()->score;
+		$data = array('score' =>  $new_score);
+		$this->db->update('user_category' , $data);
+		return $new_score;
+	}
+	
 }

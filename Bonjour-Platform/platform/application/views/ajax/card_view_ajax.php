@@ -44,11 +44,11 @@
 					</li>
 					<li class="card-status">
 					<?php if (in_array($card->id, $user_cards) ) { ?>
-							<a href="javascript:void(0)" onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>')">
+							<a href="javascript:void(0)" onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>','<?=$card->score?>')">
 								<img class="status" src="<?=base_url()?>webassets/img/done_button.png" alt="Get">
 							</a>
 						<?php } else { ?>
-							<a href="javascript:void(0)" onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>')">
+							<a href="javascript:void(0)" onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>','<?=$card->score?>')">
 								<img class="status" src="<?=base_url()?>webassets/img/get_button.png" alt="Get">
 							</a>
 							

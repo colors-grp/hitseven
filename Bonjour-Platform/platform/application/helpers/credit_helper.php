@@ -71,7 +71,9 @@ if(!function_exists('buy_card'))
 		$user_points = intval($CI->input->post('user_points'));
 		$card_id = intval($CI->input->post('card_id'));
 		$cat_id = intval($CI->input->post('cat_id'));
-
+		$card_score = intval($CI->input->post('card_score'));
+		$CI->load->model('category_model');
+		$CI->category_model->update_user_score_category($cat_id , $user_id,$card_score);
 		
 		log_message('error', $user_points . ' , --------------  '. $card_price);
 		if ($user_points >= $card_price) {
