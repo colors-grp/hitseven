@@ -8,11 +8,11 @@ class Platform extends CI_Controller {
 		parent::__construct();
 
 		$this->CI =& get_instance();
-
 		// Load models ...
 		$this->load->model('core_call');
 		$this->load->model('category_model');
 		$this->load->model('card_model');
+		//Load credit helper
 		$this->load->helper('credit');
 	}
 
@@ -66,7 +66,6 @@ class Platform extends CI_Controller {
 	// Entry point for Platform ...
 	function index() {
 		$data['page'] = 'main_view';
-
 		// temporary hard coded ...
 		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
 		$data['header_view']['user_id'] = $data['main_view']['user_id'] = $this->get_user_id();
@@ -91,6 +90,15 @@ class Platform extends CI_Controller {
 		$data['main_view']['first_cat_name'] = $data['header_view']['first_cat_name'] = $this->get_first_category_name($interest_categories);
 		$cat_id = $data['main_view']['first_cat_id'] = $data['header_view']['first_cat_id'] = $this->get_first_category_id($interest_categories);
 
+		//Set session data (current_category_id , current_category_name)
+		$session_array = array(
+				'current_category_id' => $data['main_view']['first_cat_id'],
+				'current_category_name' => $data['main_view']['first_cat_name'],
+				'user_id' => $this->get_user_id()
+				);
+		$this->session->set_userdata($session_array);
+		
+		//Load the template view
 		$this->load->view('template', $data);
 
 	}

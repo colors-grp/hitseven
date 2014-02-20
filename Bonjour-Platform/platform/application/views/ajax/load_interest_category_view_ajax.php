@@ -44,22 +44,3 @@
 		</div>
 	</div>
 </div>
-<script>
-function get_cards(cat_id,cat_name){
-	ajaxpage = "<?= base_url()?>index.php?/ajax/get_card_by_category"  ;
-	$('#card-ajax').html('Please Wait ...');
-	$('#card-sta-hide').hide();
-	$.post(ajaxpage, { cat_id: cat_id , cat_name: cat_name , user_id : <?= $user_id?>})
-	.done(function( data ) {
-		if(data){
-			$('#card-ajax').html(data);
-			$('#cat_name').html(cat_name + ' / Card');
-		}	
-	});
-	ajaxpage = "<?=base_url() ?>index.php?/ajax/category_highlight_ajax" ;
-	$.post(ajaxpage , {cat_id : cat_id , cat_name : cat_name})
-	.done(function(data){
-		$("#cat_interest").html(data);
-	});
-}
-</script>

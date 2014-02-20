@@ -1,16 +1,18 @@
 
-<div class="header navbar navbar-static middle-nav">
+<div
+	class="header navbar navbar-static middle-nav">
 
 	<!-- 	View the list and grid small icons ... -->
 	<ul class="nav nav-pills navbar-right grid-nav">
-		<li><a href="#" class="active"> <span><img
+		<li><a href="javascript:void(0);" onclick="get_cards(-1,-1);"
+			class="active"> <span><img
 					src="<?=base_url()?>webassets/img/list_grid_view_selection.png"
 					alt="List Icon Active" style="width: 50px; height: 48px;"> </span>
 				<img src="<?=base_url()?>webassets/img/grid_list_icon_1.png"
 				alt="List">
 		</a>
 		</li>
-		<li><a href="#"> <span><img
+		<li><a href="javascript:void(0);" onclick="get_cards_grid_view();"> <span><img
 					src="<?=base_url()?>webassets/img/list_grid_view_selection.png"
 					alt="List Icon Active" style="width: 50px; height: 48px;"> </span>
 				<img src="<?=base_url()?>webassets/img/grid_list_icon_2.png"
@@ -19,7 +21,7 @@
 		</li>
 	</ul>
 	<!-- ------------------------------------------ -->
-	
+
 	<ul class="nav nav-pills points-nav">
 		<li><a href="#"> <img class="point-bg"
 				src="<?=base_url()?>webassets/img/points_button.png" alt="Points">
@@ -59,11 +61,12 @@
 	<?php
 	$this->load->view('popups/buy_credit_popup');
 	?>
-	
+
 </div>
 
 
-<div class="row marketing">
+<div
+	class="row marketing">
 	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 		<!-- LOAD FAVOURITE CATEGORIES-->
 		<div class="fav">
@@ -105,8 +108,9 @@
 	</div>
 	<!---------------------------------------------------------------------------------->
 
-<script>
+	<script>
 function get_cards(cat_id,cat_name){
+	//Load new cards
 	ajaxpage = "<?= base_url()?>index.php?/ajax/get_card_by_category"  ;
 	$('#card-ajax').html('Please Wait ...');
 	$('#card-sta-hide').hide();
@@ -114,15 +118,49 @@ function get_cards(cat_id,cat_name){
 	.done(function( data ) {
 		if(data){
 			$('#card-ajax').html(data);
-			$('#cat_name').html(cat_name + ' / Card');
 		}	
 	});
+	//Load categories with selected catgory highlighted
 	ajaxpage = "<?=base_url() ?>index.php?/ajax/category_highlight_ajax" ;
 	$.post(ajaxpage , {cat_id : cat_id , cat_name : cat_name , user_id : <?= $user_id?>})
 	.done(function(data){
 		$("#cat_interest").html(data);
 	});
+	//Load new name
+	if(cat_name == -1) {
+		ajaxpage= "<?= base_url()?>index.php?/ajax/get_category_name";
+		$.post(ajaxpage)
+		.done(function( data ) {
+			if(data){
+				$('#cat_name').html(data + ' / Card');
+			}	
+		});
+	}else {
+		$('#cat_name').html(cat_name + ' / Card');
+	}
 }
+
+function get_cards_grid_view() {
+	ajaxpage = "<?= base_url()?>index.php?/ajax/get_card_grid_view";
+	$('#card-ajax').html('Please Wait ...');
+	$('#card-sta-hide').hide();
+	$.post(ajaxpage)
+	.done(function( data ) {
+		if(data){
+			$('#card-ajax').html(data);
+		}	
+	});
+	//Load new name
+	ajaxpage= "<?= base_url()?>index.php?/ajax/get_category_name";
+	$.post(ajaxpage)
+	.done(function( data ) {
+		if(data){
+			$('#cat_name').html(data + ' / Card');
+		}	
+	});
+
+}
+
 
 function get_not_interest_category(cat_id , cat_name ,  to_load){
 	ajaxpage = "<?=base_url() ?>index.php?/ajax/load_not_interest_category";
