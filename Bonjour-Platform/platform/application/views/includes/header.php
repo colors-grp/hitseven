@@ -143,7 +143,7 @@
 
 		</div>
 		<div style="clear: both"></div>
-		<script>
+<script>
 function scoreboard(){
 	ajaxpage = "<?= base_url()?>index.php?/scoreboard"  ;
 	$('#card-ajax').html('Please Wait ...');

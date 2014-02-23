@@ -108,23 +108,23 @@
 	</div>
 	<!---------------------------------------------------------------------------------->
 
-	<script>
+<script>
 function get_cards(cat_id,cat_name){
+	//Load categories with selected catgory highlighted
+	ajaxpage = "<?=base_url() ?>index.php?/ajax/category_highlight_ajax" ;
+	$.post(ajaxpage , {cat_id : cat_id , cat_name : cat_name })
+	.done(function(data){
+		$("#cat_interest").html(data);
+	});	
 	//Load new cards
 	ajaxpage = "<?= base_url()?>index.php?/ajax/get_card_by_category"  ;
 	$('#card-ajax').html('Please Wait ...');
 	$('#card-sta-hide').hide();
-	$.post(ajaxpage, { cat_id: cat_id , cat_name: cat_name , user_id : <?= $user_id?>})
+	$.post(ajaxpage, { cat_id: cat_id , cat_name: cat_name })
 	.done(function( data ) {
 		if(data){
 			$('#card-ajax').html(data);
 		}	
-	});
-	//Load categories with selected catgory highlighted
-	ajaxpage = "<?=base_url() ?>index.php?/ajax/category_highlight_ajax" ;
-	$.post(ajaxpage , {cat_id : cat_id , cat_name : cat_name , user_id : <?= $user_id?>})
-	.done(function(data){
-		$("#cat_interest").html(data);
 	});
 	//Load new name
 	if(cat_name == -1) {
@@ -164,7 +164,7 @@ function get_cards_grid_view() {
 
 function get_not_interest_category(cat_id , cat_name ,  to_load){
 	ajaxpage = "<?=base_url() ?>index.php?/ajax/load_not_interest_category";
-	$.post(ajaxpage, {cat_id : cat_id , user_id : <?= $user_id?> ,  to_load :  to_load  })
+	$.post(ajaxpage, {cat_id : cat_id  ,  to_load :  to_load  })
 	.done(function( data ) {
 		if(data){
 			$('#catss_not_interest').html(data);
@@ -177,7 +177,7 @@ function show_card_content(cat_id, card_id,card_name , card_price,card_score) {
 	ajaxpage = "<?=base_url() ?>index.php?/ajax/get_card_info_mycollection";
 	$('#card-ajax').html('Please Wait ...' + cat_id);
 	$('#card-sta-hide').hide();
-	$.post(ajaxpage, { cat_id: cat_id , card_id: card_id , card_name : card_name , card_price : card_price, user_points : <?= $user_points?> , user_id : <?= $user_id?> , card_score : card_score})
+	$.post(ajaxpage, { cat_id: cat_id , card_id: card_id , card_name : card_name , card_price : card_price, user_points : <?= $user_points?>  , card_score : card_score})
 	.done(function( data ) {
 		if(data){
 			$('#card-ajax').html(data);

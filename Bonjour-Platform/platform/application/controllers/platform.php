@@ -99,16 +99,9 @@ class Platform extends CI_Controller {
 				'current_category_id' => $data['main_view']['first_cat_id'],
 				'current_category_name' => $data['main_view']['first_cat_name'],
 				'user_id' => $this->get_user_id(),
-				'fb_id' => $this->get_fb_id()
+				'fb_id' => $this->get_fb_id(),
+				'card_view' => 'list'
 		);
-		$this->session->set_userdata($session_array);
-
-		//Set session data (current_category_id , current_category_name)
-		$session_array = array(
-				'current_category_id' => $data['main_view']['first_cat_id'],
-				'current_category_name' => $data['main_view']['first_cat_name'],
-				'user_id' => $this->get_user_id()
-				);
 		$this->session->set_userdata($session_array);
 		
 		//Load the template view
