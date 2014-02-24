@@ -20,12 +20,12 @@ class ajax extends CI_Controller {
 			$cat_name = $this->session->userdata('current_category_name');
 			//Set that current view is list view
 			$this->session->set_userdata('card_view' , 'list');
-		}else if ($this->session->userdata('card_view') == 'grid') {
+		}
+		if ($this->session->userdata('card_view') == 'grid') {
 			$session_array = array(
 					'current_category_id' => $cat_id,
 					'current_category_name' => $cat_name
 			);
-
 			$this->session->set_userdata($session_array);
 			return $this-> get_card_grid_view();
 		}
@@ -34,7 +34,6 @@ class ajax extends CI_Controller {
 				'current_category_id' => $cat_id,
 				'current_category_name' => $cat_name
 		);
-
 		$this->session->set_userdata($session_array);
 		$info['category_name'] = $cat_name;
 		$this->load->model('card_model');
@@ -64,10 +63,11 @@ class ajax extends CI_Controller {
 		$info['card_price'] = $this->input->post('card_price');
 		$info['user_points'] = $this->input->post('user_points');
 		$info['card_score'] = $this->input->post('card_score');
+		$name = $info['cat_name'] = $this->input->post('cat_name');
 		//Get category name from database
 		$this->load->model('category_model');
 		$this->load->model('card_model');
-		$name = $info['cat_name'] = $this->category_model->get_category_name_by_id($cat_id);
+
 		$info['own_card'] = $this->card_model->own_card($cat_id , $card_id ,$info['user_id'] );
 		//Load Directory helper to traverse media in each media item
 		$this->load->helper('directory');
@@ -84,7 +84,7 @@ class ajax extends CI_Controller {
 		$info['user_id'] = $this->session->userdata('user_id');
 
 		//User session data are updated
-		if($info['cat_id'] == -1) {
+		if($info['cat_id'] == '-1') {
 			$info['cat_id'] =  $this->session->userdata('current_category_id');
 			$info['cat_name'] = $this->session->userdata('current_category_name');
 		}
@@ -110,7 +110,6 @@ class ajax extends CI_Controller {
 		if($to_load == false) {
 			$this->category_model->insert_user_category($cat_id , $user_id);
 		}
-		log_message('error' , 'load_not_interest_category --> '.$user_id);
 		//Get interest cats
 		$interest_cats = $this->category_model->get_category_interst_by_userID($user_id);
 		//Get All
@@ -122,7 +121,6 @@ class ajax extends CI_Controller {
 	//BY HEBA
 	function get_not_interst_categories($all_categories , $interest_categories) {
 		$res = array();
-		log_message('error', 'Not Interest Cats');
 		foreach ($all_categories->result() as $row) {
 			$int = $interest_categories;
 			$to_add = 1;
@@ -141,8 +139,9 @@ class ajax extends CI_Controller {
 
 	//by heba & 5airy b ro7o 5 :D
 	function get_card_grid_view() {
-	
-		$this->session->set_userdata('card_view' , 'grid');	
+		//set current card view
+		$this->session->set_userdata('card_view' , 'grid');
+			
 		//Retrieve category information form session
 		$cat_id = $this->session->userdata('current_category_id');
 		$cat_name = $this->session->userdata('current_category_name');
@@ -153,7 +152,6 @@ class ajax extends CI_Controller {
 		$this->load->model('card_model');
 		$info['cards'] = $this->card_model->get_cards_by_id($cat_id);
 		if ($info['cards']) {
-			log_message('error','if cards[info]');
 			$user_cards = $this->card_model->get_user_cards_by_id($cat_id, $user_id);
 			$info['user_cards'] = array();
 			if ($user_cards != FALSE) {
@@ -167,7 +165,9 @@ class ajax extends CI_Controller {
 	}
 
 	function get_category_name()  {
-		echo $this->session->userdata('current_category_name');
+		$info['cat_id'] = $this->session->userdata('current_category_id');
+		$info['cat_name'] = $this->session->userdata('current_category_name');
+		$this->load->view('ajax/card_name_view_ajax' , $info);
 	}
 
 }

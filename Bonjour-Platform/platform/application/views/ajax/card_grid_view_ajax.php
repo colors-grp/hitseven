@@ -10,7 +10,7 @@
 			</span>
 		</div>
 		<a href="javascript:void(0)"
-			onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>','<?=$card->score?>')">
+			onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>','<?=$card->score?>','<?=$cat_name?>')">
 			<img
 			src="<?=base_url()?>h7-assets/images/categories/<?=$cat_name?>/cards/<?=$card->id?>/ui/grid_view.png"
 			width="241" height="308" border="0">
@@ -24,7 +24,7 @@
 			</span>
 		</div>
 		<a href="javascript:void(0)"
-			onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>','<?=$card->score?>')">
+			onclick="show_card_content('<?=$card->category_id;?>','<?=$card->id?>','<?=$card->name?>','<?=$card->price?>','<?=$card->score?>','<?=$cat_name?>')">
 			<div class="view_card_get">&nbsp;</div> <img
 			src="<?=base_url()?>h7-assets/images/categories/<?=$cat_name?>/cards/<?=$card->id?>/ui/grid_view.png"
 			width="241" height="308" border="0">
