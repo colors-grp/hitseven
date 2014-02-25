@@ -93,7 +93,14 @@
     margin:auto;
     font-weight:normal;
 
-}	
+}
+
+#medal-symbol {
+	position: relative;
+	top: 54px;
+	left: 300px;
+	z-index: 5;
+}
 
 .trade{
     background-color: rgb(242, 240, 230);
@@ -306,6 +313,61 @@
 }
 
 
+.score_rank{
+    background-position: right top;
+    background-repeat: no-repeat;
+    float: right;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    height: 113px;
+    line-height: 22px;
+    margin: 15px 20px 0 0;
+    padding: 21px 150px 25px 0;
+    width: 500px;
+}
+
+.score_rank img {
+    width:70px;
+    height:70px;
+    padding:0px;
+    margin:auto;
+    float:left;
+}	
+
+.score_rank h1{
+    float: left;
+    font-size: 12px;
+    margin: 11px 0 0 33px;
+    padding: 0;
+    text-align: center;
+}
+
+#medal-type h1{
+    float: left;
+    font-size: 12px;
+    margin: 11px 0 0 33px;
+    padding: 0;
+    text-align: center;
+}
+
+.score_rank h2{
+    float: left;
+    font-size: 12px;
+    margin: 11px 0 0 33px;
+    padding: 0;
+    text-align: center;
+    width: 108px;
+    height: 26px;
+}
+.arrow_score_rank{
+    width:28px;
+    float:left;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
+    height:70px;
+    text-align:center;
+}
 
 .silver{
     background-image: url("../img/silver.png");
@@ -401,6 +463,108 @@
     height: 26px;
 }
 .arrow_bronz{
+    width:28px;
+    float:left;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
+    height:70px;
+    text-align:center;
+}
+
+.king{
+    background-image: url("../img/king.png");
+    background-position: right top;
+    background-repeat: no-repeat;
+    float: right;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    height: 113px;
+    line-height: 22px;
+    margin: 15px 20px 0 0;
+    padding: 21px 150px 25px 0;
+    width: 375px;
+}
+
+.king img {
+    width:auto;
+    height:auto;
+    padding:0px;
+    margin:auto;
+    float:left;
+}	
+
+.king h1{
+    float: left;
+    font-size: 12px;
+    margin: 11px 0 0 33px;
+    padding: 0;
+    text-align: center;
+    width: 108px;
+    height: 26px;
+}
+
+.king h2{
+    float: left;
+    font-size: 12px;
+    margin: 11px 0 0 33px;
+    padding: 0;
+    text-align: center;
+    width: 108px;
+    height: 26px;
+}
+.arrow_king{
+    width:28px;
+    float:left;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
+    height:70px;
+    text-align:center;
+}
+
+.queen{
+    background-image: url("../img/queen.png");
+    background-position: right top;
+    background-repeat: no-repeat;
+    float: right;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    height: 113px;
+    line-height: 22px;
+    margin: 15px 20px 0 0;
+    padding: 21px 150px 25px 0;
+    width: 375px;
+}
+
+.queen img {
+    width:auto;
+    height:auto;
+    padding:0px;
+    margin:auto;
+    float:left;
+}	
+
+.queen h1{
+    float: left;
+    font-size: 12px;
+    margin: 11px 0 0 33px;
+    padding: 0;
+    text-align: center;
+    width: 108px;
+    height: 26px;
+}
+
+.queen h2{
+    float: left;
+    font-size: 12px;
+    margin: 11px 0 0 33px;
+    padding: 0;
+    text-align: center;
+    width: 108px;
+    height: 26px;
+}
+.arrow_queen{
     width:28px;
     float:left;
     margin:0px 0px 0px 0px;

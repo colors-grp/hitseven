@@ -46,8 +46,14 @@
 
 </head>
 <body
+	<?php
+		$session_array = array(
+				'load_scoreboard' => FALSE
+		);
+		$this->session->set_userdata($session_array);
+	?>
 	onload="onload_function('<?=$first_cat_id?>','<?=$first_cat_name?>','<?=true?>');">
-
+	
 	<div class="container">
 
 

@@ -41,17 +41,18 @@ class Category_model extends CI_Model{
 	}
 
 	function update_user_score_category($cat_id , $user_id,$new_score) {
-		$this->db->select('score');
+		$this->db->select('score,	num_of_cards');
 		$this->db->where('category_id' , $cat_id);
 		$this->db->where('user_id' , $user_id);
 		$query = $this->db->get('user_category');
 		
 		$this->db->where('category_id' , $cat_id);
 		$this->db->where('user_id' , $user_id);
-		$new_score += $query->row()->score;
-		$data = array('score' =>  $new_score);
+		$res = $query->row();
+		$new_score += $res->score;
+		$new_num_of_cards = $res->num_of_cards + 1;
+		$data = array('score' =>  $new_score , 'num_of_cards' => $new_num_of_cards);
 		$this->db->update('user_category' , $data);
 		return $new_score;
 	}
-	
 }

@@ -28,12 +28,11 @@
 											<?=$int_cat->name;?>
 										</h4>
 									</div></li>
-								<li><img src="<?=base_url()?>webassets/img/rank.png" alt="Rank">
+								<li><img src="<?=base_url()?>webassets/img/num_cards.png" alt="Rank">
 									<div class="rank">
 										<h4>
-											<?=$int_cat->total_score?>
+											<?=$int_cat->num_of_cards?>
 										</h4>
-										<p class="st">st</p>
 									</div></li>
 							</ul>
 					</a></li>
