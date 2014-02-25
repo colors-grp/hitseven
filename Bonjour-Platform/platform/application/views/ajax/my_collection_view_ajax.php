@@ -16,21 +16,25 @@
         <?php }?>
     </div>
     
+    <!-- 	Load the Image Popup ... -->
+	<?php
+	$info['own_card'] = $own_card;
+	$this->load->view('popups/image_popup');
+	?>
+	
     <!-- 	Load the Audio Popup ... -->
 	<?php
+	$info['own_card'] = $own_card;
 	$this->load->view('popups/audio_popup');
 	?>
     
     <!-- 	Load the Video Popup ... -->
 	<?php
+	$info['own_card'] = $own_card;
 	$this->load->view('popups/video_popup');
 	?>
 	
-    <!-- 	Load the Image Popup ... -->
-	<?php
-	$this->load->view('popups/image_popup');
-	?>
-	
+    
     <? if ($images != false) { ?>
         <div class="all_pakeg_ph">
             <h1>Photos </h1>

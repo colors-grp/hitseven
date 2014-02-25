@@ -55,6 +55,7 @@ class Platform extends CI_Controller {
 	function buy_card()
 	{
 		$user_id = $this->get_user_id();
+		log_message('error', 'card boughtttttttttt');
 		buy_card($user_id);
 	}
 
