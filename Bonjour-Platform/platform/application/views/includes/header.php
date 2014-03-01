@@ -71,7 +71,7 @@
 				</a> <img class="indecator"
 					src="<?=base_url()?>webassets/img/header_indecator_icon.png"
 					alt="Header Indecator"></li>
-				<li><a href="#"> <img
+				<li><a href="<?=base_url()?>index.php?/platform/show_log"> <img
 						src="<?=base_url()?>webassets/img/transactions.png"
 						alt="Transactions">
 				</a> <img class="indecator"
@@ -110,7 +110,7 @@
 			</div>
 
 			<ul class="nav nav-pills navbar-right cover-nav-right">
-				<li><a href="#">
+				<li><a href="<?=base_url()?>index.php?/platform/index">
 						<h3 class="marketbtn">Market</h3> <img
 						src="<?=base_url()?>webassets/img/buttons__not_active.png"
 						alt="nonMarket"> <img class="activebtn"

@@ -109,6 +109,9 @@ class ajax extends CI_Controller {
 		$this->load->model('category_model');
 		if($to_load == false) {
 			$this->category_model->insert_user_category($cat_id , $user_id);
+			//3 --> Follow new category
+			$this->load->model('activity_model');
+			$this->activity_model->insert_log( $user_id , 3);
 		}
 		//Get interest cats
 		$interest_cats = $this->category_model->get_category_interst_by_userID($user_id);

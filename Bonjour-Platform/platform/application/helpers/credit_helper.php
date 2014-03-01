@@ -39,10 +39,12 @@ if(!function_exists('buy_credit'))
 			// Invoke the core to buy new credit for the user
 			// 				$this->rest->get('buycredit', array('params' => $jsn_params), 'json');
 			$CI->core_call->buy_credit($jsn_params);
+			//2 --> buy credit
+			$CI->load->model('activity_model');
+			$CI->activity_model->insert_log( $CI->session->userdata('user_id') , 2);
 		}
 		$cr = 0;
 		$cr = get_credit();
-		log_message('error', 'buycredit, new credit: '.$cr);
 		echo $cr;
 	}
 }
@@ -77,6 +79,9 @@ if(!function_exists('buy_card'))
 		
 		log_message('error', $user_points . ' , --------------  '. $card_price);
 		if ($user_points >= $card_price) {
+			//1 --> buy card
+			$CI->load->model('activity_model');
+			$CI->activity_model->insert_log(  $CI->session->userdata('user_id') , 1);
 			take_credit($card_price * -1);
 			$CI->load->model('card_model');
 			$CI->card_model->insert_user_card($cat_id , $card_id , $user_id);

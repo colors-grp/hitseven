@@ -1,4 +1,5 @@
 <?php
+if($page != 'activity_model')
 $this->load->view('includes/header' , $header_view);
 ?>
 
@@ -18,8 +19,10 @@ $this->load->view('includes/header' , $header_view);
 		$this->load->view('pages/'.$page, $main_view);
 	else if($page == 'my_collection_view')
 		$this->load->view('pages/'.$page , $my_collection_view);
-	else 
-		$this->load->view('pages/'.$page );
+	else  if($page == 'activity_view')
+		$this->load->view('pages/'.$page , $activity_view);
+	else
+		$this->load->view('pages/'.$page);
 	?>
 
 </div>

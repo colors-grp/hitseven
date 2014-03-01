@@ -55,7 +55,6 @@ class Platform extends CI_Controller {
 	function buy_card()
 	{
 		$user_id = $this->get_user_id();
-		log_message('error', 'card boughtttttttttt');
 		buy_card($user_id);
 	}
 
@@ -85,6 +84,18 @@ class Platform extends CI_Controller {
 		// Get user credit ...
 		$data['my_collection_view']['user_points'] = get_credit();
 		
+		$this->load->view('template' , $data);
+	}
+	
+	function show_log() {
+		$data['page'] = 'activity_view';
+		$this->load->model('activity_model');
+		// temporary hard coded ...
+		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
+		$data['header_view']['user_id'] = $data['main_view']['user_id'] = $this->get_user_id();
+		$data['header_view']['cover_id'] = '748325228515155';
+		
+		$data['activity_view']['logs'] = $this->activity_model->get_log($this->get_user_id());
 		$this->load->view('template' , $data);
 	}
 	
@@ -129,5 +140,6 @@ class Platform extends CI_Controller {
 		//Load the template view
 		$this->load->view('template', $data);
 
+		
 	}
 }
