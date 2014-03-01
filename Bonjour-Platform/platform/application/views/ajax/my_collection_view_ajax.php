@@ -99,33 +99,7 @@
                 </div>
             </div>
         </div>
-    <? } if ($cardinfo['media']['game']) { ?>  
-        <div class="all_pakeg_gam">
-            <h1>Games</h1>
-            <div class="all">
-                <div class="pakeg">
-                    <?
-                    foreach ($cardinfo['media']['game'] as $game) {
-                        ?>
-                        <div class="pakeg_item"> 
-                        <? if ($game->game_type == 'image_puzzle') { ?>
-                                <a href="javascript:;" title="Play !" class="play_game" onclick="open_win('<?= base_url("game/puzzel/$game->media_id/" . $cardinfo['info']->card_id); ?>');" >
-                            <? } else if ($game->game_type == 'drag_drop_puzzel') { ?>
-                                    <a href="javascript:;" title="Play !" class="play_game" onclick="open_win('<?= base_url("game/drage_drop/$game->media_id/" . $cardinfo['info']->card_id); ?>')">
-                                <? } ?>
-                                    <img src="<?= base_url(); ?>webassets/img/g1.jpg" border="0" class="img-circle">  
-                                    <img src="<?= base_url(); ?>webassets/img/play.jpg" border="0">
-                                </a>    
-                        </div>
-        <? }
-    ?>
-                </div>
-            </div>
-        </div>
-        
-
-<? } ?>
-</div>
+    <? } ?></div>
 
 
 <script>

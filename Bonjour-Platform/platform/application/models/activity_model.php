@@ -13,6 +13,7 @@ class Activity_model extends CI_Model {
 		$this->db->where('user_id' , $user_id);
 		$this->db->from('user_activity');
 		$this->db->join('activity_type', 'activity_type.id = user_activity.activity_id');
+		$this->db->order_by("user_activity.id", "desc");
 		$query = $this->db->get();
 		if($query->num_rows() > 0)
 			return $query;
