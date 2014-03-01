@@ -170,6 +170,49 @@ class ajax extends CI_Controller {
 		$this->load->view('ajax/card_name_view_ajax' , $info);
 	}
 
+	function get_cards_my_collection_view() {
+		//Get function input
+		$cat_id = $this->input->post('cat_id');
+		$info['category_name'] = $cat_name = $this->input->post('cat_name');
+		$user_id = $this->session->userdata('user_id');
+		log_message('error' , 'get_cards_my_collection_view ----->' . $cat_name);
+		//Get cards info from database
+		$this->load->model('card_model');
+		$info['cards'] = $this->card_model->get_user_cards_by_id($cat_id , $user_id);
+
+		$this->load->view('ajax/my_collection_list_of_cards_view_ajax',$info);
+	}
+
+	function on_load_get_card_info() {
+		$user_id = $info['user_id'] = $this->session->userdata('user_id');
+		$cat_id = $this->input->post('cat_id');
+		$name = $info['cat_name'] = $this->input->post('cat_name');
+		
+		$this->load->model('card_model');
+		$cards = $this->card_model->get_user_cards_by_id($cat_id , $user_id);
+		if($cards!= FALSE) {
+			$first_card = $cards->row();
+			$card_id =$info['card_id'] = $first_card ->id;
+			$info['card_name'] = $first_card->name;
+			$info['card_price'] = $first_card->price;
+			$info['card_score'] = $first_card->score;
+			//Get category name from database
+			$this->load->model('category_model');
+			$this->load->model('card_model');
+				
+			$info['own_card'] = $this->card_model->own_card($cat_id , $card_id ,$info['user_id'] );
+			//Load Directory helper to traverse media in each media item
+			$this->load->helper('directory');
+			$info['images'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/image/');
+			$info['audios'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/audio/');
+			$info['videos'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/video/');
+
+			$this->load->view('ajax/my_collection_view_ajax', $info);
+
+		}else {
+			echo 'No cards purchased in this category !!';
+		}
+	}
 }
 
 /* End of file*/

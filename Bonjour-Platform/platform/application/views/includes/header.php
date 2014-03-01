@@ -52,14 +52,14 @@
 		);
 		$this->session->set_userdata($session_array);
 	?>
-	onload="onload_function('<?=$first_cat_id?>','<?=$first_cat_name?>','<?=true?>');">
-	
+	<?php if($page == 'main_view') {?>
+		onload ="onload_function('<?=$first_cat_id?>','<?=$first_cat_name?>','<?=true?>');">
+	<?php } else if($page == 'my_collection_view') {?>
+		onload ="on_load_my_collection('<?=$first_cat_id?>','<?=$first_cat_name?>','<?=true?>');">
+	<?}?>
 	<div class="container">
-
-
 		<div class="header navbar navbar-static-top"
 			style="position: fixed; top: 0;">
-
 			<ul class="nav nav-pills navbar-right nav_top">
 				<li><a href="#"> <img src="<?=base_url()?>webassets/img/profile.png"
 						alt="Invite Friends">
@@ -94,14 +94,11 @@
 						</a></li>
 					</ul></li>
 			</ul>
-
 			<a href="#" class="navbar-brand"> <img
 				src="<?=base_url()?>webassets/img/logo.png"
 				alt="The Color Competetion">
 			</a>
-
 		</div>
-
 
 		<div class="jumbotron">
 
@@ -119,7 +116,7 @@
 						alt="nonMarket"> <img class="activebtn"
 						src="<?=base_url()?>webassets/img/buttons_active.png" alt="Market">
 				</a></li>
-				<li><a href="#">
+				<li><a href="<?=base_url()?>index.php?/platform/my_collection">
 						<h3 class="mycollectionsbtn">My Collections</h3> <img
 						src="<?=base_url()?>webassets/img/buttons__not_active.png"
 						alt="nonMy Collection"> <img class="activebtn"
@@ -153,14 +150,9 @@
 function scoreboard(){
 	ajaxpage = "<?= base_url()?>index.php?/scoreboard"  ;
 	$('#card-ajax').html('Please Wait ...');
-// 	$('#card-sta-hide').hide();
 	$.post(ajaxpage)
 	.done(function( data ) {
-// 		if(data){
 			$('#card-ajax').html(data);
-// 			$('#cat_name').html(cat_name + ' / Card');
-// 		}
 	});
 }
-
 </script>

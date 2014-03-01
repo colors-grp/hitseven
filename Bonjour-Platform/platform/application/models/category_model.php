@@ -9,7 +9,7 @@ class Category_model extends CI_Model{
 		$this->db->join('user_category' ,'user_category.category_id = category.id');
 		$this->db->where('user_id' , $user_id);
 		$query = $this->db->get();
-		if($query->num_rows())
+		if($query->num_rows() > 0)
 			return $query;
 		return FALSE;
 	}

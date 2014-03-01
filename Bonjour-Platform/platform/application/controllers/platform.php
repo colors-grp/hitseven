@@ -68,9 +68,30 @@ class Platform extends CI_Controller {
 		return '100000147991301';
 	}
 
+	function my_collection() {
+		//Set page name to be sent to the template view
+		$data['page'] = 'my_collection_view';
+		$data['header_view']['page'] = 'my_collection_view';
+		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
+		$data['header_view']['user_id'] = $this->get_user_id();
+		$data['header_view']['cover_id'] = '748325228515155';
+		// Get User favorite categories ...
+		$data['my_collection_view']['interest_cats'] = $this->category_model->get_category_interst_by_userID($this->get_user_id());
+
+		// Set the currently selected Category ...
+		$data['header_view']['first_cat_name'] = $this->get_first_category_name($data['my_collection_view']['interest_cats'] );
+		$data['header_view']['first_cat_id'] = $this->get_first_category_id($data['my_collection_view']['interest_cats'] );
+
+		// Get user credit ...
+		$data['my_collection_view']['user_points'] = get_credit();
+		
+		$this->load->view('template' , $data);
+	}
+	
 	// Entry point for Platform ...
 	function index() {
 		$data['page'] = 'main_view';
+		$data['header_view']['page'] = 'main_view';
 		// temporary hard coded ...
 		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
 		$data['header_view']['user_id'] = $data['main_view']['user_id'] = $this->get_user_id();

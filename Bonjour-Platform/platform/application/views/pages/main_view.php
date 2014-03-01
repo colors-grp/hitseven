@@ -48,7 +48,7 @@
 
 
 <div
-	class="row marketing">
+	class="row marketing" style="margin-top: -80px">
 	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 		<!-- LOAD FAVOURITE CATEGORIES-->
 		<div class="fav">
@@ -179,8 +179,8 @@ function show_card_content(cat_id, card_id,card_name , card_price,card_score,cat
 }
 
 function onload_function(cat_id , cat_name, to_load) {
-	get_cards(cat_id,cat_name);
-	get_not_interest_category(cat_id , cat_name , to_load);
+		get_cards(cat_id,cat_name);
+		get_not_interest_category(cat_id , cat_name , to_load);
 }
 
 </script>

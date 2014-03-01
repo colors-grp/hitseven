@@ -70,7 +70,14 @@
     padding:0px 0px 0px 0px;
     float:left;
     margin:auto;
-}	
+}
+
+.all2{
+    width:100%;
+    padding:0px 0px 0px 0px;
+    margin:auto;
+}
+
 
 .card_name{
     background-color: rgb(153, 152, 152);
@@ -721,8 +728,8 @@
     width:116px;
     float:left;
     padding:0px 0px 0px 0px;
-    margin:0px 21px 0px 21px ;
-    height:auto;
+    margin: 0px 18px 0px 0px;
+    height:150px;
     font-family: Arial,Helvetica,sans-serif;
     font-size: 17px;
     font-weight: normal;
