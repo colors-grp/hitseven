@@ -66,38 +66,6 @@ class Platform extends CI_Controller {
 	function get_fb_id() {
 		return '100000147991301';
 	}
-
-	function my_collection() {
-		//Set page name to be sent to the template view
-		$data['page'] = 'my_collection_view';
-		$data['header_view']['page'] = 'my_collection_view';
-		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
-		$data['header_view']['user_id'] = $this->get_user_id();
-		$data['header_view']['cover_id'] = '748325228515155';
-		// Get User favorite categories ...
-		$data['my_collection_view']['interest_cats'] = $this->category_model->get_category_interst_by_userID($this->get_user_id());
-
-		// Set the currently selected Category ...
-		$data['header_view']['first_cat_name'] = $this->get_first_category_name($data['my_collection_view']['interest_cats'] );
-		$data['header_view']['first_cat_id'] = $this->get_first_category_id($data['my_collection_view']['interest_cats'] );
-
-		// Get user credit ...
-		$data['my_collection_view']['user_points'] = get_credit();
-		
-		$this->load->view('template' , $data);
-	}
-	
-	function show_log() {
-		$data['page'] = 'activity_view';
-		$this->load->model('activity_model');
-		// temporary hard coded ...
-		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
-		$data['header_view']['user_id'] = $data['main_view']['user_id'] = $this->get_user_id();
-		$data['header_view']['cover_id'] = '748325228515155';
-		
-		$data['activity_view']['logs'] = $this->activity_model->get_log($this->get_user_id());
-		$this->load->view('template' , $data);
-	}
 	
 	// Entry point for Platform ...
 	function index() {
@@ -133,7 +101,8 @@ class Platform extends CI_Controller {
 				'current_category_name' => $data['main_view']['first_cat_name'],
 				'user_id' => $this->get_user_id(),
 				'fb_id' => $this->get_fb_id(),
-				'card_view' => 'list'
+				'card_view' => 'list',
+				'current_page' => 'market'
 		);
 		$this->session->set_userdata($session_array);
 		

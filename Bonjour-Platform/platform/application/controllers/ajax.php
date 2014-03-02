@@ -98,6 +98,8 @@ class ajax extends CI_Controller {
 
 		$this->load->model('category_model');
 		$info['interest_cats'] = $this->category_model->get_category_interst_by_userID($info['user_id']);
+		$info['current_page'] = $this->session->userdata('current_page');
+		log_message('error', 'current page         .......    '.$info['current_page']);
 		$this->load->view('ajax/load_interest_category_view_ajax' , $info);
 	}
 

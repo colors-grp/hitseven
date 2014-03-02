@@ -8,8 +8,14 @@
 								echo 'No Category';
 							}else{
 							foreach($interest_cats->result() as $int_cat){ ?>
-					<li><a href="javascript:void(0);"
-						onclick="get_cards('<?=$int_cat->id;?>','<?=$int_cat->name?>');">
+					<li>
+					<?php if ($current_page == 'market') { ?>
+							<a href="javascript:void(0);"
+								onclick="get_cards('<?=$int_cat->id;?>','<?=$int_cat->name?>');">
+								<?php } else {?>
+							<a href="javascript:void(0);"
+								onclick="load_scoreboard('<?=$int_cat->id;?>','<?=$int_cat->name?>');">
+								<?php }?>
 							<ul class="nav nav-pills">
 								<?php if($int_cat->id == $cat_id) {?>
 								<img src="<?=base_url()?>webassets/img/category_selection_2.png"

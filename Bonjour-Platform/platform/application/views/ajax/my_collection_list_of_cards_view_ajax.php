@@ -52,6 +52,6 @@
 		}
 	}else { ?>
 	<p>No Cards purchased in this category...</p>
-	<?	}
+<?	}
 ?>
 </div>

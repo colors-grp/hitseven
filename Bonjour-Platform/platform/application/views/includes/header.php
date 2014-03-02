@@ -56,7 +56,9 @@
 		onload ="onload_function('<?=$first_cat_id?>','<?=$first_cat_name?>','<?=true?>');">
 	<?php } else if($page == 'my_collection_view') {?>
 		onload ="on_load_my_collection('<?=$first_cat_id?>','<?=$first_cat_name?>','<?=true?>');">
-	<?}?>
+	<?php }else if ($page == 'scoreboard_view') {?>
+		onload ="onload_scoreboard('<?=$first_cat_id?>','<?=$first_cat_name?>','<?=true?>');">
+	<?php }?>
 	<div class="container">
 		<div class="header navbar navbar-static-top"
 			style="position: fixed; top: 0;">
@@ -71,7 +73,7 @@
 				</a> <img class="indecator"
 					src="<?=base_url()?>webassets/img/header_indecator_icon.png"
 					alt="Header Indecator"></li>
-				<li><a href="<?=base_url()?>index.php?/platform/show_log"> <img
+				<li><a href="<?=base_url()?>index.php?/activity_log/show_log"> <img
 						src="<?=base_url()?>webassets/img/transactions.png"
 						alt="Transactions">
 				</a> <img class="indecator"
@@ -116,14 +118,14 @@
 						alt="nonMarket"> <img class="activebtn"
 						src="<?=base_url()?>webassets/img/buttons_active.png" alt="Market">
 				</a></li>
-				<li><a href="<?=base_url()?>index.php?/platform/my_collection">
+				<li><a href="<?=base_url()?>index.php?/my_collection/get_my_collection">
 						<h3 class="mycollectionsbtn">My Collections</h3> <img
 						src="<?=base_url()?>webassets/img/buttons__not_active.png"
 						alt="nonMy Collection"> <img class="activebtn"
 						src="<?=base_url()?>webassets/img/buttons_active.png"
 						alt="My Collection">
 				</a></li>
-				<li><a href="javascript:void(0)" onclick="scoreboard()">
+				<li><a href="<?=base_url()?>index.php?/scoreboard/index">
 						<h3 class="scoreboardsbtn">Score Boards</h3> <img
 						src="<?=base_url()?>webassets/img/buttons__not_active.png"
 						alt="nonScore Boards"> <img class="activebtn"
@@ -146,13 +148,3 @@
 
 		</div>
 		<div style="clear: both"></div>
-<script>
-function scoreboard(){
-	ajaxpage = "<?= base_url()?>index.php?/scoreboard"  ;
-	$('#card-ajax').html('Please Wait ...');
-	$.post(ajaxpage)
-	.done(function( data ) {
-			$('#card-ajax').html(data);
-	});
-}
-</script>
