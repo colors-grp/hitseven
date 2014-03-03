@@ -89,7 +89,7 @@
 	
 <script>
 function on_load_my_collection(cat_id , cat_name) {
-	ajaxpage = "<?=base_url() ?>index.php?/ajax/get_cards_my_collection_view";
+	ajaxpage = "<?=base_url() ?>index.php?/card/get_cards_my_collection_view";
 	$('#fav-container').hide();
 	$.post(ajaxpage, { cat_id: cat_id , cat_name : cat_name})
 	.done(function( data ) {
@@ -101,7 +101,7 @@ function on_load_my_collection(cat_id , cat_name) {
 
 function show_card_content(cat_id, card_id,card_name , card_price,card_score,cat_name) {
 	if(card_id != -1) {
-		ajaxpage = "<?=base_url() ?>index.php?/ajax/get_card_info_mycollection";
+		ajaxpage = "<?=base_url() ?>index.php?/card/get_card_info_mycollection";
 		$.post(ajaxpage, { cat_id: cat_id , card_id: card_id , card_name : card_name , card_price : card_price, user_points : <?= $user_points?>  , card_score : card_score , cat_name : cat_name})
 		.done(function( data ) {
 			if(data){
@@ -109,7 +109,7 @@ function show_card_content(cat_id, card_id,card_name , card_price,card_score,cat
 			}	
 		});
 	}else {
-		ajaxpage = "<?=base_url() ?>index.php?/ajax/on_load_get_card_info";
+		ajaxpage = "<?=base_url() ?>index.php?/card/on_load_get_card_info";
 		$.post(ajaxpage, { cat_id: cat_id , cat_name : cat_name})
 		.done(function( data ) {
 			if(data){

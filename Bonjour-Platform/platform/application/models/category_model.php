@@ -1,8 +1,7 @@
 <?php
 class Category_model extends CI_Model{
-	/*
-	 * Missing: check if category is in the valid time before returning it
-	*/
+
+	//Get categories user intersted in
 	function get_category_interst_by_userID($user_id) {
 		$this->db->select('*');
 		$this->db->from('category');
@@ -14,9 +13,7 @@ class Category_model extends CI_Model{
 		return FALSE;
 	}
 
-	/*
-	 * Missing: check if category is in the valid time before returning it
-	*/
+	//Returns all categories in competition
 	function get_all_category() {
 		$query = $this->db->get('category');
 		if($query->num_rows())
@@ -24,6 +21,7 @@ class Category_model extends CI_Model{
 		return FALSE;
 	}
 
+	//Given a category id, returns the category name
 	function get_category_name_by_id($cat_id) {
 		$this->db->where('id' , $cat_id);
 		$query = $this->db->get('category');
@@ -32,6 +30,7 @@ class Category_model extends CI_Model{
 		return  FALSE;
 	}
 
+	//Add new category to certain user
 	function insert_user_category($cat_id , $user_id) {
 		$data = array(
 				'user_id' => $user_id ,
@@ -40,6 +39,9 @@ class Category_model extends CI_Model{
 		$this->db->insert('user_category', $data);
 	}
 
+	//1- updates user score in a certain category
+	//2- updates card count in a certain catergory
+	//ONLY USE WHEN USER BUYS NEW CARD ...
 	function update_user_score_category($cat_id , $user_id,$new_score) {
 		$this->db->select('score,	num_of_cards');
 		$this->db->where('category_id' , $cat_id);

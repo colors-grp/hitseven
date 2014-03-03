@@ -1,4 +1,3 @@
-<?php $load_scoreboard = $this->session->userdata('load_scoreboard')?>
 <div
 	class="header navbar navbar-static middle-nav">
 	<ul class="nav nav-pills points-nav">
@@ -29,7 +28,7 @@
 <div
 	class="row marketing" style="margin-top: -80px">
 	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-		<!-- LOAD FAVOURITE CATEGORIES-->
+	<!-- LOAD FAVOURITE CATEGORIES----------------------------------------------------->
 		<div class="fav">
 			<div class="fav-categories-head">
 				<h1>My Favorite Categories</h1>
@@ -39,20 +38,17 @@
 			</div>
 			<div id="cat_interest"></div>
 		</div>
-		<!---------------------------------------------------------------------------------->
-		<!-- LOAD OTHER CATEGORIES-->
+	<!---------------------------------------------------------------------------------->
+	<!-- LOAD OTHER CATEGORIES---------------------------------------------------------->
 		<div class="categ">
 		</div>
 	</div>
 	<!---------------------------------------------------------------------------------->
-	<!-- LOAD SELECTED CATEGORY SCOREBOARD-->
+	<!-- LOAD SELECTED CATEGORY SCOREBOARD---------------------------------------------->
 	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
 		<div class="Cards">
 			<div class="cards-head">
-				<h1 id="cat_name">
-					<?=$first_cat_name?>
-					Cards
-				</h1>
+				<h1 id="cat_name"></h1>
 				<img src="<?=base_url()?>webassets/img/cards_address_background.png"
 					alt="Cards">
 			</div>
@@ -61,7 +57,7 @@
 	</div>
 	<!---------------------------------------------------------------------------------->
 
-	<script>
+<script>
 
 function scoreboard(){
 	ajaxpage = "<?= base_url()?>index.php?/scoreboard/get_scoreboard_details"  ;
@@ -70,10 +66,16 @@ function scoreboard(){
 	.done(function( data ) {
 			$('#card-ajax').html(data);
 	});
+	//Load new category name
+	ajaxpage = "<?=base_url() ?>index.php?/category/get_category_name" ;
+	$.post(ajaxpage)
+	.done(function(data){
+		$('#cat_name').html(data);
+	});		
 }
 function load_scoreboard(cat_id,cat_name){
 	//Load categories with selected catgory highlighted
-	ajaxpage = "<?=base_url() ?>index.php?/ajax/category_highlight_ajax" ;
+	ajaxpage = "<?=base_url() ?>index.php?/category/load_interest_category" ;
 	$.post(ajaxpage , {cat_id : cat_id , cat_name : cat_name })
 	.done(function(data){
 		$("#cat_interest").html(data);
@@ -83,7 +85,7 @@ function load_scoreboard(cat_id,cat_name){
 
 
 function get_not_interest_category(cat_id , cat_name ,  to_load){
-	ajaxpage = "<?=base_url() ?>index.php?/ajax/load_not_interest_category";
+	ajaxpage = "<?=base_url() ?>index.php?/category/load_not_interest_category";
 	$.post(ajaxpage, {cat_id : cat_id  ,  to_load :  to_load  })
 	.done(function( data ) {
 		if(data){

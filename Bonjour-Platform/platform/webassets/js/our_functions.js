@@ -18,7 +18,7 @@ function get_cards(cat_id,cat_name){
 }
 
 function show_card_content(cat_id, card_id,card_name , card_price) {
-	ajaxpage = "<?=base_url() ?>index.php?/ajax/get_card_info_mycollection";
+	ajaxpage = "<?=base_url() ?>index.php?/card/get_card_info_mycollection";
 	$('#card-ajax').html('Please Wait ...' + cat_id);
 	$('#card-sta-hide').hide();
 	$.post(ajaxpage, { cat_id: cat_id , card_id: card_id , card_name : card_name , card_price : card_price, user_points : <?= $user_points?> , user_id : <?= $user_id?>})

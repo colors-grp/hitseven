@@ -33,6 +33,7 @@
 <div class="scor_tab">
 	<table width="100%" border="0" cellpadding="0"
 		class="table table-bordered">
+		<?php if (count($all_users) - count($top_users) > 0) {?>
 		<tr>
 			<td width="14%" style="border-left: none;"><strong>Rank</strong></td>
 			<td><img src="<?= base_url() ?>webassets/img/name-icon.png"
@@ -44,12 +45,11 @@
 				src="<?= base_url() ?>webassets/img/g_arr.png" width="13"><strong>
 					Change</strong></td>
 		</tr>
-                        <?
-                        for($i = 0; $i < count ( $all_users); $i ++) {
-						?>
-
-                            <? if ($all_users[$i]->score > 0) { ?>
-                                <tr>
+		<?php } else 
+			echo "No Other Users";	
+		 	for($i = count ( $top_users ); $i < count ( $all_users); $i ++) {
+                         if ($all_users[$i]->score > 0) { ?>
+		<tr>
 			<td style="border-left: none;"><?= $i + 1 ?> </td>
 			<td><img
 				src="https://graph.facebook.com/<?= $all_users[$i]->fb_id ?>/picture?width=200&height=200"
@@ -60,11 +60,7 @@
 				src="<?= base_url() ?>h7-assets/images/scoreboard/change/<?=$all_users[$i]->change ?>.png"
 				width="14" height="12"></td>
 		</tr>
-                            <? } ?>
-                        <? } ?>
-
-
-
-                    </table>
-
+			<? } 
+		} ?>
+	</table>
 </div>

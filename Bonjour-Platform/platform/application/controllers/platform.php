@@ -1,35 +1,36 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Platform extends CI_Controller {
-
 	protected $CI;
-
 	function __construct() {
 		parent::__construct();
 		$this->CI =& get_instance();
+		
 		// Load models ...
 		$this->load->model('core_call');
 		$this->load->model('category_model');
 		$this->load->model('card_model');
+		
 		//Load credit helper
 		$this->load->helper('credit');
-		if (session_id() == '') {
+		
+		//Start session if it is not already started
+		if (session_id() == '') 
 			session_start();
-		}
 	}
 
-	function get_first_category_name($interest_categories) {
+	//A function that returns the Id and name of first category
+	function get_first_category_info($interest_categories) {
 		if($interest_categories != FALSE) {
-			return $interest_categories->row()->name;
+			$cat_info = $interest_categories->row(); 
+			$info['id'] =  $cat_info->id;
+			$info['name'] = $cat_info->name;
+			return $info;
 		}
 	}
 
-	function get_first_category_id($interest_categories) {
-		if($interest_categories != FALSE) {
-			return $interest_categories->row()->id;
-		}
-	}
-
+	// A function that returns categories user not interseted in 
+	// given all categories and categories user interseted in
 	function get_not_interst_categories($all_categories , $interest_categories) {
 		$res = array();
 		foreach ($all_categories->result() as $row) {
@@ -48,7 +49,6 @@ class Platform extends CI_Controller {
 	}
 
 	// A controller proxy to helper functions needed from JavaScript ...
-
 	function buy_credit()
 	{
 		buy_credit();
@@ -65,6 +65,7 @@ class Platform extends CI_Controller {
 		return $this->config->item('test_facebook_id');
 	}
 
+	//Get user Facebook ID
 	function get_fb_id() {
 		return '100000147991301';
 	}
@@ -87,20 +88,19 @@ class Platform extends CI_Controller {
 		// Get all categories ...
 		$all_categories = $this->category_model->get_all_category();
 
-		$interest_categories = $data['main_view']['interest_cats'];
-
 		// Calculate which categories are not in Favorite panel ...
-		$data['main_view']['not_interest_cats'] = $this->get_not_interst_categories($all_categories , $interest_categories);
+		$data['main_view']['not_interest_cats'] = $this->get_not_interst_categories($all_categories , $data['main_view']['interest_cats']);
 
-
-		// Set the currently selected Category ...
+		// Set the currently selected Category 
 		if(!isset($_SESSION['current_category_id'] )) {
-			$data['main_view']['first_cat_name'] = $data['header_view']['first_cat_name'] = $this->get_first_category_name($interest_categories);
-			$cat_id = $data['main_view']['first_cat_id'] = $data['header_view']['first_cat_id'] = $this->get_first_category_id($interest_categories);
-			$_SESSION['current_category_id'] = $data['main_view']['first_cat_id'];
-			$_SESSION['current_category_name'] = $data['main_view']['first_cat_name'];
+			//Get first category info to be set in the session array
+			$first_cat = $this->get_first_category_info($data['main_view']['interest_cats']);
+			
+			//Set first category ID and name only if they aren't already in session
+			$_SESSION['current_category_id'] = $first_cat['id'];
+			$_SESSION['current_category_name'] = $first_cat['name'];
 		}
-		//Set session data (current_category_id , current_category_name)
+		//Set session data 
 		$_SESSION['user_id']= $this->get_user_id();
 		$_SESSION['fb_id'] = $this->get_fb_id();
 		$_SESSION['card_view'] = 'list';
@@ -108,7 +108,5 @@ class Platform extends CI_Controller {
 
 		//Load the template view
 		$this->load->view('template', $data);
-
-
 	}
 }

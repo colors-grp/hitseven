@@ -1,4 +1,3 @@
-<?php $load_scoreboard = $this->session->userdata('load_scoreboard')?>
 <div
 	class="header navbar navbar-static middle-nav">
 
@@ -20,7 +19,7 @@
 		</a>
 		</li>
 	</ul>
-	<!-- ------------------------------------------ -->
+	<!-- -------------------------------------------->
 
 	<ul class="nav nav-pills points-nav">
 		<li><a href="#"> <img class="point-bg"
@@ -78,10 +77,7 @@
 	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
 		<div class="Cards">
 			<div class="cards-head">
-				<h1 id="cat_name">
-					<?=$first_cat_name?>
-					Cards
-				</h1>
+				<h1 id="cat_name"></h1>
 				<img src="<?=base_url()?>webassets/img/cards_address_background.png"
 					alt="Cards">
 			</div>
@@ -94,13 +90,13 @@
 
 function get_cards(cat_id,cat_name){
 	//Load categories with selected catgory highlighted
-	ajaxpage = "<?=base_url() ?>index.php?/ajax/category_highlight_ajax" ;
+	ajaxpage = "<?=base_url() ?>index.php?/category/load_interest_category" ;
 	$.post(ajaxpage , {cat_id : cat_id , cat_name : cat_name })
 	.done(function(data){
 		$("#cat_interest").html(data);
 	});	
 	//Load new cards
-	ajaxpage = "<?= base_url()?>index.php?/ajax/get_card_by_category"  ;
+	ajaxpage = "<?= base_url()?>index.php?/card/get_card_list_view"  ;
 	$('#card-ajax').html('Please Wait ...');
 	$('#card-sta-hide').hide();
 	$.post(ajaxpage, { cat_id: cat_id , cat_name: cat_name })
@@ -113,7 +109,7 @@ function get_cards(cat_id,cat_name){
 		$('#cat_name').html(
 				'<a href="javascript:void(0);" onclick="get_cards(\'' + cat_id +'\',\'' + cat_name + '\');">' + cat_name + '</a>' );
 	}else {
-		ajaxpage = "<?=base_url() ?>index.php?/ajax/get_category_name" ;
+		ajaxpage = "<?=base_url() ?>index.php?/category/get_category_name" ;
 		$.post(ajaxpage)
 		.done(function(data){
 			$('#cat_name').html(data);
@@ -122,7 +118,7 @@ function get_cards(cat_id,cat_name){
 }
 
 function get_cards_grid_view() {
-	ajaxpage = "<?= base_url()?>index.php?/ajax/get_card_grid_view";
+	ajaxpage = "<?= base_url()?>index.php?/card/get_card_grid_view";
 	$('#card-ajax').html('Please Wait ...');
 	$('#card-sta-hide').hide();
 	$.post(ajaxpage)
@@ -132,7 +128,7 @@ function get_cards_grid_view() {
 		}	
 	});
 	//Load new category name
-	ajaxpage = "<?=base_url() ?>index.php?/ajax/get_category_name" ;
+	ajaxpage = "<?=base_url() ?>index.php?/category/get_category_name" ;
 	$.post(ajaxpage)
 	.done(function(data){
 		$('#cat_name').html(data);
@@ -141,7 +137,7 @@ function get_cards_grid_view() {
 
 
 function get_not_interest_category(cat_id , cat_name ,  to_load){
-	ajaxpage = "<?=base_url() ?>index.php?/ajax/load_not_interest_category";
+	ajaxpage = "<?=base_url() ?>index.php?/category/load_not_interest_category";
 	$.post(ajaxpage, {cat_id : cat_id  ,  to_load :  to_load  })
 	.done(function( data ) {
 		if(data){
@@ -152,7 +148,7 @@ function get_not_interest_category(cat_id , cat_name ,  to_load){
 }
 
 function show_card_content(cat_id, card_id,card_name , card_price,card_score,cat_name) {
-	ajaxpage = "<?=base_url() ?>index.php?/ajax/get_card_info_mycollection";
+	ajaxpage = "<?=base_url() ?>index.php?/card/get_card_info_mycollection";
 	$('#card-ajax').html('Please Wait ...' + cat_id);
 	$('#card-sta-hide').hide();
 	$.post(ajaxpage, { cat_id: cat_id , card_id: card_id , card_name : card_name , card_price : card_price, user_points : <?= $user_points?>  , card_score : card_score , cat_name : cat_name})

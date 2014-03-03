@@ -46,9 +46,6 @@
 
 </head>
 <body
-	<?php
-		$_SESSION ['load_scoreboard'] = FALSE;
-	?>
 	<?php if($page == 'main_view') {?>
 		onload ="onload_function('<?='-1'?>','<?='-1'?>','<?=true?>');">
 	<?php } else if($page == 'my_collection_view') {?>

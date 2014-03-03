@@ -1,5 +1,6 @@
 <?php
 class Activity_model extends CI_Model {
+	//Insert user Activity in log
 	function insert_log($user_id , $act_id) {
 		$data = array(
 					'user_id' => $user_id,
@@ -8,7 +9,7 @@ class Activity_model extends CI_Model {
 				);
 		$this->db->insert('user_activity' , $data);
 	}
-
+	//Get all user activities
 	function get_log($user_id) {
 		$this->db->where('user_id' , $user_id);
 		$this->db->from('user_activity');

@@ -1,5 +1,6 @@
 <?php
 class Scoreboard_model extends CI_Model {
+	//Get all users in a certain category to be displayed in the scoreboard
 	function get_all($cat_id) {
 		$this->db->select('*');
 		$this->db->from('user_category');
@@ -9,6 +10,8 @@ class Scoreboard_model extends CI_Model {
 		$query = $this->db->get();
 		return $query;
 	}
+	
+	//Get top users in a certain category to be displayed in the scoreboard
 	function get_top($cat_id) {
 		$this->db->select('*');
 		$this->db->from('category_rank');
@@ -17,6 +20,8 @@ class Scoreboard_model extends CI_Model {
 		$query = $this->db->get();
 		return $query;
 	}
+	
+	//returns top users and all users in a certain category
 	function get_scoreboard($cat_id) {
 		$query['all'] = $this->get_all($cat_id);
 		$query['top'] = $this->get_top($cat_id);
