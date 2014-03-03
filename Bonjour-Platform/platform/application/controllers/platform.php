@@ -6,7 +6,6 @@ class Platform extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
-
 		$this->CI =& get_instance();
 		// Load models ...
 		$this->load->model('core_call');
@@ -14,6 +13,9 @@ class Platform extends CI_Controller {
 		$this->load->model('card_model');
 		//Load credit helper
 		$this->load->helper('credit');
+		if (session_id() == '') {
+			session_start();
+		}
 	}
 
 	function get_first_category_name($interest_categories) {
@@ -36,7 +38,7 @@ class Platform extends CI_Controller {
 			if($int != false) {
 				foreach ($int->result() as $row2)
 					if($row->id == $row2->id)
-						$to_add = 0;
+					$to_add = 0;
 			}
 
 			if($to_add == 1)
@@ -62,11 +64,11 @@ class Platform extends CI_Controller {
 	function get_user_id() {
 		return $this->config->item('test_facebook_id');
 	}
-	
+
 	function get_fb_id() {
 		return '100000147991301';
 	}
-	
+
 	// Entry point for Platform ...
 	function index() {
 		$data['page'] = 'main_view';
@@ -92,23 +94,21 @@ class Platform extends CI_Controller {
 
 
 		// Set the currently selected Category ...
-		$data['main_view']['first_cat_name'] = $data['header_view']['first_cat_name'] = $this->get_first_category_name($interest_categories);
-		$cat_id = $data['main_view']['first_cat_id'] = $data['header_view']['first_cat_id'] = $this->get_first_category_id($interest_categories);
-		
+		if(!isset($_SESSION['current_category_id'] )) {
+			$data['main_view']['first_cat_name'] = $data['header_view']['first_cat_name'] = $this->get_first_category_name($interest_categories);
+			$cat_id = $data['main_view']['first_cat_id'] = $data['header_view']['first_cat_id'] = $this->get_first_category_id($interest_categories);
+			$_SESSION['current_category_id'] = $data['main_view']['first_cat_id'];
+			$_SESSION['current_category_name'] = $data['main_view']['first_cat_name'];
+		}
 		//Set session data (current_category_id , current_category_name)
-		$session_array = array(
-				'current_category_id' => $data['main_view']['first_cat_id'],
-				'current_category_name' => $data['main_view']['first_cat_name'],
-				'user_id' => $this->get_user_id(),
-				'fb_id' => $this->get_fb_id(),
-				'card_view' => 'list',
-				'current_page' => 'market'
-		);
-		$this->session->set_userdata($session_array);
-		
+		$_SESSION['user_id']= $this->get_user_id();
+		$_SESSION['fb_id'] = $this->get_fb_id();
+		$_SESSION['card_view'] = 'list';
+		$_SESSION['current_page'] = 'market';
+
 		//Load the template view
 		$this->load->view('template', $data);
 
-		
+
 	}
 }

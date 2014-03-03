@@ -12,29 +12,26 @@ class ajax extends CI_Controller {
 
 	//by heba & 5airy
 	function get_card_by_category() {
-		$user_id = $this->session->userdata('user_id');
+		$user_id =$_SESSION['user_id'];
 		$cat_id = $this->input->post('cat_id');
 		$cat_name = $this->input->post('cat_name');
 		if($cat_id == '-1') {
-			$cat_id =  $this->session->userdata('current_category_id');
-			$cat_name = $this->session->userdata('current_category_name');
+			$cat_id =  $_SESSION['current_category_id'];
+			$cat_name = $_SESSION['current_category_name'];
 			//Set that current view is list view
-			$this->session->set_userdata('card_view' , 'list');
+			$_SESSION['card_view'] = 'list';
 		}
-		if ($this->session->userdata('card_view') == 'grid') {
-			$session_array = array(
-					'current_category_id' => $cat_id,
-					'current_category_name' => $cat_name
-			);
-			$this->session->set_userdata($session_array);
+		if ($_SESSION['card_view'] == 'grid') {
+
+			$_SESSION['current_category_id'] = $cat_id;
+			$_SESSION['current_category_name'] = $cat_name;
 			return $this-> get_card_grid_view();
 		}
 		$info['cat_id'] = $cat_id;
-		$session_array = array(
-				'current_category_id' => $cat_id,
-				'current_category_name' => $cat_name
-		);
-		$this->session->set_userdata($session_array);
+
+		$_SESSION['current_category_id'] = $cat_id;
+		$_SESSION['current_category_name'] = $cat_name;
+
 		$info['category_name'] = $cat_name;
 		$this->load->model('card_model');
 		$info['cards'] = $this->card_model->get_cards_by_id($cat_id);
@@ -55,15 +52,22 @@ class ajax extends CI_Controller {
 
 	//by heba & 5airy 2
 	function get_card_info_mycollection() {
-		$info['user_id'] = $this->session->userdata('user_id');
 
+		$info['user_id'] = $_SESSION['user_id'];
 		$card_id =$info['card_id'] = $this->input->post('card_id');
 		$cat_id = $info['cat_id'] = $this->input->post('cat_id');
+		$name = $info['cat_name'] = $this->input->post('cat_name');
+		if($cat_id == '-1') {
+			$cat_id = $info['cat_id'] =  $_SESSION['current_category_id'];
+			$name = $info['cat_name'] = $_SESSION['current_category_name'];
+		}
+		$_SESSION['current_category_id'] = $cat_id;
+		$_SESSION['current_category_name'] = $name;
+
 		$info['card_name'] = $this->input->post('card_name');
 		$info['card_price'] = $this->input->post('card_price');
 		$info['user_points'] = $this->input->post('user_points');
 		$info['card_score'] = $this->input->post('card_score');
-		$name = $info['cat_name'] = $this->input->post('cat_name');
 		//Get category name from database
 		$this->load->model('category_model');
 		$this->load->model('card_model');
@@ -81,32 +85,28 @@ class ajax extends CI_Controller {
 	function category_highlight_ajax() {
 		$info['cat_id'] = $this->input->post('cat_id');
 		$info['cat_name'] = $this->input->post('cat_name');
-		$info['user_id'] = $this->session->userdata('user_id');
+		$info['user_id'] = $_SESSION['user_id'];
 
 		//User session data are updated
 		if($info['cat_id'] == '-1') {
-			$info['cat_id'] =  $this->session->userdata('current_category_id');
-			$info['cat_name'] = $this->session->userdata('current_category_name');
+			$info['cat_id'] =  $_SESSION['current_category_id'];
+			$info['cat_name'] = $_SESSION['current_category_name'];
 		}
 
 		//Set new session variables
-		$session_array = array(
-				'current_category_id' => $info['cat_id'],
-				'current_category_name' => $info['cat_name']
-		);
-		$this->session->set_userdata($session_array);
+		$_SESSION['current_category_id'] = $info['cat_id'];
+		$_SESSION['current_category_name'] = $info['cat_name'];
 
 		$this->load->model('category_model');
 		$info['interest_cats'] = $this->category_model->get_category_interst_by_userID($info['user_id']);
-		$info['current_page'] = $this->session->userdata('current_page');
-		log_message('error', 'current page         .......    '.$info['current_page']);
+		$info['current_page'] = $_SESSION['current_page'];
 		$this->load->view('ajax/load_interest_category_view_ajax' , $info);
 	}
 
 	//by heba & 5airy 4
 	function load_not_interest_category() {
 		$cat_id = $this->input->post('cat_id');
-		$user_id = $this->session->userdata('user_id');
+		$user_id = $_SESSION['user_id'];
 		$to_load = $this->input->post('to_load');
 		$this->load->model('category_model');
 		if($to_load == false) {
@@ -145,12 +145,12 @@ class ajax extends CI_Controller {
 	//by heba & 5airy b ro7o 5 :D
 	function get_card_grid_view() {
 		//set current card view
-		$this->session->set_userdata('card_view' , 'grid');
+		$_SESSION['card_view'] = 'grid';
 			
 		//Retrieve category information form session
-		$cat_id = $this->session->userdata('current_category_id');
-		$cat_name = $this->session->userdata('current_category_name');
-		$user_id = $this->session->userdata('user_id');
+		$cat_id = $_SESSION['current_category_id'];
+		$cat_name = $_SESSION['current_category_name'];
+		$user_id = $_SESSION['user_id'];
 
 		$info['cat_id'] = $cat_id;
 		$info['cat_name'] = $cat_name;
@@ -170,17 +170,24 @@ class ajax extends CI_Controller {
 	}
 
 	function get_category_name()  {
-		$info['cat_id'] = $this->session->userdata('current_category_id');
-		$info['cat_name'] = $this->session->userdata('current_category_name');
+		$info['cat_id'] = $_SESSION['current_category_id'];
+		$info['cat_name'] = $_SESSION['current_category_name'];
 		$this->load->view('ajax/card_name_view_ajax' , $info);
 	}
 
 	function get_cards_my_collection_view() {
 		//Get function input
 		$cat_id = $this->input->post('cat_id');
-		$info['category_name'] = $cat_name = $this->input->post('cat_name');
-		$user_id = $this->session->userdata('user_id');
-		log_message('error' , 'get_cards_my_collection_view ----->' . $cat_name);
+		$info['category_name'] =  $this->input->post('cat_name');
+		if($cat_id == '-1') {
+			$cat_id = $_SESSION['current_category_id'];
+			$info['category_name'] = $_SESSION['current_category_name'];
+		}
+		$user_id = $_SESSION['user_id'];
+		
+		//set current session vars
+		$_SESSION['current_category_id'] = $cat_id;
+		$_SESSION['current_category_name'] = $info['category_name'];
 		//Get cards info from database
 		$this->load->model('card_model');
 		$info['cards'] = $this->card_model->get_user_cards_by_id($cat_id , $user_id);
@@ -189,10 +196,16 @@ class ajax extends CI_Controller {
 	}
 
 	function on_load_get_card_info() {
-		$user_id = $info['user_id'] = $this->session->userdata('user_id');
+		$user_id = $info['user_id'] = $_SESSION['user_id'];
 		$cat_id = $this->input->post('cat_id');
 		$name = $info['cat_name'] = $this->input->post('cat_name');
-		
+		if($cat_id == '-1') {
+			$cat_id = $info['cat_id'] =  $_SESSION['current_category_id'];
+			$name = $info['cat_name'] = $_SESSION['current_category_name'];
+		}
+		$_SESSION['current_category_id'] = $cat_id;
+		$_SESSION['current_category_name'] = $name;
+
 		$this->load->model('card_model');
 		$cards = $this->card_model->get_user_cards_by_id($cat_id , $user_id);
 		if($cards!= FALSE) {
@@ -204,7 +217,7 @@ class ajax extends CI_Controller {
 			//Get category name from database
 			$this->load->model('category_model');
 			$this->load->model('card_model');
-				
+
 			$info['own_card'] = $this->card_model->own_card($cat_id , $card_id ,$info['user_id'] );
 			//Load Directory helper to traverse media in each media item
 			$this->load->helper('directory');

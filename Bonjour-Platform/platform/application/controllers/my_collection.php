@@ -13,15 +13,17 @@ class My_collection extends CI_Controller {
 	}
 	
 	function get_my_collection() {
-		$session_array = array('current_page' => 'my_collection');
-		$this->session->set_userdata($session_array);
+		if (session_id() == '') {
+			session_start();
+		}
+		$_SESSION['current_page'] = 'my_collection';
 		//Load credit helper
 		$this->load->helper('credit');
 		//Set page name to be sent to the template view
 		$data['page'] = 'my_collection_view';
 		$data['header_view']['page'] = 'my_collection_view';
 		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
-		$data['header_view']['user_id'] = $this->session->userdata('user_id');
+		$data['header_view']['user_id'] = $_SESSION['user_id'];
 		$data['header_view']['cover_id'] = '748325228515155';
 		// Get User favorite categories ...
 		$this->load->model('category_model');

@@ -68,16 +68,14 @@ class Scoreboard extends CI_Controller {
 		$cat_id = $data['scoreboard_view']['first_cat_id'] = $data['header_view']['first_cat_id'] = $this->get_first_category_id($interest_categories);
 
 		//Set session data (current_category_id , current_category_name)
-		$session_array = array(
-				'current_page' => 'scoreboard'
-		);
-		$this->session->set_userdata($session_array);
+		$_SESSION ['current_page'] = 'scoreboard';
 
 		//Load the template view
 		$this->load->view('template', $data);
 	}
 	function get_scoreboard_details() {
-		$cat_id = $this->session->userdata ( 'current_category_id' );
+	
+		$cat_id =$_SESSION ['current_category_id' ];
 		$this->load->model ( 'scoreboard_model' );
 		$scoreboard = $this->scoreboard_model->get_scoreboard ( $cat_id );
 		$i = 0;
@@ -90,13 +88,12 @@ class Scoreboard extends CI_Controller {
 			$ret['top'][$i] = $row;
 			$i ++;
 		}
-		$session_array = array( 'user_data' => $ret,
-				'current_page' => 'scoreboard');
-		$this->session->set_userdata ( $session_array );
+		$_SESSION ['user_data'] = $ret;
+		$_SESSION ['current_page'] = 'scoreboard';
 		$this->load->view ( 'ajax/scoreboard_ajax' );
 	}
 	function get_load_scoreboard_status() {
-		$status = $this->session->userdata ( 'load_scoreboard' );
+		$status = $_SESSION [ 'load_scoreboard' ];
 		echo $status;
 	}
 }

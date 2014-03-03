@@ -1,11 +1,6 @@
  <? // foreach ($last_round as $cntndex => $user_score ) { ?>
  <?php
-	$medal = array (
-			"gold",
-			"silver",
-			"bronz" 
-	);
-	$scoreboard = $this->session->userdata ( 'user_data' );
+	$scoreboard = $_SESSION [ 'user_data' ];
 	$all_users = $scoreboard ['all'];
 	$top_users = $scoreboard ['top'];
 	for($i = 0; $i < count ( $top_users ); $i ++) {

@@ -42,7 +42,6 @@
 		<!---------------------------------------------------------------------------------->
 		<!-- LOAD OTHER CATEGORIES-->
 		<div class="categ">
-			<h1> 7alawa </h1>
 		</div>
 	</div>
 	<!---------------------------------------------------------------------------------->
@@ -66,7 +65,6 @@
 
 function scoreboard(){
 	ajaxpage = "<?= base_url()?>index.php?/scoreboard/get_scoreboard_details"  ;
-	alert (ajaxpage);
 	$('#card-ajax').html('Please Wait ...');
 	$.post(ajaxpage)
 	.done(function( data ) {
@@ -97,7 +95,6 @@ function get_not_interest_category(cat_id , cat_name ,  to_load){
 
 function onload_scoreboard(cat_id , cat_name, to_load) {
 	load_scoreboard(cat_id,cat_name);
-	// get_not_interest_category(cat_id , cat_name , to_load);
 }
 
 </script>

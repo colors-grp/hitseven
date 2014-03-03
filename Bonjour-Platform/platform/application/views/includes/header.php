@@ -47,17 +47,14 @@
 </head>
 <body
 	<?php
-		$session_array = array(
-				'load_scoreboard' => FALSE
-		);
-		$this->session->set_userdata($session_array);
+		$_SESSION ['load_scoreboard'] = FALSE;
 	?>
 	<?php if($page == 'main_view') {?>
-		onload ="onload_function('<?=$first_cat_id?>','<?=$first_cat_name?>','<?=true?>');">
+		onload ="onload_function('<?='-1'?>','<?='-1'?>','<?=true?>');">
 	<?php } else if($page == 'my_collection_view') {?>
-		onload ="on_load_my_collection('<?=$first_cat_id?>','<?=$first_cat_name?>','<?=true?>');">
+		onload ="on_load_my_collection('<?='-1'?>','<?='-1'?>','<?=true?>');">
 	<?php }else if ($page == 'scoreboard_view') {?>
-		onload ="onload_scoreboard('<?=$first_cat_id?>','<?=$first_cat_name?>','<?=true?>');">
+		onload ="onload_scoreboard('<?='-1'?>','<?='-1'?>','<?=true?>');">
 	<?php }?>
 	<div class="container">
 		<div class="header navbar navbar-static-top"
@@ -79,7 +76,7 @@
 				</a> <img class="indecator"
 					src="<?=base_url()?>webassets/img/header_indecator_icon.png"
 					alt="Header Indecator"></li>
-				<li><a href="#"> <img src="<?=base_url()?>webassets/img/admin.png"
+				<li><a href="<?= base_url()?>index.php?/admin_page"> <img src="<?=base_url()?>webassets/img/admin.png"
 						alt="Admin">
 				</a> <img class="indecator"
 					src="<?=base_url()?>webassets/img/header_indecator_icon.png"
