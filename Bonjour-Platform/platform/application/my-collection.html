@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type"
+	content="text/html; charset=windows-1256">
+<title>The Colors Concorrenza</title>
+<link type="text/css" rel="stylesheet"
+	href="./resource/bootstrap/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet"
+	href="./resource/bootstrap/css/bootstrap-theme.css" />
+<link type="text/css" rel="stylesheet" href="./resource/css/style.css" />
+
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,700"
+	rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./resource/css/demo.css">
+
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<!-- 	<script src="./resource/bootstrap/js/bootstrap.min.js"></script> -->
+<script src="./resource/bootstrap/js/dropdown.js"></script>
+<script type="text/javascript" src="./resource/js/jquery.js"></script>
+
+<script type="text/javascript">
+	function cat_background(id) {
+		if (id == 'red-cat') {
+			document.getElementById('red-cat').style.backgroundColor = 'rgba(255, 0, 0, 0.7)';
+			//	document.getElementById('blue-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+			document.getElementById('green-cat').style.backgroundColor = 'rgba(0, 174, 255, 0)';
+			document.getElementById('orange-cat').style.backgroundColor = 'rgba(0, 174, 255, 0)';
+		} else if (id == 'green-cat') {
+			document.getElementById('green-cat').style.backgroundColor = 'rgba(104, 194, 32, 0.4)';
+			//	document.getElementById('blue-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+			document.getElementById('red-cat').style.backgroundColor = 'rgba(0, 174, 255, 0)';
+			document.getElementById('orange-cat').style.backgroundColor = 'rgba(0, 174, 255, 0)';
+		} else if (id == 'orange-cat') {
+			document.getElementById('orange-cat').style.backgroundColor = 'rgba(255, 168, 0, 0.7)';
+			//	document.getElementById('blue-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+			document.getElementById('green-cat').style.backgroundColor = 'rgba(0, 174, 255, 0)';
+			document.getElementById('red-cat').style.backgroundColor = 'rgba(0, 174, 255, 0)';
+		}
+		/*	else if(id == 'blue-cat'){
+				document.getElementById('blue-cat').style.backgroundColor= 'rgba(0, 174, 255, 0.4)';
+				document.getElementById('red-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+				document.getElementById('green-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+				document.getElementById('orange-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+			}
+		 */
+	}
+
+	function container_height() {
+		var h = $('#My-container').height() + 100;
+		document.getElementById('My-container').style.height = h + "px";
+
+		h = $('#card-details').height() + 80;
+		document.getElementById('card-details').style.height = h + "px";
+	}
+</script>
+</head>
+<body onload="return container_height();">
+
+	<!-- Header -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div id="header-container">
+			<div class="navbar-header">
+				<h4 style="color: white;">
+					<img id="header-pic" src="./resource/img/main-icons/hello.jpg"
+						alt="Profile Picture"> Nour Mohamed
+				</h4>
+			</div>
+			<ul class="nav nav-pills navbar-right" style="height: 40px;">
+				<li><a href="#"> <img
+						src="./resource/img/main-icons/friends.png" alt="invite-friends"
+						width="30">
+				</a></li>
+				<li><img class="indicator"
+					src="./resource/img/main-icons/header_indecator_icon.png" alt=""></li>
+				<li><a href="#"> <img
+						src="./resource/img/main-icons/notifications.png"
+						alt="notifications" width="30">
+				</a></li>
+				<li><img class="indicator"
+					src="./resource/img/main-icons/header_indecator_icon.png" alt=""></li>
+				<li><a href="#"> <img
+						src="./resource/img/main-icons/activitylog.png" alt="activity-log"
+						width="30">
+				</a></li>
+				<li><img class="indicator"
+					src="./resource/img/main-icons/header_indecator_icon.png" alt=""></li>
+				<li><a href="#"> <img
+						src="./resource/img/main-icons/admin.png" alt="admin-icon"
+						width="30">
+				</a></li>
+				<li><img class="indicator"
+					src="./resource/img/main-icons/header_indecator_icon.png" alt=""></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" style="height: 42px;"> <img id="en-icon"
+						src="./resource/img/main-icons/en_icon.png" alt="English"
+						width="40">
+				</a>
+					<ul class="dropdown-menu ar">
+						<li><a href="#"> <img
+								src="./resource/img/main-icons/ar_icon.png" alt="Arabic"
+								width="22">
+						</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</div>
+	<!-- end of the header -->
+	<!-- Container -->
+	<div class="container" id="My-container">
+		<!-- Left Header -->
+		<div id="left-header">
+			<div id="logo">
+				<img src="./resource/img/main-icons/Logo.png" alt="Logo"
+					style="margin-left: 11.5px;">
+				<div id="profile">
+					<div id="profile-white-background">
+						<div id="profile-orange-background">
+							<img src="./resource/img/main-icons/hello.jpg"
+								alt="profile picture" id="profile-pic">
+						</div>
+						<div id="points-image">
+							<img src="./resource/img/main-icons/points_icon.png" alt="">
+							100 Points <br /> <img
+								src="./resource/img/main-icons/arrow_icon.png" alt=""> <a
+								href="#" style="text-decoration: none; color: #7E7E7E;">Get
+								more points</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<table id="MyFav-cat">
+				<tr>
+					<td colspan="3"
+						style="border-top: 8px solid #68c220; box-shadow: 0 2px 2px -1px gray;">
+						<h4>
+							<img class="arrow"
+								src="./resource/img/main-icons/green-arrow.png"
+								alt="green-arrow">My Favorite Categories
+						</h4>
+					</td>
+				</tr>
+				<tr style="height: 10px;"></tr>
+				<tr id="orange-cat"
+					style="height: 95px; background: rgba(255, 168, 0, 0.7);">
+					<td colspan="3" style="border-radius: 3px;"><a href="#"
+						onclick="cat_background('orange-cat'); return false;">
+							<ul class="nav nav-pills">
+								<li><img class="circle-pic"
+									src="./resource/img/main-icons/score_icon.png" alt="circle"
+									style="margin-top: 13px;">
+									<div class="left-line"></div></li>
+								<li style="width: 83px; height: 90px;"><img class="cat-pic"
+									src="./resource/img/main-icons/orange.png" alt="Orange-cat">
+									<font class="cat-name">Name</font></li>
+								<li>
+									<div class="right-line"></div> <img class="circle-pic"
+									src="./resource/img/main-icons/score_icon.png" alt="circle">
+								</li>
+							</ul>
+					</a></td>
+				</tr>
+				<tr style="height: 10px;"></tr>
+				<tr id="red-cat" style="height: 95px;">
+					<td colspan="3" style="border-radius: 3px;"><a href="#"
+						onclick="cat_background('red-cat'); return false;">
+							<ul class="nav nav-pills">
+								<li><img class="circle-pic"
+									src="./resource/img/main-icons/score_icon.png" alt="circle"
+									style="margin-top: 13px;">
+									<div class="left-line"></div></li>
+								<li style="width: 83px; height: 90px;"><img class="cat-pic"
+									src="./resource/img/main-icons/red.png" alt="Red-cat"> <font
+									class="cat-name">Name</font></li>
+								<li>
+									<div class="right-line"></div> <img class="circle-pic"
+									src="./resource/img/main-icons/score_icon.png" alt="circle">
+								</li>
+							</ul>
+					</a></td>
+				</tr>
+				<tr style="height: 10px;"></tr>
+				<tr id="green-cat" style="height: 95px;">
+					<td colspan="3" style="border-radius: 3px;"><a href="#"
+						onclick="cat_background('green-cat'); return false;">
+							<ul class="nav nav-pills">
+								<li><img class="circle-pic"
+									src="./resource/img/main-icons/score_icon.png" alt="circle"
+									style="margin-top: 13px;">
+									<div class="left-line"></div></li>
+								<li style="width: 83px; height: 90px;"><img class="cat-pic"
+									src="./resource/img/main-icons/green.png" alt="Green-cat">
+									<font class="cat-name">Name</font></li>
+								<li>
+									<div class="right-line"></div> <img class="circle-pic"
+									src="./resource/img/main-icons/score_icon.png" alt="circle">
+								</li>
+							</ul>
+					</a></td>
+				</tr>
+				<tr style="height: 10px;"></tr>
+			</table>
+			<table id="new-cat">
+				<tr>
+					<td colspan="3"
+						style="border-top: 8px solid #ca65be; box-shadow: 0 2px 2px -1px gray;">
+						<h4>
+							<img class="arrow" src="./resource/img/main-icons/pink-arrow.png"
+								alt="purple-arrow">Categories
+						</h4>
+					</td>
+				</tr>
+				<tr style="height: 10px;"></tr>
+				<tr style="text-align: center;">
+					<td><img class="new-cat-pic"
+						src="./resource/img/main-icons/orange.png" alt="Orange-cat"
+						style="margin-left: 30px;"> <a href="#"> <img
+							id="add-cat" src="./resource/img/main-icons/plus_icon.png">
+					</a></td>
+					<td><img class="new-cat-pic"
+						src="./resource/img/main-icons/red.png" alt="Red-cat"
+						style="margin-right: -16px;"> <font class="new-cat-name">Name</font>
+					</td>
+				</tr>
+				<tr style="height: 10px;"></tr>
+				<tr style="text-align: center;">
+					<td><img class="new-cat-pic"
+						src="./resource/img/main-icons/blue.png" alt="Blue-cat"
+						style="margin-left: 30px;"> <font class="new-cat-name"
+						style="margin-left: -16px;">Name</font></td>
+					<td><img class="new-cat-pic"
+						src="./resource/img/main-icons/green.png" alt="Green-cat"
+						style="margin-right: -16px;"> <font class="new-cat-name">Name</font>
+					</td>
+				</tr>
+				<tr style="height: 10px;"></tr>
+			</table>
+
+		</div>
+		<!-- end of left header -->
+
+		<!-- Content -->
+		<div id="content">
+
+			<!-- pages bar -->
+			<div id="pages-bar">
+				<div class="row">
+					<table style="margin-left: 25px; text-align: center;">
+						<tr>
+							<td style="width: 158px;"><a href="index.html"
+								style="text-decoration: none;"><h4>MARKET</h4></a></td>
+							<td><img src="./resource/img/main-icons/separator.png"
+								alt="separator"></td>
+							<td style="width: 200px;"><a href="my-collection.html"
+								style="text-decoration: none;"><h4>MY COLLECTION</h4></a></td>
+							<td><img src="./resource/img/main-icons/separator.png"
+								alt="separator"></td>
+							<td style="width: 200px;"><a href="scoreboard.html"
+								style="text-decoration: none;"><h4>SCOREBOARDS</h4></a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<!-- end of pages bar -->
+
+			<!-- Dashboard -->
+			<div id="Dashboard">
+				<div id="Orange-Background">
+					<h3 style="color: white; position: relative; top: 5px;"
+						align="center">My Dashboard</h3>
+					<div id="White-Background">
+						<table id="counter">
+							<tr style="height: 100px;">
+								<td style="border-left: 6px solid #68c220;"><img
+									class="arrow" src="./resource/img/main-icons/green-arrow.png"
+									alt="green-arrow" style="position: relative; top: -22px;">
+								</td>
+								<td style="width: 50px;">
+									<h3>Next Results in</h3>
+								</td>
+								<!-- <td>
+									<img src="./resource/img/main-icons/counter.png" alt="counter" style = "margin-left: 15px;">
+								</td>-->
+								<td style="width: 20px;"></td>
+								<td>
+									<div class="clock-item clock-days countdown-time-value"
+										style="width: 95px;">
+										<div class="wrap">
+											<div class="inner">
+												<div id="canvas_days" class="clock-canvas"></div>
+												<div class="text">
+													<p class="val">0</p>
+													<p class="type-days type-time">DAYS</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</td>
+								<td style="width: 15px;"></td>
+								<td>
+									<div class="clock-item clock-hours countdown-time-value"
+										style="width: 95px;">
+										<div class="wrap">
+											<div class="inner">
+												<div id="canvas_hours" class="clock-canvas"></div>
+												<div class="text">
+													<p class="val">0</p>
+													<p class="type-hours type-time">HOURS</p>
+												</div>
+												<!-- /.text -->
+											</div>
+											<!-- /.inner -->
+										</div>
+										<!-- /.wrap -->
+									</div> <!-- /.clock-item -->
+								</td>
+								<td style="width: 15px;"></td>
+								<td>
+									<div class="clock-item clock-minutes countdown-time-value"
+										style="width: 95px;">
+										<div class="wrap">
+											<div class="inner">
+												<div id="canvas_minutes" class="clock-canvas"></div>
+												<div class="text">
+													<p class="val">0</p>
+													<p class="type-minutes type-time">MINUTES</p>
+												</div>
+												<!-- /.text -->
+											</div>
+											<!-- /.inner -->
+										</div>
+										<!-- /.wrap -->
+									</div> <!-- /.clock-item -->
+								</td>
+								<td style="width: 15px;"></td>
+								<td>
+									<div class="clock-item clock-seconds countdown-time-value"
+										style="width: 95px;">
+										<div class="wrap">
+											<div class="inner">
+												<div id="canvas_seconds" class="clock-canvas"></div>
+												<div class="text">
+													<p class="val">0</p>
+													<p class="type-seconds type-time">SECONDS</p>
+												</div>
+												<!-- /.text -->
+											</div>
+											<!-- /.inner -->
+										</div>
+										<!-- /.wrap -->
+									</div> <!-- /.clock-item -->
+								</td>
+							</tr>
+						</table>
+
+						<div class="row">
+							<table id="score">
+								<tr
+									style="border-bottom: 6px solid #68c220; font-size: 13px; font-weight: bold;">
+									<td style="width: 180px;"></td>
+									<td style="width: 50px;">Score</td>
+									<td style="width: 50px;">Pos</td>
+								</tr>
+								<tr style="height: 45px; border-bottom: 1px solid #E4E4E4;">
+									<td class="right-border-grey" style="font-size: 12px;"><img
+										width="27" height="27"
+										src="./resource/img/main-icons/hello.jpg"
+										alt="Profile Picture"> Heba Gamal Abu El Ghar</td>
+									<td>239</td>
+									<td class="left-border-grey"><div class="triangle"></div></td>
+								</tr>
+								<tr style="height: 45px; border-bottom: 1px solid #E4E4E4;">
+									<td class="right-border-grey" style="font-size: 12px;"><img
+										width="27" height="27"
+										src="./resource/img/main-icons/hello.jpg"
+										alt="Profile Picture"> Heba Gamal Abu El Ghar</td>
+									<td>239</td>
+									<td class="left-border-grey"><div class="triangle"></div></td>
+								</tr>
+								<tr style="height: 45px;">
+									<td class="right-border-grey" style="font-size: 12px;"><img
+										width="27" height="27"
+										src="./resource/img/main-icons/hello.jpg"
+										alt="Profile Picture"> Heba Gamal Abu El Ghar</td>
+									<td>239</td>
+									<td class="left-border-grey"><div class="triangle"></div></td>
+								</tr>
+							</table>
+							<table id="rank">
+								<tr
+									style="border-bottom: 6px solid #68c220; font-size: 13px; font-weight: bold;">
+									<td style="width: 70px;"></td>
+									<td style="width: 70px;">Category</td>
+									<td style="width: 70px;">My Score</td>
+									<td style="width: 70px;">My Pos</td>
+								</tr>
+								<tr style="height: 45px; border-bottom: 1px solid #E4E4E4;">
+									<td><img class="cat-rank"
+										src="./resource/img/main-icons/orange.png" alt="Orange-cat">
+										<font class="rank-text">1st</font></td>
+									<td class="right-border-grey">Orange</td>
+									<td>239</td>
+									<td class="left-border-grey"><div class="triangle"></div></td>
+								</tr>
+								<tr style="height: 45px; border-bottom: 1px solid #E4E4E4;">
+									<td><img class="cat-rank"
+										src="./resource/img/main-icons/red.png" alt="Red-cat">
+										<font class="rank-text">2nd</font></td>
+									<td class="right-border-grey">Red</td>
+									<td>239</td>
+									<td class="left-border-grey"><div class="triangle"></div></td>
+								</tr>
+								<tr style="height: 45px;">
+									<td><img class="cat-rank"
+										src="./resource/img/main-icons/green.png" alt="Green-cat">
+										<font class="rank-text">3rd</font></td>
+									<td class="right-border-grey">Green</td>
+									<td>239</td>
+									<td class="left-border-grey"><div class="triangle"></div></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<!-- end of Orange-Background -->
+				</div>
+				<!-- end of Orange-Background -->
+			</div>
+			<!-- end of dashboard -->
+
+			<!-- buttons -->
+			<table style="position: relative; top: 55px; text-align: center;">
+				<tr>
+					<td
+						style="background-color: white; width: 152px; border-radius: 2px;"><img
+						src="./resource/img/main-icons/score_sort.jpg" alt="score-icon">
+						SORT BY SCORE</td>
+					<td style="width: 10px;"></td>
+					<td
+						style="background-color: white; width: 152px; border-radius: 2px;"><img
+						src="./resource/img/main-icons/game_sort.png" alt="game-icon">SORT
+						BY GAME</td>
+				</tr>
+			</table>
+			<!-- end of buttons  -->
+
+			<!-- Category cards -->
+			<table id="category-cards">
+				<tr>
+					<td
+						style="border-top: 8px solid #ffa800; box-shadow: 0 2px 2px -1px gray;">
+						<h4>
+							<img class="arrow"
+								src="./resource/img/main-icons/orange-arrow.png"
+								alt="orange-arrow">Category Name
+						</h4>
+					</td>
+				</tr>
+				<tr style="height: 10px;"></tr>
+				<tr style="height: 150px;">
+					<td>
+						<div class="card-holder-small">
+							<img src="./resource/img/main-icons/card.png"
+								class="card-pic-small" alt="card">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>Card Name</td>
+				</tr>
+				<tr style="height: 5px;"></tr>
+				<tr style="height: 150px;">
+					<td>
+						<div class="card-holder-small">
+							<img src="./resource/img/main-icons/card.png"
+								class="card-pic-small" alt="card">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>Card Name</td>
+				</tr>
+				<tr style="height: 5px;"></tr>
+				<tr style="height: 150px;">
+					<td>
+						<div class="card-holder-small">
+							<img src="./resource/img/main-icons/card.png"
+								class="card-pic-small" alt="card">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>Card Name</td>
+				</tr>
+			</table>
+			<!-- end of category cards -->
+
+			<!-- Card Details -->
+			<div id="card-details">
+				<table id="card-details-table">
+					<tr style="border-top: 8px solid #ffa800; height: 10px;">
+						<td colspan="3"></td>
+					</tr>
+					<tr>
+						<td>
+							<div id="card-details-background">Card Name</div>
+						</td>
+						<td>
+							<div id="card-details-background">1000 Points</div>
+						</td>
+						<td>
+							<div id="card-details-background">
+								<img src="./resource/img/main-icons/trade_icon.png"
+									alt="trade-icon" style="height: 25px;">Trade
+							</div>
+						</td>
+					</tr>
+					<tr style="height: 10px;">
+						<td colspan="3" style="box-shadow: 0 2px 2px -1px gray;"></td>
+					</tr>
+				</table>
+				<table id="card-photos">
+					<tr>
+						<td colspan="4" style="border-bottom: 2px solid #ffa800;"><img
+							src="./resource/img/main-icons/cards_photo.png"
+							style="margin-right: 7px; margin-left: 7px; margin-bottom: 7px;" />Photos
+						</td>
+					</tr>
+					<tr align="center">
+						<td class="photo-padding"><img
+							src="./resource/img/main-icons/mobile_icon.png" /></td>
+						<td class="photo-padding"><img
+							src="./resource/img/main-icons/pc_icon.png" /></td>
+						<td class="photo-padding"><img
+							src="./resource/img/main-icons/mac_icon.png" /></td>
+						<td style="width: 200px;"></td>
+					</tr>
+					<tr align="center">
+						<td class="photo-padding">Mobile</td>
+						<td class="photo-padding">PC</td>
+						<td class="photo-padding">Mac</td>
+						<td style="width: 200px;"></td>
+					</tr>
+				</table>
+				<table id="card-videos">
+					<tr>
+						<td colspan="4" style="border-bottom: 2px solid #ffa800;"><img
+							src="./resource/img/main-icons/cards_video.png"
+							style="margin-right: 7px; margin-left: 7px; margin-bottom: 7px;" />Videos
+						</td>
+					</tr>
+				</table>
+				<table id="card-music">
+					<tr>
+						<td colspan="4" style="border-bottom: 2px solid #ffa800;"><img
+							src="./resource/img/main-icons/cards_music.png"
+							style="margin-right: 7px; margin-left: 7px; margin-bottom: 7px;" />Music
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!-- end of card details -->
+
+		</div>
+		<!-- end of content -->
+	</div>
+	<!-- end of container -->
+
+
+	<script type="text/javascript"
+		src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="./resource/js/kinetic.js"></script>
+	<script type="text/javascript"
+		src="./resource/js/jquery.final-countdown.js"></script>
+	<script type="text/javascript">
+		$('.countdown').final_countdown({});
+	</script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push([ '_setAccount', 'UA-36251023-1' ]);
+		_gaq.push([ '_setDomainName', 'jqueryscript.net' ]);
+		_gaq.push([ '_trackPageview' ]);
+
+		(function() {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+					: 'http://www')
+					+ '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+	<!-- footer -->
+	<div class="row" style="margin-right: 0px;">
+		<div id="footer" style="width: 100%; height: 42px; background: #222;">
+
+		</div>
+	</div>
+	<!-- end of footer -->
+</body>
+</html>

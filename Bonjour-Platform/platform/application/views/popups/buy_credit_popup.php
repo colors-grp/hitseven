@@ -15,6 +15,7 @@
 
 <script>
 $("#getPointsButton").on('click',function(e){
+	alert ("bey7esss");
 	e.preventDefault();
 	// Opening animations
 	$("#buy_credit").modal({onOpen: function (dialog) {
@@ -24,13 +25,12 @@ $("#getPointsButton").on('click',function(e){
 				dialog.data.slideDown('slow');
 			});
 		});
-
 	}});
 });
 $("#buy_credit_form").on('submit',function(){
 	$.post( "<?= base_url() ?>index.php?/platform/buy_credit", $( "#buy_credit_form" ).serialize() ).done(function(data) {
 		$.modal.close();
-		$("h1.points").html(data);
+		$("#user_points").html(data);
 	});
 	return false;
 });

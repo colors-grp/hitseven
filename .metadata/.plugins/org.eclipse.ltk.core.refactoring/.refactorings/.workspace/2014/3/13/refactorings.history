@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Bonjour-Platform/platform/h7-assets/resources/img/main-icons/cards_game.jpg&apos;" deleteContents="false" description="Delete resource &apos;Bonjour-Platform/platform/h7-assets/resources/img/main-icons/cards_game.jpg&apos;" element1="/Bonjour-Platform/platform/h7-assets/resources/img/main-icons/cards_game.jpg" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1395571799689"/>
+</session>

@@ -14,9 +14,9 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://colors-studios.com/heba/';
-$config['core_url']	= 'http://colors-studios.com/heba/';
-$config['platform_url']	= 'http://gloryette.org/heba/';
+$config['base_url']	= 'http://colors-studios.com/khairy/';
+$config['core_url']	= 'http://colors-studios.com/khairy/';
+$config['platform_url']	= 'http://gloryette.org/khairy/';
 
 /*
 |--------------------------------------------------------------------------

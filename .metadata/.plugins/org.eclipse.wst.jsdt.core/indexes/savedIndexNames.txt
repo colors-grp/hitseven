@@ -1,0 +1,6 @@
+INDEX VERSION 1.122+C:\Users\5airy\Documents\GitHub\hitseven\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1424240691.index
+3450057094.index
+1394958702.index
+735381054.index
+3459277420.index

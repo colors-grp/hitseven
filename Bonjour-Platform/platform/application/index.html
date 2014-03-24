@@ -1,10 +1,782 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>403 Forbidden</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+	<title>The Colors Concorrenza</title>
+	<link type="text/css" rel="stylesheet" href="./resource/bootstrap/css/bootstrap.css"/>
+	<link type="text/css" rel="stylesheet" href="./resource/bootstrap/css/bootstrap-theme.css"/>
+	<link type="text/css" rel="stylesheet" href="./resource/css/style.css"/>
+	
+	<link href="http://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="./resource/css/demo.css">
+	
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>	
+<!-- 	<script src="./resource/bootstrap/js/bootstrap.min.js"></script> -->
+	<script src="./resource/bootstrap/js/dropdown.js"></script>
+    <script type="text/javascript" src="./resource/js/jquery.js"></script> 
+    
+    
+    <!-- Popup -->
+    
+    	<script src="./resource/alertify/lib/alertify.min.js"></script>
+    
+    	<link rel="stylesheet" href="./resource/alertify/themes/alertify.core.css" />
+		<link rel="stylesheet" href="./resource/alertify/themes/alertify.default.css" />
+    
+    <!-- end of popup -->
+    
+    <script type = "text/javascript">
+    function alert_success(){
+    	alertify.success("Success notification");
+    	return false;
+    }
+    
+    function alert_error(){
+    	alertify.error("Error notification");
+    	return false;
+    }
+    
+    function alert_warning(){
+    	alertify.warning("Warning notification");
+    	return false;
+    }
+    
+    function alert_info(){
+    	alertify.info("Information notification");
+    	return false;
+    }
+    
+    function cat_background(id){
+			if(id == 'red-cat'){
+				document.getElementById('red-cat').style.backgroundColor= 'rgba(255, 0, 0, 0.7)';
+			//	document.getElementById('blue-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+				document.getElementById('green-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+				document.getElementById('orange-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+			}
+			else if(id == 'green-cat'){
+				document.getElementById('green-cat').style.backgroundColor= 'rgba(104, 194, 32, 0.4)';
+			//	document.getElementById('blue-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+				document.getElementById('red-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+				document.getElementById('orange-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+			}
+			else if(id == 'orange-cat'){
+				document.getElementById('orange-cat').style.backgroundColor= 'rgba(255, 168, 0, 0.7)';
+			//	document.getElementById('blue-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+				document.getElementById('green-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+				document.getElementById('red-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+			}
+		/*	else if(id == 'blue-cat'){
+				document.getElementById('blue-cat').style.backgroundColor= 'rgba(0, 174, 255, 0.4)';
+				document.getElementById('red-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+				document.getElementById('green-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+				document.getElementById('orange-cat').style.backgroundColor= 'rgba(0, 174, 255, 0)';
+			}
+			*/
+    	}
+    	
+    	function container_height(){
+    		var h = $('#My-container').height() + 200;
+    		document.getElementById('My-container').style.height = h + "px";
+    	}
+  
+    </script>
 </head>
-<body>
+<body onload = "return container_height();">
 
-<p>Directory access is forbidden.</p>
+<!-- Header -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		 <div id = "header-container">
+		 <div class="navbar-header">
+			<h4 style = "color: white;">
+				<img id = "header-pic" src = "./resource/img/main-icons/hello.jpg" alt="Profile Picture">
+				Nour Mohamed
+			</h4>
+		 </div>
+		 <ul class="nav nav-pills navbar-right" style = "height:40px;" >
+		 	<li>
+		 		<a href="#">
+                	<img src="./resource/img/main-icons/friends.png" alt="invite-friends" width = "30" >
+                </a>
+		 	</li>
+		 	<li><img class = "indicator" src="./resource/img/main-icons/header_indecator_icon.png" alt=""></li>
+		 	<li>
+		 		<a href="#">
+                	<img src="./resource/img/main-icons/notifications.png" alt="notifications" width = "30" >
+                </a>
+		 	</li>
+		 	<li><img class = "indicator" src="./resource/img/main-icons/header_indecator_icon.png" alt=""></li>
+		 	<li>
+		 		<a href="#">
+                	<img src="./resource/img/main-icons/activitylog.png" alt="activity-log" width = "30" >
+                </a>
+		 	</li>
+		 	<li><img class = "indicator" src="./resource/img/main-icons/header_indecator_icon.png" alt=""></li>
+		 	<li>
+		 		<a href="#">
+                	<img src="./resource/img/main-icons/admin.png" alt="admin-icon" width = "30" >
+                </a>
+		 	</li>
+		 	<li><img class = "indicator" src="./resource/img/main-icons/header_indecator_icon.png" alt=""></li>
+		 	<li class="dropdown">
+            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" style = "height: 42px;">
+                	<img id = "en-icon" src="./resource/img/main-icons/en_icon.png" alt="English" width = "40">
+                </a>
+                <ul class="dropdown-menu ar">
+                    <li>
+                        <a href="#">
+                        	<img src="./resource/img/main-icons/ar_icon.png" alt="Arabic" width = "22">
+                    	</a>
+                	</li>
+            	</ul>
+         	</li>
+         </ul>
+         </div>
+	</div>
+<!-- end of the header -->
+<!-- Container -->
+	<div class = "container" id = "My-container">
+		<!-- Left Header -->
+		<div id = "left-header">
+			<div id = "logo">
+				<img src="./resource/img/main-icons/Logo.png" alt="Logo" style = "margin-left: 11.5px;">
+				<div id = "profile">
+					<div id = "profile-white-background">
+						<div id = "profile-orange-background">
+							<img src="./resource/img/main-icons/hello.jpg" alt="profile picture" id = "profile-pic">
+						</div>
+						<div id = "points-image">
+							<img src="./resource/img/main-icons/points_icon.png" alt="">
+							100 Points
+							<br />
+							<img src="./resource/img/main-icons/arrow_icon.png" alt="">
+							<a href = "#" style = "text-decoration: none; color: #7E7E7E;">Get more points</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<table id = "MyFav-cat">
+				<tr>
+					<td colspan = "3" style = "border-top:8px solid #68c220; box-shadow: 0 2px 2px -1px gray;">
+						<h4><img class = "arrow" src="./resource/img/main-icons/green-arrow.png" alt="green-arrow">My Favorite Categories</h4>
+					</td>
+				</tr>
+				<tr style = "height: 10px;"></tr>
+				<tr id = "orange-cat" style = "height: 95px; background: rgba(255, 168, 0, 0.7);">
+					<td colspan = "3" style = "border-radius: 3px;">
+						<a href = "#" onclick = "cat_background('orange-cat'); return false;">
+							<ul class="nav nav-pills">
+								<li>
+									<img class = "circle-pic" src="./resource/img/main-icons/score_icon.png" alt="circle"  style = "margin-top:13px;">
+								 	<div class = "left-line"></div>
+								</li>													
+								<li style = "width: 83px; height: 90px;">
+									<img class = "cat-pic" src="./resource/img/main-icons/orange.png" alt="Orange-cat" >
+									<font class = "cat-name">Name</font>
+								</li>
+								<li>
+								 	<div class = "right-line"></div>
+									<img class = "circle-pic" src="./resource/img/main-icons/score_icon.png" alt="circle" >
+								</li>												
+							</ul>
+						</a>
+					</td>
+				</tr>
+				<tr style = "height: 10px;"></tr>
+				<tr id = "red-cat" style = "height: 95px;">
+					<td colspan = "3" style = "border-radius: 3px;">
+						<a href = "#" onclick = "cat_background('red-cat'); return false;">
+							<ul class="nav nav-pills">
+								<li>
+									<img class = "circle-pic" src="./resource/img/main-icons/score_icon.png" alt="circle" style = "margin-top:13px;">
+								 	<div class = "left-line"></div>
+								</li>										
+								<li style = "width: 83px; height: 90px;">
+									<img class = "cat-pic" src="./resource/img/main-icons/red.png" alt="Red-cat" >
+									<font class = "cat-name">Name</font>
+								</li>
+								<li>
+									<div class = "right-line"></div>
+									<img class = "circle-pic" src="./resource/img/main-icons/score_icon.png" alt="circle" >
+								</li>												
+							</ul>
+						</a>
+					</td>
+				</tr>
+				<tr style = "height: 10px;"></tr>
+				<tr id = "green-cat" style = "height: 95px;">
+					<td colspan = "3" style = "border-radius: 3px;">
+						<a href = "#" onclick = "cat_background('green-cat'); return false;">
+							<ul class="nav nav-pills">
+								<li>
+									<img class = "circle-pic" src="./resource/img/main-icons/score_icon.png" alt="circle" style = "margin-top:13px;" >
+									<div class = "left-line"></div>
+								</li>
+								<li style = "width: 83px; height: 90px;">
+									<img class = "cat-pic" src="./resource/img/main-icons/green.png" alt="Green-cat" >
+									<font class = "cat-name">Name</font>
+								</li>
+								<li>
+									<div class = "right-line"></div>
+									<img class = "circle-pic" src="./resource/img/main-icons/score_icon.png" alt="circle" >
+								</li>						
+							</ul>
+						</a>
+					</td>	
+				</tr>
+				<tr style = "height: 10px;"></tr>
+			</table>
+			<table id = "new-cat">
+				<tr>
+					<td colspan = "3" style = "border-top:8px solid #ca65be; box-shadow: 0 2px 2px -1px gray;">
+						<h4><img class = "arrow" src="./resource/img/main-icons/pink-arrow.png" alt="purple-arrow">Categories</h4>
+					</td>
+				</tr>
+				<tr style = "height: 10px;"></tr>
+				<tr style = "text-align: center;">
+					<td >
+						<img class = "new-cat-pic" src="./resource/img/main-icons/orange.png" alt="Orange-cat" style = "margin-left:30px;">
+						<a href = "#">
+							<img id = "add-cat" src = "./resource/img/main-icons/plus_icon.png">
+						</a>
+					</td>
+					<td >
+						<img class = "new-cat-pic" src="./resource/img/main-icons/red.png" alt="Red-cat" style = "margin-right:-16px;">
+						<font class = "new-cat-name">Name</font>
+					</td>
+				</tr>
+				<tr style = "height: 10px;"></tr>
+				<tr style = "text-align: center;">
+					<td >
+						<img class = "new-cat-pic" src="./resource/img/main-icons/blue.png" alt="Blue-cat" style = "margin-left:30px;">
+						<font class = "new-cat-name" style = "margin-left: -16px;">Name</font>
+					</td>
+					<td >
+						<img class = "new-cat-pic" src="./resource/img/main-icons/green.png" alt="Green-cat" style = "margin-right:-16px;" >
+						<font class = "new-cat-name">Name</font>
+					</td>
+				</tr>
+				<tr style = "height: 10px;"></tr>
+			</table>
+				
+		</div>
+		<!-- end of left header -->	
+		
+		<!-- Content -->
+		<div id = "content">
+			
+			<!-- pages bar -->	
+			<div id = "pages-bar">
+				<div class = "row">
+					<table style = "margin-left: 25px; text-align: center;">
+						<tr>
+							<td style = "width: 158px;"><a href = "#" style = "text-decoration: none;"><h4>MARKET</h4></a></td>
+							<td><img src="./resource/img/main-icons/separator.png" alt="separator"></td>
+							<td style = " width: 200px;"><a href = "my-collection.html" style = "text-decoration: none;"><h4>MY COLLECTION</h4></a></td>
+							<td><img src="./resource/img/main-icons/separator.png" alt="separator"></td>
+							<td style = "width: 200px;"><a href = "scoreboard.html" style = "text-decoration: none;"><h4>SCOREBOARDS</h4></a></td>
+						</tr>
+					</table>
+				</div>
+			</div>	
+			<!-- end of pages bar -->
+				
+			<!-- Dashboard -->
+			<div id = "Dashboard">
+				<div id = "Orange-Background">
+					<h3 style = "color: white; position: relative; top:5px;" align = "center">My Dashboard</h3>
+						<div id = "White-Background">
+						<table id = "counter">
+							<tr style = "height: 100px;">
+								<td style = "border-left:6px solid #68c220;">
+									<img class = "arrow" src="./resource/img/main-icons/green-arrow.png" alt="green-arrow" style = "position: relative;top: -22px;">
+								</td>
+								<td style = "width: 50px;">
+									<h3>Next Results in</h3>
+								</td>
+								<!-- <td>
+									<img src="./resource/img/main-icons/counter.png" alt="counter" style = "margin-left: 15px;">
+								</td>-->
+								<td style = "width: 20px;"></td>
+								<td>
+									<div class="clock-item clock-days countdown-time-value" style = "width: 95px;">
+										<div class="wrap">
+											<div class="inner">
+												<div id="canvas_days" class="clock-canvas">
+												</div>
+												<div class="text">
+													<p class="val">0</p>
+													<p class="type-days type-time">DAYS</p>
+												</div>
+											</div>
+										</div> 
+									</div>
+								</td>
+								<td style = "width: 15px;"></td>
+								<td>
+									<div class="clock-item clock-hours countdown-time-value" style = "width: 95px;">
+									<div class="wrap">
+									<div class="inner">
+									<div id="canvas_hours" class="clock-canvas"></div>
+									<div class="text">
+									<p class="val">0</p>
+									<p class="type-hours type-time">HOURS</p>
+									</div>
+									<!-- /.text --> 
+									</div>
+									<!-- /.inner --> 
+									</div>
+									<!-- /.wrap --> 
+									</div>
+									<!-- /.clock-item -->
+								</td>
+								<td style = "width: 15px;"></td>
+								<td>
+									<div class="clock-item clock-minutes countdown-time-value" style = "width: 95px;">
+									<div class="wrap">
+									<div class="inner">
+									<div id="canvas_minutes" class="clock-canvas"></div>
+									<div class="text">
+									<p class="val">0</p>
+									<p class="type-minutes type-time">MINUTES</p>
+									</div>
+									<!-- /.text --> 
+									</div>
+									<!-- /.inner --> 
+									</div>
+									<!-- /.wrap --> 
+									</div>
+									<!-- /.clock-item -->
+								</td>
+								<td style = "width: 15px;"></td>
+								<td>
+									<div class="clock-item clock-seconds countdown-time-value" style = "width: 95px;">
+									<div class="wrap">
+									<div class="inner">
+									<div id="canvas_seconds" class="clock-canvas"></div>
+									<div class="text">
+									<p class="val">0</p>
+									<p class="type-seconds type-time">SECONDS</p>
+									</div>
+									<!-- /.text --> 
+									</div>
+									<!-- /.inner --> 
+									</div>
+									<!-- /.wrap --> 
+									</div>
+									<!-- /.clock-item --> 
+								</td>
+							</tr>
+						</table>
+						
+						<div class = "row">
+							<table id = "score">
+								<tr style = "border-bottom:6px solid #68c220;font-size: 13px;font-weight: bold;">
+									<td style = "width: 180px;"></td>
+									<td style = "width: 50px;">Score</td>
+									<td style = "width: 50px;">Pos</td>
+								</tr>
+								<tr style = "height: 45px; border-bottom: 1px solid #E4E4E4;">
+									<td class = "right-border-grey" style = "font-size: 12px;">
+										<img width = "27" height = "27" src = "./resource/img/main-icons/hello.jpg" alt="Profile Picture">
+										Heba Gamal Abu El Ghar
+									</td>
+									<td>239</td>
+									<td class = "left-border-grey"><div class = "triangle"></div></td>
+								</tr>
+								<tr style = "height: 45px; border-bottom: 1px solid #E4E4E4;">
+									<td class = "right-border-grey" style = "font-size: 12px;">
+										<img width = "27" height = "27" src = "./resource/img/main-icons/hello.jpg" alt="Profile Picture">
+										Heba Gamal Abu El Ghar
+									</td>
+									<td>239</td>
+									<td class = "left-border-grey"><div class = "triangle"></div></td>
+								</tr>
+								<tr style = "height: 45px;">
+									<td class = "right-border-grey" style = "font-size: 12px;">
+										<img width = "27" height = "27" src = "./resource/img/main-icons/hello.jpg" alt="Profile Picture">
+										Heba Gamal Abu El Ghar
+									</td>
+									<td>239</td>
+									<td class = "left-border-grey"><div class = "triangle"></div></td>
+								</tr>
+							</table>
+							<table id = "rank">
+							<thead>
+								<tr style = "border-bottom:6px solid #68c220;font-size: 13px;font-weight: bold;">
+									<td style = "width: 70px;"></td>
+									<td style = "width: 70px;">Category</td>
+									<td style = "width: 70px;">My Score</td>
+									<td style = "width: 70px;">My Pos</td>
+								</tr>
+							</thead>
+							<tbody id = "rank-body">
+								<tr style = "height: 45px; border-bottom: 1px solid #E4E4E4;">
+									<td style = "width: 70px;">
+										<img class = "cat-rank" src="./resource/img/main-icons/orange.png" alt="Orange-cat" >
+										<font class = "rank-text">1st</font>
+									</td>
+									<td class = "right-border-grey" style = "width: 70px;">
+										Orange
+									</td>
+									<td style = "width: 70px;">239</td>
+									<td style = "width: 70px;" class = "left-border-grey"><div class = "triangle"></div></td>
+								</tr>
+								<tr style = "height: 45px; border-bottom: 1px solid #E4E4E4;">
+									<td>
+										<img class = "cat-rank" src="./resource/img/main-icons/red.png" alt="Red-cat" >
+										<font class = "rank-text">2nd</font>
+									</td>
+									<td class = "right-border-grey">
+										Red
+									</td>
+									<td>239</td>
+									<td class = "left-border-grey"><div class = "triangle"></div></td>
+								</tr>
+								<tr style = "height: 45px;">
+									<td>
+										<img class = "cat-rank" src="./resource/img/main-icons/green.png" alt="Green-cat" >
+										<font class = "rank-text">3rd</font>
+									</td>
+									<td class = "right-border-grey">
+										Green
+									</td>
+									<td>239</td>
+									<td class = "left-border-grey"><div class = "triangle"></div></td>
+								</tr>
+								<tr style = "height: 45px; border-bottom: 1px solid #E4E4E4;">
+									<td>
+										<img class = "cat-rank" src="./resource/img/main-icons/orange.png" alt="Orange-cat" >
+										<font class = "rank-text">1st</font>
+									</td>
+									<td class = "right-border-grey">
+										Orange
+									</td>
+									<td>239</td>
+									<td class = "left-border-grey"><div class = "triangle"></div></td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- end of Orange-Background -->
+				</div>
+				<!-- end of Orange-Background -->
+			</div>
+			<!-- end of dashboard -->
+			
+			<!-- List&Grid buttons -->
+			<table id = "buttons">
+				<tr style = "height: 20px;">
+					<td style = "background-color: white; width: 82px; border-radius:2px;"><a href = "#" style = "text-decoration: none;"><img src = "./resource/img/main-icons/list_icon.png" alt = "list"> LIST</a></td>
+					<td style = "width: 10px;"></td>
+					<td style = "background-color: white; width: 82px; border-radius:2px;"><a href = "#" style = "text-decoration: none;"><img src = "./resource/img/main-icons/grid_icon.png" alt = "grid"> GRID</a></td>
+				</tr>
+			</table>
+			<!-- end of List&Grid  -->
+			
+			<!-- Cards -->
+			<table id = "cards" style = "text-align: left;">
+				<tr>
+					<td colspan = "3" style = "border-top:8px solid #ffa800; box-shadow: 0 2px 2px -1px gray;">
+						<h4><img class = "arrow" src="./resource/img/main-icons/orange-arrow.png" alt="orange-arrow">Cards</h4>
+					</td>
+				</tr>
+				<tr style = "height: 55px;">
+					<td><font class = "card-name">Card Name</font><hr /></td>
+					<td><font class = "card-name">Card Name</font><hr /></td>
+					<td><font class = "card-name">Card Name</font><hr /></td>
+				</tr>
+				<tr align = "center">
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;" onclick="return alert_success();">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;" onclick="return alert_error();">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;" onclick="return alert_warning();">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+				</tr>
+				<tr style = "height: 30px;"></tr>
+				<tr style = "height: 55px;">
+					<td><font class = "card-name">Card Name</font><hr /></td>
+					<td><font class = "card-name">Card Name</font><hr /></td>
+					<td><font class = "card-name">Card Name</font><hr /></td>
+				</tr>
+				<tr align = "center">
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;" onclick="return alert_info();">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+				</tr>
+				<tr style = "height: 30px;"><td colspan = "3"></td></tr>
+				<tr style = "height: 55px;">
+					<td><font class = "card-name">Card Name</font><hr /></td>
+					<td><font class = "card-name">Card Name</font><hr /></td>
+					<td><font class = "card-name">Card Name</font><hr /></td>
+				</tr>
+				<tr align = "center">
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+				</tr>
+				<tr style = "height: 30px;"><td colspan = "3"></td></tr>
+				<tr style = "height: 55px;">
+					<td><font class = "card-name">Card Name</font><hr /></td>
+					<td><font class = "card-name">Card Name</font><hr /></td>
+					<td><font class = "card-name">Card Name</font><hr /></td>
+				</tr>
+				<tr align = "center">
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+					<td>
+						<div class = "card-holder">
+							<img src = "./resource/img/main-icons/card.png" class = "card-pic" alt="card">
+							<table class = "card-elements">
+								<tr>
+									<td><img src="./resource/img/main-icons/white_images_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_music_icon.png" alt=""></td>
+								</tr>
+								<tr>
+									<td><img src="./resource/img/main-icons/white_video_icon.png" alt=""></td>
+									<td><img src="./resource/img/main-icons/white_games_icon.png" alt=""></td>
+								</tr>
+							</table>
+							<a href = "#" class = "trade-button" style = "text-decoration: none;">
+								<img src="./resource/img/main-icons/trade_icon.png" alt="" width = "40">
+							</a>
+							<font color = "#ffa800" class = "grid-card-points">150 Points</font>
+						</div>
+					</td>
+				</tr>
+				<tr style = "height: 30px;"><td colspan = "3"></td></tr>
+			</table>
+			<!-- End of cards -->
+		</div>
+		<!-- end of content -->
+	</div>
+<!-- end of container -->
 
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+<script type="text/javascript" src="./resource/js/kinetic.js"></script> 
+<script type="text/javascript" src="./resource/js/jquery.final-countdown.js"></script> 
+<script type="text/javascript">
+	$('.countdown').final_countdown({});
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- footer -->
+	<div class="row" style = "margin-right: 0px;">
+		<div id = "footer" style = "width:100%; height:42px; background:#222; ">
+								    
+		</div>
+	</div>
+<!-- end of footer -->
 </body>
 </html>
