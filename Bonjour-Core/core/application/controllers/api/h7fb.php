@@ -96,6 +96,50 @@ class H7FB extends REST_Controller
 		// response acts as "return" for the function
 		$this->response($rValue);
 	}
+	
+	function friends_get() {
+		
+		log_message('error', 'FBBBBB Entered the friends method = ');
+		// Get parameters sent that are in json format
+		$accountid = $this->get('accountid');
+		//log_message('error', 'the params before JSON' .$this->get('accountid'));
+		log_message('error', '$$accountid === '. $accountid);
+		
+		$hello = $this->get('hello');
+		log_message('error', '$$hello === '. $hello);
+		$bye = $this->get('bye');
+		log_message('error', '$$bye === '. $bye);
+		// Decode parameters
+		//$params = json_decode($jsn_params);
+		//$accountid = $params->accountid;
+		log_message('error', 'FBBBBB account id = '. $accountid);
+		// Load the credit model and buy credit for user sending the facebook ID
+		// and desired credit to be bought
+		$this->load->model(array('account/account_model'));
+		$this->load->model(array('account/account_facebook_model'));
+		
+		$fb = $this->account_facebook_model->get_by_account_id($accountid);
+				
+		log_message('error', '$FB variable ==== '.json_encode($fb[0]));
+		$rValue['data'] = json_encode($this->account_facebook_model->friends($fb[0]->facebook_id, $fb[0]->token));
+	
+		//log_message('error', 'FBBBBB data = '. $rValue['data']);
+		
+		
+		if($rValue['data'])
+		{
+			$rValue['invoke'] = TRUE;
+		}
+		else
+		{
+			$rValue['invoke'] = FALSE;
+			$rValue['error'] = 'Unable to Buy User Credit';
+		}
+	
+		// response acts as "return" for the function
+		$this->response($rValue);
+	}
+	
 	public function send_post()
 	{
 		var_dump($this->request->body);

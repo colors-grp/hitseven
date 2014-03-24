@@ -1,0 +1,415 @@
+html {overflow-y: scroll;}	/* always show scrollbar */
+
+body {
+	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+li.third_party {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 76px;
+    height: 76px;
+    float: left;
+    padding: 0 10px 10px 0;
+}
+li.third_party a {
+    display: block;
+    width: 76px;
+    height: 76px;
+    font-size: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    text-shadow: 0px 0px 3px #fff;
+}
+li.google { background: url(../img/auth_icons/google.png) no-repeat }
+li.microsoft { background: url(../img/auth_icons/microsoft.png) no-repeat }
+li.aol { background: url(../img/auth_icons/aol.png) no-repeat }
+li.yahoo { background: url(../img/auth_icons/yahoo.png) no-repeat }
+li.twitter { background: url(../img/auth_icons/twitter.png) no-repeat; border-radius: 5px;}
+li.facebook { background: url(../img/auth_icons/facebook.png) no-repeat }
+li.myspace { background: url(../img/auth_icons/myspace.png) no-repeat }
+li.openid { background: url(../img/auth_icons/openid.png) no-repeat; border: solid 1px #fff; border-radius: 5px; }
+input.openid {
+    background: #fff url(../img/auth_icons/openid-icon.png) no-repeat left center;
+    border: 1px solid #999;
+    padding: 6px 6px 6px 36px;
+    font-size: 16px;
+}
+
+#recaptcha_area { margin-bottom: 10px }
+
+::selection {
+    background-color: #E13300;
+    color: white;
+}
+::moz-selection {
+    background-color: #E13300;
+    color: white;
+}
+::webkit-selection {
+    background-color: #E13300;
+    color: white;
+}
+
+
+.ribbon-wrapper-green {
+  width: 85px;
+  height: 88px;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.ribbon-green {
+  font: bold 15px Sans-Serif;
+  color: #333;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
+  position: relative;
+  padding: 7px 0;
+  left: -5px;
+  top: 15px;
+  width: 120px;
+  background-color: #BFDC7A;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45)); 
+  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45); 
+  color: #6a6340;
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.ribbon-green:before, .ribbon-green:after {
+  content: "";
+  border-top:   3px solid #6e8900;   
+  border-left:  3px solid transparent;
+  border-right: 3px solid transparent;
+  position:absolute;
+  bottom: -3px;
+}
+
+.ribbon-green:before {
+  left: 0;
+}
+.ribbon-green:after {
+  right: 0;
+}
+
+/* Account Styles */
+
+.accountPicSelect {
+	margin: 5px 0 5px 5px;
+}
+
+.accountPicSelect p {
+	margin: 10px 0 0 15px;
+}
+
+.accountPicSelect input[type="radio"] {
+	margin: 0 10px 0 0;
+}
+
+
+
+/* Positioning */
+
+.right {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+#profileHeader{
+	/*position: relative;
+	top: 56px;
+	left: 160px;*/
+	position: relative;
+	top: 56px;
+	margin-left:auto;
+	margin-right:auto;
+	width:800px;
+	height: 235px;
+	margin-bottom: 56px;	
+}
+
+#pictures{
+	position: absolute;
+	top: 0px;
+/*	left: 130px;*/
+	margin-left: 180px;
+	width: 200px;
+	height: 200px;
+}
+
+#pp{
+	position: absolute;
+	left:0px;
+	clip: rect(0px, 190px, 190px, 0px);
+	min-height: 180px;
+}
+
+#pborder{
+	height: 200px;
+	width: 200px;
+	position: absolute;
+	left: -10px;
+	top: -9px;
+}
+
+#zodiac_pic{
+	position: absolute;
+	top: 124px;
+	left: 122px;
+	height: 49px;
+}
+
+#FriendsHeader{
+	position: relative;
+	top: 56px;
+	margin-left:auto;
+	margin-right:auto;
+	width:980px;
+	height: 235px;
+	margin-bottom: 56px;
+}
+
+#Fpictures{
+	position: absolute;
+	top: 0px;
+	left: 354px;
+	width: 200px;
+	height: 200px;
+}
+
+#Friend_pp{
+	position: absolute;
+	left:0px;
+	clip: rect(0px, 190px, 190px, 0px);
+	border-radius: 50%;
+	min-height: 180px;
+}
+
+#trans_pic{
+	position: absolute;
+	left:-119px;
+	border-radius: 50%;
+	min-height: 180px;
+}
+
+#Fzodiac_pic{
+	position: absolute;
+	top: 124px;
+	left: 9px;
+	height: 49px;
+	border: solid;
+	border-color: white;
+	border-radius: 50%;
+	border-width: 5px;
+	z-index: 1;
+}
+
+#Mypictures{
+	position: absolute;
+	top: 0px;
+	left: 473px;
+	width: 200px;
+	height: 200px;
+}
+
+#My_pp{
+	position: absolute;
+	left:0px;
+	clip: rect(0px, 190px, 190px, 0px);
+	border-radius: 50%;
+	min-height: 180px;
+}
+
+#Myzodiac_pic{
+	position: absolute;
+	top: 124px;
+	left: 122px;
+	height: 49px;
+	border: solid;
+	border-color: white;
+	border-radius: 50%;
+	border-width: 5px;
+}
+
+#pdata{
+	position: absolute;
+	top: 0px;
+	margin-left: 410px;
+/*	left: 360px; */
+}
+
+#Fdata{
+	position: absolute;
+	width: 260px;
+}
+
+#Mypdata{
+	position: absolute;
+	top: 0px;
+	left: 722px;
+/*	left: 360px; */
+}
+
+@font-face {
+  font-family: MyriadPro-Regular;
+  src: url('../font/MyriadPro-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.business_img{
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-radius: 5%;
+	padding-top: 20px;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+.Love_left{
+	margin-right: 20px;
+	margin-left: 4px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-radius: 5%;
+	padding-top: 20px;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+.Love_right{
+	margin-right: 10px;
+	margin-left: 48px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-radius: 5%;
+	padding-top: 20px;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+#Btext{
+	min-height: 120px;
+	color: white;
+}
+
+#Ltext{ 
+	height: 455px;
+	color: white;
+	
+}
+
+.life{
+	margin-right: 55px;
+	margin-left: 40px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-radius: 5%;
+	padding-top: 20px;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+.red{
+	display: block; 
+	height: 1px;
+    border: 0; 
+    border-top: 3px solid #ff0000;
+    margin: 2.2em 0 0.2em 0; 
+    padding: 0;
+}
+
+.blue{
+	display: block; 
+	height: 1px;
+    border: 0; 
+    border-top: 3px solid #00ffea;
+    margin: 2.2em 0 0.2em 0; 
+    padding: 0;
+}
+
+.circle{
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.rectangle{
+	width: 10px;
+	height: 100px;
+}
+
+#red_circle{
+	background-color: #ff0000;
+}
+
+#blue_circle{
+	background-color: #00ffea;
+}
+
+#canvas{
+	position: relative;
+	left: 5px;
+	top: -140px;
+}
+
+#grey_circle{
+	position: relative;
+	left: 10px;
+	top: 55px;
+	width: 142px;
+	height: 142px;
+	background-color: transparent;
+	border-radius: 50%;
+	border: 24px solid #D3D3D3;
+}
+
+#grey_circle_text{
+	position: relative;
+	margin-left: 35px;;
+	top: 53px;		
+}
+
+#canvas2{
+	position: relative;
+	left: 13px;
+	top: -333px;
+}
+
+#canvas3{
+	position: relative;
+	left: 21px;
+	top: -508px;
+}

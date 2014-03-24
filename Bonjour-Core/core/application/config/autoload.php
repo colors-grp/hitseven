@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'session', 'form_validation', 'Facebook', 'Auth');
+$autoload['libraries'] = array('database', 'session', 'form_validation', 'Auth');
 
 
 /*
@@ -96,7 +96,7 @@ $autoload['config'] = array('h7core_config');
 |
 */
 
-$autoload['language'] = array();
+$autoload['language'] = array('general');
 
 
 /*

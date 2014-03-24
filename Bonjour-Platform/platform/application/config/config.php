@@ -14,9 +14,10 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://gloryette.org/heba/';
-$config['core_url']	= 'http://colors-studios.com/heba/index.php?/api/h7fb/';
-$config['platform_url']	= 'http://gloryette.org/heba/';
+$config['base_url']	= 'http://gloryette.org/jlaw/';
+$config['core_api_url']	= 'http://colors-studios.com/jlaw/index.php?/api/h7fb/';
+$config['core_url']	= 'http://colors-studios.com/jlaw/';
+$config['platform_url']	= 'http://gloryette.org/jlaw/';
 
 $config['test_facebook_id']	= '1';
 

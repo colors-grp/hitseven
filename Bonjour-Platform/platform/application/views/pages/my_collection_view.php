@@ -38,7 +38,7 @@
 					<td><img
 						src="<?=base_url()?>webassets/img/category_color_circle_bck.png"
 						alt="Category Color Circle" border="0"> <img
-						src="http://gloryette.org/heba/h7-assets/images/categories/<?= $cat->name?>/main_icon.png"
+						src="http://gloryette.org/jlaw/h7-assets/images/categories/<?= $cat->name?>/main_icon.png"
 						style="position: relative; top: -109px;">
 					</td>
 				</tr>

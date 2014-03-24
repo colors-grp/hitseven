@@ -115,14 +115,23 @@ class REST
     public function get($uri, $params = array(), $format = NULL)
     {
     	
-    	
         if ($params)
         {
-        	$uri .= '/'.(is_array($params) ? http_build_query($params) : $params);
-        	$uri = strtr ($uri, array ('=' => '/'));
+        	$uri .='/';
+        	foreach ($params as $key => $value) {
+        		//echo $key . '   ->   ' . $value . '    ====    ';
+        		$uri .= $value.'/';
+        		//echo "Key: $key; Value: $value<br />\n";
+        	}
+        	// Replaced original implementation for parameters because it was shit! ...
+        	// Old implementation
+        	//$uri .= '/'.(is_array($params) ? http_build_query($params) : $params);
+        	//$uri = strtr ($uri, array ('=' => '/'));
+        	
+        	//echo "IN GET REST  uri =   " . $uri;
         }
 
-      //  echo "   uri =   " . $uri;
+//         echo "FROM REST.PHP   uri =   " . $uri;
         
     	return $this->_call('get', $uri, NULL, $format);
     }
@@ -242,7 +251,7 @@ class REST
         // Initialize cURL session
 		// $this->rest_server.$uri = "http://colors-studios.com/restserver/index.php?/api/example/user/id/1";
         $this->_ci->curl->create($this->rest_server.$uri);
-        //echo "   this->rest_server ->>  ".$this->rest_server.$uri;
+       // echo "   this->rest_server ->>  ".$this->rest_server.$uri;
 
 
 		// If using ssl set the ssl verification value and cainfo
