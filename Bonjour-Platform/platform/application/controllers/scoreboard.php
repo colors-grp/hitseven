@@ -18,12 +18,18 @@ class Scoreboard extends CI_Controller {
 		$data['header_view']['page'] = 'scoreboard_view';
 		
 		// temporary hard coded ...
+<<<<<<< HEAD
 		$data['header_view']['name'] = 'Mohammed Khairy';
 		$data['header_view']['fb_id'] = $_SESSION['fb_id'];
 		$data['header_view']['user_id'] = $data['scoreboard_view']['user_id'] = $_SESSION['user_id'];
 		$data['header_view']['cover_id'] = '748325228515155';
 		$data['scoreboard_view']['fb_id'] = $_SESSION['fb_id'];
 		$data['scoreboard_view']['name'] = 'Mohammed Khairy';
+=======
+		$data['header_view']['name'] = 'Heba Gamal Abu El-Ghar';
+		$data['header_view']['user_id'] = $data['scoreboard_view']['user_id'] = $_SESSION['user_id'];
+		$data['header_view']['cover_id'] = '748325228515155';
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 
 		// Get user credit ...
 		$data['scoreboard_view']['user_points'] = get_credit();
@@ -51,6 +57,10 @@ class Scoreboard extends CI_Controller {
 			$ret ['all'] [$i] = $row;
 			$i ++;
 		}
+<<<<<<< HEAD
+=======
+		
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 		//Get ranks on top of each category
 		$i = 0;
 		foreach ( $scoreboard ['top']->result () as $row ) {

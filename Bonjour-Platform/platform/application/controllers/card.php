@@ -6,8 +6,11 @@ class Card extends CI_Controller {
 		$this->load->model('card_model');
 		$this->load->model('category_model');
 		$this->load->model('activity_model');
+<<<<<<< HEAD
 		$this->load->model('game_model');
 		$this->load->helper('credit');
+=======
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 	}
 	// Display user cards in a list format given certain category
 	function get_card_list_view() {
@@ -42,15 +45,21 @@ class Card extends CI_Controller {
 		if ($info['cards']) {
 			$user_cards = $this->card_model->get_user_cards_by_id($cat_id, $user_id);
 			$info['user_cards'] = array();
+<<<<<<< HEAD
 			$info['user_points'] = get_credit();
+=======
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 			// Prepare an array containing owned cards
 			if ($user_cards != FALSE) {
 				foreach ($user_cards->result() as $uc) {
 					array_push($info['user_cards'], $uc->id);
 				}
 			}
+<<<<<<< HEAD
 			$info['cat_id'] = $_SESSION['current_category_id'];
 			$info['cat_name'] = $_SESSION['current_category_name'];
+=======
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 			// Load Card List View
 			$this->load->view('ajax/card_list_view_ajax', $info);
 		} else {
@@ -103,8 +112,12 @@ class Card extends CI_Controller {
 		}
 		// Get session variables
 		$user_id = $_SESSION['user_id'];
+<<<<<<< HEAD
 		$info['color'] = $this->input->post('color');
 		$info['card_id'] = $this->input->post('card_id');
+=======
+
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 		//Set session variables
 		$_SESSION['current_category_id'] = $cat_id;
 		$_SESSION['current_category_name'] = $info['category_name'];
@@ -148,12 +161,20 @@ class Card extends CI_Controller {
 			$info['images'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/image/');
 			$info['audios'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/audio/');
 			$info['videos'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/video/');
+<<<<<<< HEAD
 			$info['games'] = $this->game_model->get_games($cat_id, $card_id);
 			
 			$this->load->view('ajax/my_collection_view_ajax', $info);
 
 		}else { // User doesn't have any cards in the current category
 			echo ' ';
+=======
+
+			$this->load->view('ajax/my_collection_view_ajax', $info);
+
+		}else { // User doesn't have any cards in the current category
+			echo 'No cards purchased in this category !!';
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 		}
 	}
 
@@ -172,7 +193,10 @@ class Card extends CI_Controller {
 		$_SESSION['current_category_id'] = $cat_id;
 		$_SESSION['current_category_name'] = $name;
 		// Set view parameters 
+<<<<<<< HEAD
 		$info['card_id'] = $this->input->post('card_id');
+=======
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 		$info['card_name'] = $this->input->post('card_name');
 		$info['card_price'] = $this->input->post('card_price');
 		$info['user_points'] = $this->input->post('user_points');
@@ -184,7 +208,10 @@ class Card extends CI_Controller {
 		$info['images'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/image/');
 		$info['audios'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/audio/');
 		$info['videos'] = directory_map('./h7-assets/images/categories/'.$name.'/cards/'.$card_id.'/video/');
+<<<<<<< HEAD
 		$info['games'] = $this->game_model->get_games($cat_id, $card_id);
+=======
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 			
 		$this->load->view('ajax/my_collection_view_ajax', $info);
 	}

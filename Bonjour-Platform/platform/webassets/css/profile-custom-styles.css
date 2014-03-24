@@ -405,6 +405,7 @@ margin-top: 1px;
 	background: url('../img/category_background.png') no-repeat center top;
 	background-position: 0 55px;
 	background-size: 362px 720px;
+	margin-top : 80px;
 }
 
 .scrollable.default-skin {
@@ -642,7 +643,6 @@ margin-top: 1px;
 }
 
 .row .col-lg-7, .row.col-md-7, .row .col-sm-7, .row .col-xs-7 {
-	top: -80px;
 	width: 576px;
 	margin: 0;
 	padding: 0;
@@ -678,10 +678,10 @@ margin-top: 1px;
 .card-holder {
 	margin: 0;
 	padding: 25px 20px 25px 20px;
+	
 }
 
 .card-holder > li > .card {
-	background: url('../img/cards_colors.png') no-repeat center top;
 	background-size: 118px 130px;
 }
 
@@ -727,6 +727,58 @@ margin-top: 1px;
 }
 
 .card-holder .games-title {
+	margin-top: 3px;
+}
+
+.card-holder2 {
+	margin: 0;
+}
+
+.card-holder2 > li > .card {
+	background-size: 118px 130px;
+}
+
+
+.first {
+}
+
+.last {
+	padding-bottom: 49px;
+}
+
+.card {
+	margin: 0 15px 0 0;
+}
+
+.card-holder2 li .card-info {
+	color: #888787;
+}
+
+.card-holder2 li .card-info h5 {
+	position: absolute;
+	font-size: 15px;
+	top: 106px;
+	left: 5px;
+}
+
+.card-holder2 li .card-info .color {
+	position: absolute;
+	top: 136px;
+	left: 5px;
+}
+
+.card-holder2 li .card-info .color-points {
+	position: absolute;
+	top: 154px;
+	left: 5px;
+}
+
+.card-holder2 h4 {
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+
+.card-holder2 .games-title {
 	margin-top: 3px;
 }
 

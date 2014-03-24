@@ -32,6 +32,7 @@ class Category extends CI_Controller {
 	
 		$info['interest_cats'] = $this->category_model->get_category_interst_by_userID($info['user_id']);
 		$info['current_page'] = $_SESSION['current_page'];
+<<<<<<< HEAD
 		$color = $info['color'] = $this->input->post('color');
 		log_message('error', 'color ->        ' . $color);
 		$this->load->view('ajax/load_interest_category_view_ajax' , $info);
@@ -57,6 +58,10 @@ class Category extends CI_Controller {
 		log_message('error', 'color ->        ' . $color);
 		$this->load->view('ajax/load_interest_category_my_collection_view_ajax' , $info);
 	}
+=======
+		$this->load->view('ajax/load_interest_category_view_ajax' , $info);
+	}
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 	
 	function load_not_interest_category() {
 		$cat_id = $this->input->post('cat_id');
@@ -75,6 +80,7 @@ class Category extends CI_Controller {
 		$info['not_interest_cats'] = $this->get_not_interst_categories($all_cats, $interest_cats);
 		$this->load->view('ajax/load_not_interest_category_view_ajax',$info);
 	}
+<<<<<<< HEAD
 	function load_not_interest_category_my_collction() {
 		$cat_id = $this->input->post('cat_id');
 		$user_id = $_SESSION['user_id'];
@@ -92,6 +98,8 @@ class Category extends CI_Controller {
 		$info['not_interest_cats'] = $this->get_not_interst_categories($all_cats, $interest_cats);
 		$this->load->view('ajax/load_not_interest_category_my_collection_view_ajax',$info);
 	}
+=======
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 	
 	function get_not_interst_categories($all_categories , $interest_categories) {
 		$res = array();
@@ -110,8 +118,11 @@ class Category extends CI_Controller {
 		}
 		return $res;
 	}
+<<<<<<< HEAD
 	function get_category_name_without_href () {
 		$data = $_SESSION['current_category_name'];
 		echo $data;
 	}
+=======
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 }

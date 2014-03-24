@@ -57,6 +57,7 @@ class Category_model extends CI_Model{
 		$this->db->update('user_category' , $data);
 		return $new_score;
 	}
+<<<<<<< HEAD
 	
 	function get_rank($user_id, $cat_id) {
 		$this->db->select('*');
@@ -68,4 +69,6 @@ class Category_model extends CI_Model{
 		return $query;
 	}
 	
+=======
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 }

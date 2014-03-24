@@ -130,6 +130,7 @@ class Platform extends CI_Controller {
 			$_SESSION['current_category_id'] = $first_cat['id'];
 			$_SESSION['current_category_name'] = $first_cat['name'];
 		}
+<<<<<<< HEAD
 		$data['main_view']['cat_id'] = $_SESSION['current_category_id'];
 		$data['main_view']['cat_name'] = $_SESSION['current_category_name'];
 		//Set session data 
@@ -138,6 +139,13 @@ class Platform extends CI_Controller {
 		$_SESSION['card_view'] = 'list';
 		$_SESSION['current_page'] = 'market';
 		
+=======
+		//Set session data 
+		$_SESSION['user_id']= $this->get_user_id();
+		$_SESSION['fb_id'] = $this->get_fb_id();
+		$_SESSION['card_view'] = 'list';
+		$_SESSION['current_page'] = 'market';
+>>>>>>> bc7448ccaf71025d10bc3767d24edd95ca50bc32
 
 		//Load the template view
 		$this->load->view('template', $data);
