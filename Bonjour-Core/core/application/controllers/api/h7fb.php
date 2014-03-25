@@ -51,7 +51,9 @@ class H7FB extends REST_Controller
 		log_message('error', 'bteeg fi get credit ?');
 		// Get user facebook id
 		$fbid = $this->get('fb_id');
+		$params = $this->get('params');
 		log_message('error', 'fbid = '.$fbid);
+		log_message('error', 'params = '.$params);
 		// Load the credit model and get user credit from database
 		$this->load->model('credit_model');
 		$rValue['data'] = $this->credit_model->get_credit($fbid);
@@ -67,6 +69,7 @@ class H7FB extends REST_Controller
 			$rValue['error'] = 'Unable to get User Credit';
 		}
 		
+		log_message('error', ' rvalueeeee==== ' . print_r($rValue, TRUE));
 		// response acts as "return" for the function
 		$this->response($rValue);
 	}

@@ -14,9 +14,9 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://colors-studios.com/jlaw/';
-$config['core_url']	= 'http://colors-studios.com/jlaw/';
-$config['platform_url']	= 'http://gloryette.org/jlaw/';
+$config['base_url']	= 'http://colors-studios.com/heba/';
+$config['core_url']	= 'http://colors-studios.com/heba/';
+$config['platform_url']	= 'http://gloryette.org/heba/';
 
 /*
 |--------------------------------------------------------------------------
