@@ -1,0 +1,170 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+	<title>The Colors Concorrenza</title>
+	<link type="text/css" rel="stylesheet" href="./resource/bootstrap/css/bootstrap.css"/>
+	<link type="text/css" rel="stylesheet" href="./resource/bootstrap/css/bootstrap-theme.css"/>
+	<link type="text/css" rel="stylesheet" href="./resource/css/style.css"/>
+	
+	<link href="http://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="./resource/css/demo.css">
+	
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>	
+	<script src="./resource/bootstrap/js/dropdown.js"></script>
+    <script type="text/javascript" src="./resource/js/jquery.js"></script>     
+</head>
+<body style="background-color: grey;">
+	<div id = "popup-container">
+		<div id = "game-content">
+			<table id = "Q-score-table">
+				<tr>
+					<td>
+						<div class = "green-circle">
+							<font class = "Q-score">150</font>
+						</div>
+					</td>
+					<td>
+						<div class = "red-circle">
+							<font class = "Q-score">0</font>
+						</div>
+					</td>
+					<td>
+						<div class = "empty-circle">
+							<font class = "Q-score" style = "color: #68c220;">Q3</font>
+						</div>
+					</td>
+					<td>
+						<div class = "empty-circle">
+							<font class = "Q-score" style = "color: #68c220;">Q4</font>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<table id = "Q-number">
+				<tr>
+					<td>
+						<img src = "./resource/img/main-icons/green-arrow.png" style = "margin-right: 10px;">Question 3 of 4
+					</td>
+				</tr>
+			</table>
+			
+			<div class = "Ques" >
+				<font align = "center">The name of Jennifer Lawrence character in Silver Linings Playbook is:</font>
+				<br />
+				<br />
+				<input type = "radio" name = "Q3" id = "a">
+				<label for = "a">Katniss Everdeen</label>
+				<br />
+				<input type = "radio" name = "Q3" id = "b">
+				<label for = "b">Tiffany Maxwell</label>
+				<br />
+				<input type = "radio" name = "Q3" id = "c">
+				<label for = "c">Rosalyn Rosenfeld</label>
+			</div>
+			
+			<a href = "#" style = "text-decoration: none;">
+				<div id = "play-button" style = "position: relative; top: 102px;">
+					<font id = "button-text" style = "margin-left: 38px;">Score It</font>
+				</div>
+			</a>
+		</div>
+		<div id = "right-bar">
+			<table style = "margin-top: 5px;">
+				<tr>
+					<td>
+						<h4 style = "margin-top: -31px;">Card Name</h4>
+					</td>
+					<td>
+						<div class="card-holder-popup" style = "margin-left: 25px;">
+							<img src="./resource/img/main-icons/card.png" class="card-pic-popup" alt="card">
+						</div>
+					</td>
+				</tr>
+				<tr style = "height: 40px;"><td colspan = "2" style = "border-bottom:4px solid #68c220;"></td></tr>
+			</table>
+			<h5><img src="./resource/img/main-icons/game_sort.png" style = "margin-right: 5px;">Game Name</h5>
+			<h5 style = " margin-top: 20px;"><img src="./resource/img/main-icons/green-arrow.png" style = "margin-right: 5px;">Time</h5>
+			<table align = "center">
+				<tr>
+					<td>
+						<div class="clock-item clock-days countdown-time-value" style = "display: none;">
+							<div class="wrap">
+								<div class="inner">
+									<div id="canvas_days" class="clock-canvas"></div>
+									<div class="text">
+										<p class="val">0</p>
+										<p class="type-days type-time">DAYS</p>
+									</div>
+								</div>
+							</div> 
+						</div>
+					</td>
+					<td>
+						<div class="clock-item clock-hours countdown-time-value" style = "display: none;">
+							<div class="wrap">
+								<div class="inner">
+									<div id="canvas_hours" class="clock-canvas"></div>
+									<div class="text">
+										<p class="val">0</p>
+										<p class="type-hours type-time">HOURS</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="clock-item clock-minutes countdown-time-value" style = "width: 80px;">
+							<div class="wrap">
+								<div class="inner">
+									<div id="canvas_minutes" class="clock-canvas"></div>
+									<div class="text" style = "margin-top: -60px;">
+										<p class="val">0</p>
+										<p class="type-minutes type-time">MINUTES</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+					<td style = "width: 15px;"></td>
+					<td>
+						<div class="clock-item clock-seconds countdown-time-value" style = "width: 80px;">
+							<div class="wrap">
+								<div class="inner">
+									<div id="canvas_seconds" class="clock-canvas"></div>
+									<div class="text" style = "margin-top: -60px;">
+										<p class="val">0</p>
+										<p class="type-seconds type-time">SECONDS</p>
+									</div>
+								</div>
+							</div>
+						</div>		 
+					</td>
+				</tr>
+			</table>
+			<h5 style = " margin-top: 20px;"><img src="./resource/img/main-icons/green-arrow.png" style = "margin-right: 5px;">Score</h5>
+			<h1 align = "center" style = "color: #68c220; margin-top: -6px;">200</h1>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+	<script type="text/javascript" src="./resource/js/kinetic.js"></script> 
+	<script type="text/javascript" src="./resource/js/jquery.final-countdown.js"></script> 
+	<script type="text/javascript">
+		$('.countdown').final_countdown({});
+	</script>
+	<script type="text/javascript">
+	
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-36251023-1']);
+	  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	</script>
+</body>
+</html>

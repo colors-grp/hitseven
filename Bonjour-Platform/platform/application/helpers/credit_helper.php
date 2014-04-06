@@ -1,0 +1,115 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+if(!function_exists('get_credit'))
+{
+	function get_credit() {
+		$CI =& get_instance();
+		// Get facebook user ID
+		$fbid = '100000130552768';
+		// Invoke the core to get user's credit from the database
+		$credit = $CI->core_call->getUserCredit($fbid);
+		return $credit;
+	}
+}
+if (!function_exists('to_time_stamp')) {
+	function to_time_stamp($date) {
+		$year = substr($date,0,4);
+		$month = substr($date,5,2);
+		$day = substr($date,8,10);
+		$timestamp = strtotime($day . '-' . $month . '-' . $year);
+		return $timestamp;
+	}
+}
+if (!function_exists('get_competition_id')) {
+	function get_competition_id() {
+		return 1;
+	}
+}
+
+if (!function_exists('get_user_id')) {
+	function get_user_id() {
+		$CI =& get_instance();
+		$CI->load->model('user_model');
+		$query = $CI->user_model->get_user_id($_SESSION['fb_id'])->row();
+		if ($query)
+			return $query->id;
+		return 'Undefined User ID';
+	}
+}
+
+if (!function_exists('get_start_end_dates')) {
+	function get_start_end_dates($competition_id) {
+		$CI =& get_instance();
+		$CI->load->model('competition_model');
+		$query = $CI->competition_model->get_start_end_date($competition_id)->row();
+		if ($query != FALSE) {
+			$dates['start'] = $query->start_date;
+			$dates['end'] = $query->end_date;
+			return $dates;
+		}
+		$dates['start'] = 'No Date';
+		$dates['end'] = 'No Date';
+		return $dates;
+	}
+}
+if(!function_exists('buy_credit'))
+{
+	function buy_credit() {
+
+		$CI =& get_instance();
+		// Check whether the user chose a value from the radio button or not
+
+		if (isset($_POST['credit'])) {
+			// Get radio button value
+			$credit = $_POST['credit'];
+			// Get facebook user ID
+			// Set needed parameters values
+			$fb_id = '100000130552768';
+			$CI->core_call->buy_credit($fb_id, $credit);
+			$CI->load->model('activity_model');
+			$CI->activity_model->insert_log( $CI->session->userdata('user_id') , 2);
+		}
+		$cr = 0;
+		$cr = get_credit();
+		echo $cr;
+	}
+}
+
+if(!function_exists('take_credit'))
+{
+	function take_credit($value) {
+		$CI =& get_instance();
+		// Set needed parameters values
+		$fb_id = '100000130552768';
+		$credit = $value;
+		$CI->core_call->buy_credit($fb_id, $credit);
+	}
+}
+
+if(!function_exists('buy_card'))
+{
+	function buy_card($user_id) {
+		$CI =& get_instance();
+
+		$card_price = intval($CI->input->post('card_price'));
+		$user_points = intval($CI->input->post('user_points'));
+		$card_id = intval($CI->input->post('card_id'));
+		$cat_id = intval($CI->input->post('cat_id'));
+		$card_score = intval($CI->input->post('card_score'));
+		$CI->load->model('category_model');
+		$CI->category_model->update_user_score_category($cat_id , $user_id,$card_score);
+
+		log_message('error', $user_points . ' , --------------  '. $card_price);
+		if ($user_points >= $card_price) {
+			//1 --> buy card
+			$CI->load->model('activity_model');
+			$CI->activity_model->insert_log(  $CI->session->userdata('user_id') , 1);
+			take_credit($card_price * -1);
+			$CI->load->model('card_model');
+			$CI->card_model->insert_user_card($cat_id , $card_id , $user_id);
+			echo get_credit();
+		}
+		else
+			echo -1;
+	}
+}
