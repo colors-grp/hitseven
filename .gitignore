@@ -13,3 +13,9 @@
 *.dat
 .metadata/.plugins/org.eclipse.dltk.core/customTimeStamps
 RemoteSystemsTempFiles/.project
+
+.metadata/version.ini
+
+.metadata/.mylyn/repositories.xml.zip
+
+.metadata/.mylyn/.tasks.xml.zip
