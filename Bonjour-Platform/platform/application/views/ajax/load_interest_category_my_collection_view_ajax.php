@@ -38,7 +38,7 @@
 								<li style = "height: 90px;">
 									<font id = "rank-text">Cards</font>
 									<br />
-									<font id = "user-rank"><?=$int_cat->num_of_cards?></font>
+									<font class = "user-rank"><?=$int_cat->num_of_cards?></font>
 								 	<div class = "right-line"></div>
 									<img class = "circle-pic" src="<?=base_url()?>/h7-assets/resources/img/main-icons/score_icon.png" alt="circle" style = "margin-top: -39px;">
 								</li>												

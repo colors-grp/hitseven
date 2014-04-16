@@ -1,7 +1,8 @@
 <?php 
 class Activity_log extends CI_Controller {
 	function show_log() {
-		//Set current page 
+		//Set current page
+		$_SESSION['user_id'] = $this->session->userdata('account_id'); 
 		$data['page'] = 'activity_view';
 		$this->load->model('activity_model');
 		

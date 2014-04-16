@@ -1,6 +1,6 @@
 
 <div id="buy_credit" style="display: none;">
-	<div id="popup-container" style = "width: 585px; height: 330px;">
+	<div class="popup-container" style = "width: 585px; height: 330px;">
 		<div id="buy_credit_content" class="Ques" style="position: relative;left: -20px;top: 30px;">
 			<h2 style = "color :#68b220;">Choose the desired amount</h2>
 			<form id="buy_credit_form" action="" method="post">

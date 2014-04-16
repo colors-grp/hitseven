@@ -1,6 +1,6 @@
 
 <div id="display_img" style="display: none;" align = "center">
-	<div id="popup-container">
+	<div class="popup-container">
 		<div id="game-content">
 			<img id="img_id" src="">
 		</div>

@@ -6,13 +6,13 @@
 
 <script>
 	
-function open_game(card_id, game_id, game_name, card_name) {
+function open_game(card_id, game_id, game_type, card_name) {
 	<?php if($own_card!=FALSE ){?>
-	game_page = "<?=base_url() ?>index.php?/game_center/load_game_view";
+	game_page = "<?=base_url() ?>index.php?/games/" + game_type;
 	wid = 0.8 * $(window).width();
 	hit = 0.8 * $(window).height();
 	
-	$.post(game_page , {card_id : card_id, game_id : game_id, game_name : game_name, card_name : card_name})
+	$.post(game_page , {card_id : card_id, game_id : game_id, game_type : game_type, card_name : card_name})
 	.done(function( data ) {
 		$('#display_game').html(data);
 		if(data){

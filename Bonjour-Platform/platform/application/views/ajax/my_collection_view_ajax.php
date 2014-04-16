@@ -132,7 +132,7 @@
 	<tr align="center">
 		<? foreach ($games->result() as $game) {  ?>
 		<td class="photo-padding">
-			<a href="javascript:void(0)" onclick ="open_game('<?=$card_id?>', '<?= $game->game_id?>','<?= $game->game_name?>', '<?= $card_name ?>')">
+			<a href="javascript:void(0)" onclick ="open_game('<?=$card_id?>', '<?= $game->game_id?>','<?= $game->game_type?>', '<?= $card_name ?>')">
 				<img src="<?= base_url(); ?>h7-assets/resources/img/main-icons/game_icon.jpg" border="0" class="img-circle" > 
 			</a>
 		</td>

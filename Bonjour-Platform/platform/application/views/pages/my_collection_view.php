@@ -14,15 +14,15 @@
 						<img
 							src="http://graph.facebook.com/<?=$fb_id?>/picture?width=200&height=200"
 							alt="profile picture" id="profile-pic">
-						<div style = "position: relative; top: -23px; width: 229px; text-align: center; color: white; font-size: 18px;">
+						<div
+							style="position: relative; top: -23px; width: 229px; text-align: center; color: white; font-size: 18px;">
 							<font><?=$name?> </font>
 						</div>
 						<div id="points-image">
 							<img
 								src="<?=base_url()?>/h7-assets/resources/img/main-icons/points_icon.png"
-								alt="">
-							<font id = "user_points"><?= $user_points?></font>
-							Points <br /> <img
+								alt=""> <font id="user_points"><?= $user_points?> </font> Points
+							<br /> <img
 								src="<?=base_url()?>/h7-assets/resources/img/main-icons/arrow_icon.png"
 								alt=""> <a id="getPointsButton" href="#"
 								style="text-decoration: none;">Get More Points</a>
@@ -74,18 +74,18 @@
 		<!-- 		Load Dashboard -->
 		<?php $this->load->view('pages/dashboard_view')?>
 		<!-- 		End of Dashboard -->
-		
-		
-		<div id = "card-details">
-		
+
+
+		<div id="card-details">
+
 			<!-- Category cards -->
-				<div id="left_panel"></div>
+			<div id="left_panel"></div>
 			<!-- Category cards End -->
-			
+
 			<!-- Card Details -->
-				<div id = "right_panel"></div>
+			<div id="right_panel"></div>
 			<!-- Card Details End -->
-			
+
 		</div>
 	</div>
 </div>
@@ -117,6 +117,7 @@
 
 
 <script type="text/javascript">
+
 function cutHex(h) {return (h.charAt(0)=='#') ? h.substring(1,7):h}
 
 function hexToR(h) {return parseInt((cutHex(h)).substring(0,2),16)}

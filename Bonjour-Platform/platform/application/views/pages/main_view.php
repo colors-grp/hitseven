@@ -14,7 +14,8 @@
 						<img
 							src="http://graph.facebook.com/<?=$fb_id?>/picture?width=200&height=200"
 							alt="profile picture" id="profile-pic">
-						<div style = "position: relative; top: -23px; width: 229px; text-align: center; color: white; font-size: 18px;">
+						<div
+							style="position: relative; top: -23px; width: 229px; text-align: center; color: white; font-size: 18px;">
 							<font><?=$name?> </font>
 						</div>
 						<div id="points-image">
@@ -84,6 +85,27 @@
  			</table> -->
 		<!-- end of List&Grid  -->
 		<!-- Cards -->
+
+		<table id="cards" style="text-align: left; z-index: 1">
+			<tr>
+				<td colspan="2"
+					style="border-top: 8px solid #68c220; box-shadow: 0 2px 2px -1px gray;">
+					<h4>
+						<img class="arrow"
+							src="<?=base_url()?>/h7-assets/resources/img/main-icons/green-arrow.png"
+							alt="green-arrow">Cards <a href="javascript:void(0);"
+							onclick="get_cards(-1,-1);"
+							style="text-decoration: none; margin-left: 353px; margin-right: 10px;"><img
+							src="<?=base_url()?>/h7-assets/resources/img/main-icons/list_icon.png"
+							alt="list"> LIST</a> <a href="javascript:void(0);"
+							onclick="get_cards_grid_view();" style="text-decoration: none;"><img
+							src="<?=base_url()?>/h7-assets/resources/img/main-icons/grid_icon.png"
+							alt="grid"> GRID</a>
+					</h4>
+				</td>
+
+			</tr>
+		</table>
 		<div id="card-ajax"></div>
 	</div>
 </div>

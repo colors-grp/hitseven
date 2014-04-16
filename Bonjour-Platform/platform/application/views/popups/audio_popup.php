@@ -1,5 +1,5 @@
 <div id="play_aud" style="display: none;" align = "center">
-	<div id="popup-container">
+	<div class="popup-container">
 		<div id="game-content">
 			<embed id= "audio_id" align = "center" style = "margin-top: 50px;" src="">
 		</div>

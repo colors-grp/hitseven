@@ -1,5 +1,5 @@
 <div id="show_vid" style="display: none;" align = "center">
-	<div id="popup-container">
+	<div class="popup-container">
 		<div id="game-content">
 			<video align = "center" style = "margin-top: 50px;" controls>
 				<source id="video_id" src="" type="video/mp4"></source>

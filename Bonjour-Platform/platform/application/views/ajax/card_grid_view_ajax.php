@@ -1,18 +1,6 @@
 <!-- Cards -->
 <div id="list_view">
 	<table id="cards" style="text-align: left;">
-		<tr>
-			<td colspan = "3" style = "border-top: 8px solid #68c220; box-shadow: 0 2px 2px -1px gray;">
-				<h4>
-					<img class="arrow"
-						src="<?=base_url()?>/h7-assets/resources/img/main-icons/green-arrow.png"
-						alt="green-arrow">Cards
-					<a href="javascript:void(0);" onclick="get_cards(-1,-1);" style = "text-decoration: none; margin-left: 353px;margin-right: 10px;"><img src = "<?=base_url()?>/h7-assets/resources/img/main-icons/list_icon.png" alt = "list"> LIST</a>
-					<a href="javascript:void(0);" onclick="get_cards_grid_view();" style = "text-decoration: none;"><img src = "<?=base_url()?>/h7-assets/resources/img/main-icons/grid_icon.png" alt = "grid"> GRID</a>
-				</h4>
-			</td>
-			
-		</tr>
 
 		<?
 		$i = 0;
@@ -25,7 +13,7 @@
 			<?php }
 			$i ++;
 			?>
-			<td><font class="card-name"><?= $card->name ?></font>
+			<td><font class="card-name"><?= $card->name ?> </font>
 				<hr />
 				<div class="card-holder">
 					<img
@@ -50,18 +38,21 @@
 						</tr>
 					</table>
 					<?php if (in_array($card->id, $user_cards) ) {?>
-						<a class="trade-button" style="text-decoration: none;">
-					<?php } else {?>
-						<a href = "javascript:void(0)" onclick = "buy_card_now('<?= $card->price ?>', '<?= $user_points?>' , '<?= $card->score ?>', '<?= $card->id ?>')"
-						class="trade-button" style="text-decoration: none;">
-					<?php }?>
-					  
-					 <img src="<?=base_url()?>/h7-assets/resources/img/main-icons/trade_icon.png" alt="" width="40">
-					</a> <font color="#68c220" class="grid-card-points"><?= $card->score ?> Points</font><br />
-					<font color="#68c220" class="grid-card-coins"><?= $card->price ?> Hit Coins</font>
+					<a class="trade-button" style="text-decoration: none;"> <?php } else {?>
+						<a href="javascript:void(0);"
+						onclick="buy_card_now('<?= $card->price ?>', '<?= $user_points?>' , '<?= $card->score ?>', '<?= $card->id ?>')"
+						class="trade-button" style="text-decoration: none;"> <?php }?> <img
+							src="<?=base_url()?>/h7-assets/resources/img/main-icons/trade_icon.png"
+							alt="" width="40">
+					</a> <font color="#68c220" class="grid-card-points"><?= $card->score ?>
+							Points</font><br /> <font color="#68c220" class="grid-card-coins"><?= $card->price ?>
+							Hit Coins</font>
+				
 				</div>
 			</td>
-		<?php }?>
+			<?php }?>
+		
+		
 		<tr style="height: 30px;"></tr>
 	</table>
 </div>

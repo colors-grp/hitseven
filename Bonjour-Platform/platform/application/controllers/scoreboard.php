@@ -20,8 +20,21 @@ class Scoreboard extends CI_Controller {
 		$this->load->model(array('account/account_facebook_model'));
 
 	}
+	
+	
+	//A function that returns the Id and name of first category
+	function get_first_category_info($interest_categories) {
+		if($interest_categories != FALSE) {
+			$cat_info = $interest_categories->row();
+			$info['id'] =  $cat_info->id;
+			$info['name'] = $cat_info->name;
+			return $info;
+		}
+	}
 
 	function get_dashboard_info($user_id, $interset_cats) {
+		if (!$interset_cats)
+			return FALSE;
 		$result = array();
 		$i = 0;
 		foreach ($interset_cats->result() as $int_cat) {
@@ -49,10 +62,10 @@ class Scoreboard extends CI_Controller {
 	function index() {
 
 		if (!$this->authentication->is_signed_in()) {
-			// 			maintain_ssl();
-			$this->load->view('home');
+			redirect('home');
 		}
 		else {
+			$_SESSION['user_id'] = $this->session->userdata('account_id');
 			if ($_SESSION['fb_id'] == FALSE) {
 				redirect('platform');
 			}
@@ -64,6 +77,10 @@ class Scoreboard extends CI_Controller {
 			//Set current page
 			$data['page'] = 'scoreboard_view';
 			$data['header_view']['page'] = 'scoreboard_view';
+			
+			// check whether the user is admin or not
+			$user_type = get_user_type();
+			$data['header_view']['is_admin'] = ($user_type == 'admin' ? true : false);
 
 			$this->load->model('core_call');
 			$me = $this->core_call->getMe($this->session->userdata('account_id'));
@@ -79,7 +96,15 @@ class Scoreboard extends CI_Controller {
 
 			// Get User favorite categories ...
 			$interset_cats = $data['scoreboard_view']['interest_cats'] = $this->category_model->get_category_interst_by_userID($_SESSION['user_id']);
-
+			
+			if(!isset($_SESSION['current_category_id'] )) {
+				//Get first category info to be set in the session array
+				$first_cat = $this->get_first_category_info($data['my_collection_view']['interest_cats']);
+					
+				//Set first category ID and name only if they aren't already in session
+				$_SESSION['current_category_id'] = $first_cat['id'];
+				$_SESSION['current_category_name'] = $first_cat['name'];
+			}
 			$data['scoreboard_view']['dashboard'] = $this->get_dashboard_info($user_id, $interset_cats);
 			//Set session data (current_category_id , current_category_name)
 			$_SESSION ['current_page'] = 'scoreboard';

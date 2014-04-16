@@ -50,11 +50,10 @@ class H7FB extends REST_Controller
 	function getcredit_get() {
 		log_message('error', 'bteeg fi get credit ?');
 		// Get user facebook id
-		$fbid = $this->get('fb_id');
-		log_message('error', 'fbid = '.$fbid);
+		$user_id = $this->get('user_id');
 		// Load the credit model and get user credit from database
 		$this->load->model('credit_model');
-		$rValue['data'] = $this->credit_model->get_credit($fbid);
+		$rValue['data'] = $this->credit_model->get_credit($user_id);
 		
 		if($rValue['data'])
 		{
@@ -72,13 +71,13 @@ class H7FB extends REST_Controller
 	}
 	
 	function buycredit_get() {
-		$fbid = $this->get('fb_id');
+		$user_id = $this->get('user_id');
 		$credit = $this->get('credit');
 		// Load the credit model and buy credit for user sending the facebook ID
 		// and desired credit to be bought
 		$this->load->model('credit_model');
 		
-		if($this->credit_model->buy_credit($fbid, $credit))
+		if($this->credit_model->buy_credit($user_id, $credit))
 		{
 			$rValue['invoke'] = TRUE;
 			$rValue['data']	= TRUE;

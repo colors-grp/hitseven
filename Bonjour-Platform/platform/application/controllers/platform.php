@@ -104,10 +104,10 @@ class Platform extends CI_Controller {
 	// Entry point for Platform ...
 	function index() {
 		if (!$this->authentication->is_signed_in()) {
-// 			maintain_ssl();
-			$this->load->view('home');
+			redirect('home');
 		}
 		else {
+			$user_id = $_SESSION['user_id'] = $this->session->userdata('account_id');
 			$comp_id = $_SESSION['competition_id'] = get_competition_id();
 			$dates = get_start_end_dates($comp_id);
 			$data['main_view']['start_date'] = to_time_stamp($dates['start']);
@@ -118,7 +118,9 @@ class Platform extends CI_Controller {
 			$me = $this->core_call->getMe($this->session->userdata('account_id'));
 			$data['header_view']['name'] = $me->fullname;
 			$data['main_view']['name'] = $me->fullname;
-			$user_id = get_user_id();
+			// check whether the user is admin or not
+			$user_type = get_user_type();
+			$data['header_view']['is_admin'] = ($user_type == 'admin' ? true : false);
 			$_SESSION['user_id'] = $data['header_view']['user_id'] = $data['main_view']['user_id'] = $user_id;
 
 			// Get user credit ...
@@ -146,6 +148,7 @@ class Platform extends CI_Controller {
 			}
 			$data['main_view']['cat_id'] = $_SESSION['current_category_id'];
 			$data['main_view']['cat_name'] = $_SESSION['current_category_name'];
+			$user_id = get_user_id();
 			//Set session data
 			$_SESSION['user_id']= $user_id;
 			$data['fb_id'] = $_SESSION['fb_id'];

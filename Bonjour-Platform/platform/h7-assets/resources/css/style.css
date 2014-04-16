@@ -575,16 +575,18 @@ hr{
 	font-size: 12px;
 	position: relative;
 	top: -57px;
+	font-size: 20px;
+	color: #68a220;
 }
 
-#user-rank{
+.user-rank{
 	z-index: 1;
 	position: relative;
 	top: 22px;
 	font-size: 20px;
 	color: #68a220;
 }
-#popup-container{
+.popup-container{
 	width: 950px;
 	height: 458px;
 	background-color: white;
@@ -615,6 +617,7 @@ hr{
 	top: 65px;
 	left: 100px;
 	font-size: 17px;
+	width: 580px;
 }
 
 #right-bar{

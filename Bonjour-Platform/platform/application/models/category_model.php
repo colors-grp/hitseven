@@ -62,7 +62,7 @@ class Category_model extends CI_Model{
 		$this->db->select('*');
 		$this->db->from('user_category');
 		$this->db->where('category_id', $cat_id);
-		$this->db->join('user', 'user.id = user_category.user_id');
+		$this->db->join('a3m_account', 'a3m_account.id = user_category.user_id');
 		$this->db->order_by('score', 'desc');
 		$query = $this->db->get();
 		return $query;

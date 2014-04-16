@@ -16,6 +16,16 @@ class My_collection extends CI_Controller {
 		$this->load->model(array('account/account_facebook_model'));
 
 	}
+	
+	//A function that returns the Id and name of first category
+	function get_first_category_info($interest_categories) {
+		if($interest_categories != FALSE) {
+			$cat_info = $interest_categories->row();
+			$info['id'] =  $cat_info->id;
+			$info['name'] = $cat_info->name;
+			return $info;
+		}
+	}
 	function get_dashboard_info($user_id, $interset_cats) {
 		if (!$interset_cats)
 			return FALSE;
@@ -46,14 +56,37 @@ class My_collection extends CI_Controller {
 	function get_my_collection() {
 
 		if (!$this->authentication->is_signed_in()) {
-			// 			maintain_ssl();
-			$this->load->view('home');
+			redirect('home');
 		}
 		else {
+			$_SESSION['user_id'] = $this->session->userdata('account_id');
+			$cur_card_id = $this->input->get('cur_card_id');
+			$gd = 0;
+			if ($cur_card_id) {
+				$this->load->model('user_model');
+				$query = $this->user_model->get_card_parameters($cur_card_id);
+				if ($query) {
+					$gd = 1;
+					$data['header_view']['cur_card_id'] = $query->id;
+					$data['header_view']['cur_card_name'] = $query->name;
+					$data['header_view']['cur_card_score'] = $query->score;
+					$data['header_view']['cur_card_price'] = $query->price;
+				}
+			}
+			if (!$gd) {
+				$data['header_view']['cur_card_id'] = '-1';
+				$data['header_view']['cur_card_name'] = '-1';
+				$data['header_view']['cur_card_score'] = '-1';
+				$data['header_view']['cur_card_price'] = '-1';
+			}
+
 			$comp_id = $_SESSION['competition_id'] = get_competition_id();
 			$dates = get_start_end_dates($comp_id);
 			$data['my_collection_view']['start_date'] = to_time_stamp($dates['start']);
 			$data['my_collection_view']['end_date'] = to_time_stamp($dates['end']);
+			// check whether the user is admin or not
+			$user_type = get_user_type();
+			$data['header_view']['is_admin'] = ($user_type == 'admin' ? true : false);
 
 			//Setting session variables
 			$_SESSION['current_page'] = 'my_collection';
@@ -61,7 +94,7 @@ class My_collection extends CI_Controller {
 			//Set page name to be sent to the template view
 			$data['page'] = 'my_collection_view';
 			$data['header_view']['page'] = 'my_collection_view';
-
+			
 			// temporary hard coded ...
 			$this->load->model('core_call');
 			$me = $this->core_call->getMe($this->session->userdata('account_id'));
@@ -71,7 +104,15 @@ class My_collection extends CI_Controller {
 
 			// Get User favorite categories ...
 			$interset_cats = $data['my_collection_view']['interest_cats'] = $this->category_model->get_category_interst_by_userID($data['header_view']['user_id'] );
-
+			
+			if(!isset($_SESSION['current_category_id'] )) {
+				//Get first category info to be set in the session array
+				$first_cat = $this->get_first_category_info($data['my_collection_view']['interest_cats']);
+					
+				//Set first category ID and name only if they aren't already in session
+				$_SESSION['current_category_id'] = $first_cat['id'];
+				$_SESSION['current_category_name'] = $first_cat['name'];
+			}
 			// Get dashboard
 			$data['my_collection_view']['dashboard'] = $this->get_dashboard_info($user_id, $interset_cats);
 

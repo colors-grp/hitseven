@@ -38,6 +38,51 @@
 <!-- End of Simple Modal -->
     
 <script>
+	var cur_game_type = "";
+	var game_started = false;
+	var final_score = 0;
+	$(document).keyup(function(e) {
+		if (cur_game_type == "mcq") {
+			if (e.keyCode == 27) {
+				if (game_started == true) {
+				  	document.getElementById('current_question').style.display = 'none';
+				  	document.getElementById('confirm_exit').style.display = 'block';
+				}
+				else {
+					document.getElementById('close_game').click();
+				}
+			}
+		}
+		else {
+			if (e.keyCode == 27) {
+				document.getElementById('close_popup').click();
+			}
+		}
+	});
+	/*
+	window.onbeforeunload = function (e) {
+		if (game_started == true) {
+			var r=confirm("You will got a score of " + final_score + ". Are you sure you want to exit");
+			if (r==true) {
+				done_fun();
+			}
+		    //e = e || window.event;
+
+		    var msg = "You will only get " + final_score + " Points";
+		    if (e) {
+		        e.returnValue = msg + "msh safari";
+		    }
+		    game_started = false;
+		    return msg;
+		}
+	};
+	*/
+	window.onunload = function() {
+	    if (game_started == true) {
+	    	update_game_score();
+	    }
+	}
+
 	function alert_success(message){
     	alertify.success(message);
     	return false;
@@ -85,12 +130,14 @@
                 	<img src="<?=base_url()?>/h7-assets/resources/img/main-icons/activitylog.png" alt="activity-log" width = "30" >
                 </a>
 		 	</li>
+		 	<?php if ($is_admin == true) {?>
 		 	<li><img class = "indicator" src="<?=base_url()?>/h7-assets/resources/img/main-icons/header_indecator_icon.png" alt=""></li>
-		 	<li>
-		 		<a href="<?= base_url()?>index.php?/admin_page">
-                	<img src="<?=base_url()?>/h7-assets/resources/img/main-icons/admin.png" alt="admin-icon" width = "30" >
-                </a>
-		 	</li>
+			 	<li>
+			 		<a href="<?= base_url()?>index.php?/admin_page">
+	                	<img src="<?=base_url()?>/h7-assets/resources/img/main-icons/admin.png" alt="admin-icon" width = "30" >
+	                </a>
+			 	</li>
+		 	<?php }?>
 		 	<li><img class = "indicator" src="<?=base_url()?>/h7-assets/resources/img/main-icons/header_indecator_icon.png" alt=""></li>
 		 	<li class="dropdown">
             	<a href="#" class="dropdown-toggle" data-toggle="dropdown" style = "height: 42px;">
@@ -114,7 +161,10 @@
 	<?php if($page == 'main_view') {?>
 		onload ="onload_function('<?='-1'?>','<?='-1'?>','<?=true?>');">
 	<?php } else if($page == 'my_collection_view') {?>
-		onload ="on_load_my_collection('<?='-1'?>','<?='-1'?>','<?='-1'?>','<?='-1'?>','<?='-1'?>','<?='-1'?>');">
+		onload ="on_load_my_collection('<?='-1'?>','<?='-1'?>','<?=$cur_card_id?>','<?=$cur_card_name?>','<?=$cur_card_price?>','<?=$cur_card_score?>');">
 	<?php }else if ($page == 'scoreboard_view') {?>
 		onload ="onload_scoreboard('<?='-1'?>','<?='-1'?>','<?=true?>');">
 	<?php }?>
+	<a href="javascript:void(0);"
+					id="close_popup" class="simplemodal-close"
+					style="text-decoration: none;"><font color="white">Done</font> </a>

@@ -5,9 +5,9 @@ if(!function_exists('get_credit'))
 	function get_credit() {
 		$CI =& get_instance();
 		// Get facebook user ID
-		$fbid = '100000130552768';
+		$user_id = $_SESSION['user_id'];
 		// Invoke the core to get user's credit from the database
-		$credit = $CI->core_call->getUserCredit($fbid);
+		$credit = $CI->core_call->getUserCredit($user_id);
 		return $credit;
 	}
 }
@@ -28,12 +28,17 @@ if (!function_exists('get_competition_id')) {
 
 if (!function_exists('get_user_id')) {
 	function get_user_id() {
+		return $_SESSION['user_id'];
+	}
+}
+if (!function_exists('get_user_type')) {
+	function get_user_type() {
 		$CI =& get_instance();
 		$CI->load->model('user_model');
-		$query = $CI->user_model->get_user_id($_SESSION['fb_id'])->row();
+		$query = $CI->user_model->get_user_id($_SESSION['user_id']);
 		if ($query)
-			return $query->id;
-		return 'Undefined User ID';
+			return $query->type;
+		return 'Undefined User Type';
 	}
 }
 
@@ -64,8 +69,8 @@ if(!function_exists('buy_credit'))
 			$credit = $_POST['credit'];
 			// Get facebook user ID
 			// Set needed parameters values
-			$fb_id = '100000130552768';
-			$CI->core_call->buy_credit($fb_id, $credit);
+			$user_id = $_SESSION['user_id'];
+			$CI->core_call->buy_credit($user_id, $credit);
 			$CI->load->model('activity_model');
 			$CI->activity_model->insert_log( $CI->session->userdata('user_id') , 2);
 		}
@@ -80,9 +85,9 @@ if(!function_exists('take_credit'))
 	function take_credit($value) {
 		$CI =& get_instance();
 		// Set needed parameters values
-		$fb_id = '100000130552768';
+		$user_id = $_SESSION['user_id'];
 		$credit = $value;
-		$CI->core_call->buy_credit($fb_id, $credit);
+		$CI->core_call->buy_credit($user_id, $credit);
 	}
 }
 

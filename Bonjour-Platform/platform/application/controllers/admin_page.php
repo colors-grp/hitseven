@@ -11,6 +11,7 @@ class Admin_page extends CI_Controller {
 		$this->load->library ( 'grocery_CRUD' );
 	}
 	function index() {
+		$_SESSION['user_id'] = $this->session->userdata('account_id');
 		$output ['tables'] = array (
 				'competition',
 				'category',

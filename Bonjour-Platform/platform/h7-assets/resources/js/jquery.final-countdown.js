@@ -227,7 +227,7 @@
         daysStage.add(layerDays);
     }
 
-    function startCounters() {        
+    function startCounters() {    
         var interval = setInterval( function() {                        
             if (timer.seconds > 59 ) {
                 if (60 - timer.minutes == 0 && 24 - timer.hours == 0 && timer.days == 0) {
